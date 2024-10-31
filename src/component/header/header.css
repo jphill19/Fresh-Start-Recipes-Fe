@@ -1,17 +1,22 @@
+/* Header section */
 .header-section {
-  padding: 1rem;
-  background-color: #f8f9fa;
+  background-color: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
+  position: relative;
+  padding: 0px;
 }
 
+/* Navigation bar */
 .nav-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  padding: 1rem;
 }
 
+/* Links and buttons */
 .nav-link, .search-button {
   text-decoration: none;
   background: none;
@@ -24,11 +29,13 @@
   transform: scale(1.1);
 }
 
+/* Logo */
 .logo {
   max-width: 150px;
 }
 
-.search-icon, .location-icon{
+/* Icons */
+.search-icon, .location-icon {
   width: 28px;
   height: 28px;
 }
@@ -38,10 +45,42 @@
   transition: transform 0.6s ease;
 }
 
-.search-button:focus .search-icon {
+/* Search button focus animation */
+.rotate {
   animation: rotateIcon 0.6s ease;
 }
 
+
+/* Search container (hidden by height initially) */
+.search-container {
+  justify-content: start;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  background-color: white;
+  margin-top: 10px;
+  width: 95%;
+}
+
+/* Show search input field */
+.search-container.show {
+  max-height: 60px; 
+  opacity: 1;
+  padding: 0.5rem;
+}
+
+/* Search input */
+.search-input {
+  width: 40%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Keyframes for rotating the search icon */
 @keyframes rotateIcon {
   0% {
     transform: rotate(0deg);
@@ -51,11 +90,9 @@
   }
 }
 
+/* Mobile styles */
 @media (max-width: 768px) {
   .header-section {
-    max-height: 80px;
-    overflow: hidden;
-    padding: 0.75rem;
     border-radius: 0;
   }
 
@@ -67,8 +104,23 @@
     max-width: 60px;
   }
 
-  .search-icon, .location-icon{
+  .search-icon, .location-icon {
     width: 24px;
     height: 24px;
+  }
+
+  /* Adjust the search container for mobile */
+  .search-container {
+    max-height: 0;
+    padding: 0;
+  }
+
+  .search-container.show {
+    max-height: 50px; /* Slightly larger for mobile */
+  }
+
+  .search-input {
+    width: 100%;
+    font-size: 0.9rem;
   }
 }
