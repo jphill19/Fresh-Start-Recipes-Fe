@@ -36,8 +36,8 @@
 
 /* Icons */
 .search-icon, .location-icon {
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
 }
 
 .search-icon {
@@ -78,6 +78,7 @@
   border-radius: 4px;
   font-size: 1rem;
   box-sizing: border-box;
+  width: 100%;
 }
 
 /* Keyframes for rotating the search icon */
@@ -120,7 +121,6 @@
   }
 
   .search-input {
-    width: 100%;
     font-size: 0.9rem;
   }
 }
