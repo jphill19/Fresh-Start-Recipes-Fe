@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 import './RecipeCard.css';
 
 export function RecipeCard ({ recipe }) {
-  const {title, servingSize, ingredients, image} = recipe;
+  const {recipeId, title, servingSize, ingredients, image} = recipe;
 
   // The arrangment below is for the HORIZONTAL ORIENTATION of the the recipe card
 
@@ -20,14 +21,18 @@ export function RecipeCard ({ recipe }) {
           }
         </div>
         <div className={ 'recipe-image-contianer' }>
-          <img className={ 'recipe-image-actual' } src={ image.src } alt={ `${ image.alt }` } />
+          <Link to={ `/recipe/${ recipeId }` }>
+            <img className={ 'recipe-image-actual' } src={ image.src } alt={ `${ image.alt }` } />
+          </Link>
         </div>
       </div>
-      <div className={ 'reipe-card-summary-bar' }>
-        <p className={ 'total-cost' } alt={ `Total price is` }>{ /** calculation function */ }</p>
-        <p className={ 'recipe-title' }>{ `${title}` }</p>
-        <p className={ 'seving-size' }>{ `Servings: ${servingSize}` }</p>
-      </div>
+      <Link to={ `/recipe/${ recipeId }` }>
+        <div className={ 'reipe-card-summary-bar' }>
+          <p className={ 'total-cost' } alt={ `Total price is` }>{ /** calculation function */ }</p>
+          <p className={ 'recipe-title' }>{ `${title}` }</p>
+          <p className={ 'seving-size' }>{ `Servings: ${servingSize}` }</p>
+        </div>
+      </Link>
     </div>
   )
 
@@ -47,15 +52,17 @@ export function RecipeCard ({ recipe }) {
   //           })
   //         }
   //       </div>
-  //       <div className={ 'recipe-image-contianer' }>
-  //         <img className={ 'recipe-image-actual' } src={ image.src } alt={ `${ image.alt }` } />
+  //       <Link to={ `/recipe/${ recipeId }` }>
+  //        <img className={ 'recipe-image-actual' } src={ image.src } alt={ `${ image.alt }` } />
+  //       </Link>
+  //     </div>
+  //     <Link to={ `/recipe/${ recipeId }` }>
+  //       <div className={ 'reipe-card-summary-bar' }>
+  //         <p className={ 'total-cost' } alt={ `Total price is` }>{ /** calculation function */ }</p>
+  //         <p className={ 'recipe-title' }>{ `${title}` }</p>
+  //         <p className={ 'seving-size' }>{ `Servings: ${servingSize}` }</p>
   //       </div>
-  //     </div>
-  //     <div className={ 'reipe-card-summary-bar' }>
-  //       <p className={ 'total-cost' } alt={  }>{ `Total price is /** calculation function */` }</p>
-  //       <p className={ 'recipe-title' }>{ `${title}` }</p>
-  //       <p className={ 'seving-size' }>{ `Servings: ${servingSize}` }</p>
-  //     </div>
+  //     </Link>
   //   </div>
   // )
 }
