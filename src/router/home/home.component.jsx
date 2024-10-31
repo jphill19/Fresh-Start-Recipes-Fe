@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
+import FilterBar from "../../component/fitlerBar/filterBar.component";
+
 
 
 const data = {
@@ -59,7 +61,9 @@ const data = {
 function Home() {
   const [ indexData, setIndexData] = useState(data)
   return (
-    <div></div>
+    <Fragment>
+      <FilterBar/>
+    </Fragment>
   );
 }
 export default Home;
