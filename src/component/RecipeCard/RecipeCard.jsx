@@ -12,7 +12,7 @@ export function RecipeCard ({ recipe }) {
           {
             ingredients.map((ingredient) => {
               return (
-                <div className={ `${ ingredient.name }-button ingredient-button-wrapper` }>
+                <div className={ `${ ingredient.name }-button ingredient-button-wrapper` } alt={ `${ ingredient.name }, click to remove ingredient from recipe list if you already have it.` }>
                   <button className={`button-element`}>{ ingredient.name }<span> {ingredient.price} </span></button>
                 </div>
               )
@@ -24,7 +24,7 @@ export function RecipeCard ({ recipe }) {
         </div>
       </div>
       <div className={ 'reipe-card-summary-bar' }>
-        <p className={ 'total-cost' }></p>
+        <p className={ 'total-cost' } alt={ `Total price is` }>{ /** calculation function */ }</p>
         <p className={ 'recipe-title' }>{ `${title}` }</p>
         <p className={ 'seving-size' }>{ `Servings: ${servingSize}` }</p>
       </div>
@@ -40,7 +40,7 @@ export function RecipeCard ({ recipe }) {
   //         {
   //           ingredients.map((ingredient) => {
   //             return (
-  //               <div className={ `${ ingredient.name }-button ingredient-button-wrapper` }>
+  //               <div className={ `${ ingredient.name }-button ingredient-button-wrapper` } alt={ `${ ingredient.name }, click to remove ingredient from recipe list if you already have it.` }>
   //                 <button className={`button-element`}>{ ingredient.name }<span> {ingredient.price} </span></button>
   //               </div>
   //             )
@@ -52,7 +52,7 @@ export function RecipeCard ({ recipe }) {
   //       </div>
   //     </div>
   //     <div className={ 'reipe-card-summary-bar' }>
-  //       <p className={ 'total-cost' }></p>
+  //       <p className={ 'total-cost' } alt={  }>{ `Total price is /** calculation function */` }</p>
   //       <p className={ 'recipe-title' }>{ `${title}` }</p>
   //       <p className={ 'seving-size' }>{ `Servings: ${servingSize}` }</p>
   //     </div>
