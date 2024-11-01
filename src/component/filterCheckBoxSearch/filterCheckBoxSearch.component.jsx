@@ -1,9 +1,10 @@
 import './filterCheckBoxSearch.css'
 
 
-function FilterCheckBoxSearch() {
+function FilterCheckBoxSearch({name}) {
   return (
-    <div>
+    <div >
+      <p>{name}</p>
     </div>
   );
 }

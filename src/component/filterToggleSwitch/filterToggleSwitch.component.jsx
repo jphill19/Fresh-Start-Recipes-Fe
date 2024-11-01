@@ -1,9 +1,10 @@
 import './filterToggleSwitch.css'
 
 
-function FilterToggleSwitch() {
+function FilterToggleSwitch({name}) {
   return (
     <div>
+      <p>{name}</p>
     </div>
   );
 }

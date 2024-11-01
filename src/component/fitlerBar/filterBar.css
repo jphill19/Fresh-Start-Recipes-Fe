@@ -1,0 +1,42 @@
+.filter-bar-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 5px;
+  padding: 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.filter-bar-container::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-bar-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.filter-component {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background-color: #f2f2f2;
+  color: #000;
+  font-weight: 600;
+  font-size: 0.7em;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dropdown-arrow {
+  width: 12px;
+  height: 12px;
+  margin-left: 5px;
+}
+
+.filter-component.highlighted {
+  background-color: #000;
+  color: #fff;
+}

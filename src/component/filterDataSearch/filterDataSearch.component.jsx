@@ -1,9 +1,10 @@
 import './filterDataSearch.css'
 
 
-function FilterDataSearch() {
+function FilterDataSearch({name}) {
   return (
     <div>
+      <p>{name}</p>
     </div>
   );
 }
