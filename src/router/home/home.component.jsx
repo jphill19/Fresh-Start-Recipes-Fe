@@ -74,6 +74,16 @@ function Home() {
 
   useEffect(() => {
     const filters = new URLSearchParams(location.search);
+
+    //Edge case, setting active filters whenever the user refreshes the page
+    const initialFilters = {};
+    filters.forEach((value, key) => {
+      initialFilters[key] = value;
+    });
+
+    setActiveFilters(initialFilters);
+    //
+
     fetchFilteredData(filters);
   }, [location.search]);
 
