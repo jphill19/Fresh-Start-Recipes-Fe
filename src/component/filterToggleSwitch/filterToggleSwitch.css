@@ -1,0 +1,52 @@
+/* Toggle switch container */
+.toggle-switch {
+  position: relative;
+  display: flex;
+  width: 200px; 
+  height: 50px;  
+  border-radius: 25px; 
+  background-color: #ccc;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto; 
+  transition: background-color 0.3s;
+}
+
+/* Options text */
+.toggle-option {
+  position: relative; 
+  color: #666;
+  width: 50%;
+  text-align: center;
+  z-index: 2;         
+  transition: color 0.3s;
+}
+
+/* Active option styling */
+.toggle-option.active {
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Toggle slider */
+.toggle-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;        /* Half of container width */
+  height: 100%;      /* Full height of container */
+  border-radius: 25px;
+  background-color: #ff6b6b;
+  transition: transform 0.3s;
+  z-index: 1;        /* Place slider below text */
+}
+
+/* Move slider based on selection */
+.toggle-slider.single {
+  transform: translateX(0);
+}
+
+.toggle-slider.multiple {
+  transform: translateX(100%); /* Move to the other half */
+}

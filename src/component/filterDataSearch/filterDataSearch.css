@@ -1,0 +1,55 @@
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.filter-option:hover {
+  background-color: #f7f7f7;
+}
+
+/* Checkbox styling */
+.filter-option input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ff6b6b;
+  border-radius: 4px;
+  background-color: transparent;
+  transition: background-color 0.2s;
+}
+
+.filter-option input[type="checkbox"]:checked {
+  background-color: #ff6b6b;
+}
+
+/* Checkbox label styling */
+.filter-option label {
+  font-size: 14px;
+  color: #333;
+}
+
+.filter-option input[type="checkbox"]:checked + label {
+  font-weight: bold;
+  color: #ff6b6b;
+}
+
+/* Styling for the search input box */
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #ff6b6b;
+}
