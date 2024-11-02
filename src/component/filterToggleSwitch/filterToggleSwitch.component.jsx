@@ -1,9 +1,14 @@
 import './filterToggleSwitch.css'
-import { Fragment, useState} from 'react';
+import { Fragment, useState, useEffect} from 'react';
 
 
 function FilterToggleSwitch({ name, searchValueSetter }) {
   const [isSingle, setIsSingle] = useState(true);
+
+  useEffect(() => {
+    // Set the initial search value when the component mounts
+    searchValueSetter(isSingle ? 'Single' : 'Multiple');
+  }, [isSingle]);
 
   const handleToggle = () => {
     const newValue = isSingle ? 'Multiple' : 'Single';
