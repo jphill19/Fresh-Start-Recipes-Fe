@@ -4,13 +4,18 @@ import FilterCheckBoxSearch from '../filterCheckBoxSearch/filterCheckBoxSearch.c
 import FilterToggleSwitch from '../filterToggleSwitch/filterToggleSwitch.component';
 import { useState } from 'react';
 
-function FilterModal({ onClose, type, activeModal}) {
+function FilterModal({ onClose, activeModal, onFilterChange}) {
   const [searchValue, setSearchValue ] = useState(null)
 
   const searchValueSetter = (value) => {
     setSearchValue(value);
   };
   console.log(searchValue)
+
+  const handleResultSearch = () => {
+    onFilterChange(activeModal, searchValue)
+    onClose()
+  }
 
   const renderFilterContent = () => {
     switch (activeModal) {
@@ -48,7 +53,7 @@ function FilterModal({ onClose, type, activeModal}) {
         {renderFilterContent()}
         <div className="modal-actions">
           <button className="modal-button reset" onClick={onClose}>Reset</button>
-          <button className="modal-button view-results" onClick={onClose}>View Results</button>
+          <button className="modal-button view-results" onClick={handleResultSearch}>View Results</button>
         </div>
       </div>
     </div>
