@@ -6,15 +6,19 @@
   padding: 10px;
   overflow-x: auto;
   white-space: nowrap;
-}
 
-.filter-bar-container::-webkit-scrollbar {
-  display: none;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
 .filter-bar-container {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  overflow: auto; 
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+
+.filter-bar-container::-webkit-scrollbar {
+  display: none; 
 }
 
 .filter-component {
