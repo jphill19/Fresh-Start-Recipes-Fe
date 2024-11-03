@@ -22,7 +22,8 @@ function SubmitForm() {
         setInstructionFields(data);
     }
 
-    const addIngredients = () => {
+    const addIngredients = (e) => {
+        e.preventDefault();
         let newIngredient = {
             quantity: '',
             measurement: '',
@@ -30,7 +31,8 @@ function SubmitForm() {
         }
         setIngredientFields([...ingredientFields, newIngredient])
     }
-    const addInstructions = () => {
+    const addInstructions = (e) => {
+        e.preventDefault();
         let newInstruction = {
             cookingStyle: '',
             step: '',
@@ -39,12 +41,16 @@ function SubmitForm() {
         setInstructionFields([...instructionFields, newInstruction])
     }
 
-    const removeInstruction = (index) => {
+    const removeInstruction = (e, index) => {
+        console.log('<><><>', e)
+        e.preventDefault();
+        
         let data = [...instructionFields];
         data.splice(index, 1);
         setInstructionFields(data)
-    }
-    const removeIngredient = (index) => {
+    };
+    const removeIngredient = (e, index) => {
+        e.preventDefault();
         let data = [...ingredientFields];
         data.splice(index, 1);
         setIngredientFields(data)
@@ -75,7 +81,7 @@ function SubmitForm() {
                 <h3>Ingredients</h3>
                 {ingredientFields.map((ingredient, index) => {
                     return (
-                    <div key={index}>
+                    <Fragment key={index}>
                         <input
                             type='number' 
                             placeholder='Quantity' 
@@ -97,8 +103,8 @@ function SubmitForm() {
                             onChange={event => handleIngredientFormChange(event, index)}
                             value={ingredientFields.ingredient}
                         />
-                        <button onClick={() => removeIngredient(index)}>Remove</button>
-                    </div>)
+                        <button onClick={(e) => removeIngredient(e, index)}>Remove</button>
+                    </Fragment>)
                 })}
                 <button onClick={addIngredients}>Add Ingredient</button>
 
@@ -106,7 +112,7 @@ function SubmitForm() {
                 <h3>Instructions</h3>
                 {instructionFields.map((instruction, index) => {
                     return (
-                        <div key={index}>
+                        <Fragment key={index}>
                         <input
                             type='text' 
                             placeholder='Cooking Style' 
@@ -128,8 +134,8 @@ function SubmitForm() {
                             onChange={event => handleInstructionFormChange(event, index)}
                             value={instructionFields.instruction}
                         />
-                        <button onClick={() => removeInstruction(index)}>Remove</button>
-                        </div>
+                        <button onClick={(e) => removeInstruction(e, index)}>Remove</button>
+                        </Fragment>
                     )
                 })}
                 <button onClick={addInstructions}>Add Instruction</button>
