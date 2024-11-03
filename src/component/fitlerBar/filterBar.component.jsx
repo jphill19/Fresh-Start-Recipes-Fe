@@ -17,7 +17,6 @@ function FilterIcon({ isActive }) {
 function FilterBar({ onFilterChange, activeFilters }) {
  
   const [activeModal, setActiveModal] = useState(null)
-  console.log(activeModal)
 
   const closeModal = () => {
     setActiveModal(null);

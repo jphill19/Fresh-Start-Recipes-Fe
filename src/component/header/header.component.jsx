@@ -1,6 +1,6 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { useState } from "react";
+import SearchBox from '../search-box/searchBox.component'
 import "./header.css"
 
 function Header() {
@@ -21,9 +21,7 @@ function Header() {
             </button>
           </nav>
           
-          <div className={`search-container ${showSearch ? 'show' : ''}`}>
-            <input type="text" placeholder="Search..." className="search-input" />
-           </div>
+           <SearchBox showSearch={showSearch}/>
         </header>
         <Outlet/>
     </Fragment>

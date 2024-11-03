@@ -3,9 +3,8 @@ import './RecipeCard.css';
 
 export function RecipeCard ({ recipe , excludedIngredients, onIngredientClick}) {
   const {recipeId, recipe_name, servingSize, ingredients, image, total_price} = recipe;
-  console.log("ingredinet", ingredients)
 
-    // Calculate updated total price for this recipe
+  
     const updatedTotalPrice = ingredients.reduce((sum, ingredient) => {
       const isExcluded = excludedIngredients[ingredient.ingredient_id];
       const price = isExcluded ? 0 : ingredient.price;
