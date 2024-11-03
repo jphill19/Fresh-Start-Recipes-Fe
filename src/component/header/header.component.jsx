@@ -23,7 +23,7 @@ function Header() {
           
           <div className={`search-container ${showSearch ? 'show' : ''}`}>
             <input type="text" placeholder="Search..." className="search-input" />
-           </div>
+          </div>
         </header>
         <Outlet/>
     </Fragment>
