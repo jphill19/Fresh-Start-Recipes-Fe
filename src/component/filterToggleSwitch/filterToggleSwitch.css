@@ -9,7 +9,7 @@
   cursor: pointer;
   align-items: center;
   justify-content: space-between;
-  margin: 0 auto; 
+  margin: 10px auto 0; 
   transition: background-color 0.3s;
 }
 
@@ -34,19 +34,19 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 50%;        /* Half of container width */
-  height: 100%;      /* Full height of container */
+  width: 50%;       
+  height: 100%;      
   border-radius: 25px;
   background-color: #ff6b6b;
   transition: transform 0.3s;
-  z-index: 1;        /* Place slider below text */
+  z-index: 1;        
 }
 
-/* Move slider based on selection */
+
 .toggle-slider.single {
   transform: translateX(0);
 }
 
 .toggle-slider.multiple {
-  transform: translateX(100%); /* Move to the other half */
+  transform: translateX(100%); 
 }

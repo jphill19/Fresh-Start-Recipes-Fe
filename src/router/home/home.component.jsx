@@ -6,7 +6,7 @@ import RecipeContainer from "../../component/RecipeContainer/RecipeContainer";
 
 function Home() {
   const [indexData, setIndexData] = useState([]);
-  const [activeFilters, setActiveFilters] = useState({}); // Track filter values
+  const [activeFilters, setActiveFilters] = useState({}); 
   const location = useLocation();
   const navigate = useNavigate();
 
