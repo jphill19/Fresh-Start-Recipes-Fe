@@ -2,26 +2,32 @@ import FilterBar from "../../component/fitlerBar/filterBar.component";
 import  { Fragment, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import FilterResults from "../../component/filterResults/filterResults.component";
-import recipeFetches from '../home/../../api/fresh_start_recipe_api'
+import {recipeFetches} from '../home/../../api/fresh_start_recipe_api'
 import RecipeContainer from "../../component/RecipeContainer/RecipeContainer";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function Home() {
   const [indexData, setIndexData] = useState([]);
-  console.log("data",indexData)
   const [activeFilters, setActiveFilters] = useState({}); 
-  console.log("filters", activeFilters)
+  const [loading, setLoading] = useState(false);
+
   const location = useLocation();
   const navigate = useNavigate();
 
 
   const fetchFilteredData = async (filters) => {
     console.log('Fetching data with filters:', filters.toString());
+    setLoading(true)
   
     try {
       const data = await recipeFetches(filters.toString());
       setIndexData(data.data);
+  
     } catch (error) {
       console.error('Error fetching filtered data:', error);
+    } finally {
+  
+      setLoading(false);
     }
   };
 
@@ -62,7 +68,13 @@ function Home() {
       {Object.keys(activeFilters).length > 0 ? (
         <FilterResults resultsCount={indexData.length}/>
       ) : null}
-      <RecipeContainer data={indexData}/>
+      {loading ? (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
+          <ClipLoader color="#36d7b7" size={50} /> {/* Customize the spinner color and size */}
+        </div>
+      ) : (
+        <RecipeContainer data={indexData} />
+      )}
     </Fragment>
   );
 }

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './RecipeCard.css';
 
 export function RecipeCard ({ recipe , excludedIngredients, onIngredientClick}) {
-  const {recipeId, recipe_name, servingSize, ingredients, image, total_price} = recipe;
+  const {recipeId, recipe_name, serving_size, ingredients, image, total_price} = recipe;
 
   
     const updatedTotalPrice = ingredients.reduce((sum, ingredient) => {
@@ -38,7 +38,7 @@ export function RecipeCard ({ recipe , excludedIngredients, onIngredientClick}) 
         {ingredients.map(renderIngredientRow)}
       </div>
       <div className="recipe-card-footer">
-        <p className="serving-size">{`Servings: ${servingSize}`}</p>
+        <p className="serving-size">{`Servings: ${serving_size}`}</p>
         <p className="total-cost">{`Total Cost: $${updatedTotalPrice.toFixed(2)}`}</p>
       </div>
     </div>
@@ -69,7 +69,7 @@ export default RecipeCard;
   //       <div className={ 'reipe-card-summary-bar' }>
   //         <p className={ 'total-cost' } alt={ `Total price is` }>{ /** calculation function */ }</p>
   //         <p className={ 'recipe-title' }>{ `${title}` }</p>
-  //         <p className={ 'seving-size' }>{ `Servings: ${servingSize}` }</p>
+  //         <p className={ 'seving-size' }>{ `Servings: ${serving_size}` }</p>
   //       </div>
   //     </Link>
   //   </div>
@@ -103,7 +103,7 @@ export default RecipeCard;
   //       <div className={ 'reipe-card-summary-bar' }>
   //         <p className={ 'total-cost' } alt={ `Total price is` }>{ /** calculation function */ }</p>
   //         <p className={ 'recipe-title' }>{ `${title}` }</p>
-  //         <p className={ 'seving-size' }>{ `Servings: ${servingSize}` }</p>
+  //         <p className={ 'seving-size' }>{ `Servings: ${serving_size}` }</p>
   //       </div>
   //     </Link>
   //   </div>

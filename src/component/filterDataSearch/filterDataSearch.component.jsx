@@ -1,51 +1,68 @@
-import { Fragment, useState} from 'react';
-import './filterDataSearch.css'
+import { Fragment, useState, useEffect } from 'react';
+import { ingredientFilter } from '../home/../../api/fresh_start_recipe_api';
+import './filterDataSearch.css';
 
-
-function FilterDataSearch({ name, searchValueSetter}) {
+function FilterDataSearch({ name, searchValueSetter }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  // useEffect(() => {
-  //   if (searchTerm) {
-  //     const fetchData = async () => {
-  //       try {
-  //         const response = await fetch(`${apiEndpoint}?query=${searchTerm}`);
-  //         const data = await response.json();
-  //         setResults(data.results); // Update with fetched results
-  //       } catch (error) {
-  //         console.error('Error fetching data:', error);
-  //       }
-  //     };
+  useEffect(() => {
+    const fetchData = async () => {
+      if (searchTerm) {
+        try {
+          const data = await ingredientFilter(searchTerm);
+          console.log('data', data);
+          setResults(data.data);
+          setIsDropdownOpen(true);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      } else {
+        setResults([]);
+        setIsDropdownOpen(false);
+      }
+    };
 
-  //     fetchData();
-  //   } else {
-  //     setResults([]); // Clear results if search term is empty
-  //   }
-  // }, [searchTerm, apiEndpoint]);
+    fetchData();
+  }, [searchTerm]);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
+  const handleSelectItem = (item) => {
+    setSearchTerm(item.attributes.name);
+    setIsDropdownOpen(false);
+    searchValueSetter(item.attributes.name)
+  };
 
   return (
     <Fragment>
       <h2>{name}</h2>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={searchTerm}
-        onChange={handleSearchChange}
-        className="search-input"
-      />
-      <div>
-        {results.map((item) => (
-          <label key={item.id} className="filter-option">
-            <input type="checkbox" />
-            {item.name}
-          </label>
-        ))}
+      <div className="dropdown-container">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+          className="search-input"
+          onFocus={() => results.length > 0 && setIsDropdownOpen(true)}
+          onBlur={() => setTimeout(() => setIsDropdownOpen(false), 100)}
+        />
+        {isDropdownOpen && results.length > 0 && (
+          <ul className="dropdown-menu">
+            {results.map((item) => (
+              <li
+                key={item.id}
+                className="dropdown-item"
+                onMouseDown={() => handleSelectItem(item)}
+              >
+                {item.attributes.name}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </Fragment>
   );

@@ -23,7 +23,7 @@ function Header() {
           
            <SearchBox showSearch={showSearch}/>
         </header>
-        <Outlet/>
+        <Outlet/> 
     </Fragment>
   );
 }

@@ -6,8 +6,8 @@ function FilterCheckBoxSearch({options, name, searchValueSetter}) {
   const [selectedId, setSelectedId] = useState(null);
 
   const handleCheckboxChange = (id) => {
-    setSelectedId(id); // Update selected ID
-    searchValueSetter(id); // Pass selected ID up to the parent
+    setSelectedId(id);
+    searchValueSetter(id); 
   };
 
   return (
