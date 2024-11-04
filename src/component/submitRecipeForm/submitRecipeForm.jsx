@@ -19,14 +19,14 @@ function SubmitForm() {
     ]);
 
     const handleFormChange = (event, index, dataSet, setDataSet) => {
-        let data = [...{dataSet}];
+        let data = [...dataSet];
         data[index][event.target.name] = event.target.value;
         setDataSet(data);
     }
     
     const removeStep = (e, index, dataSet, setDataSet) => {
         e.preventDefault();
-        let data = [...{dataSet}];
+        let data = [...dataSet];
         data.splice(index, 1);
         setDataSet(data);
     }
@@ -112,6 +112,13 @@ function SubmitForm() {
                             onChange={event => handleFormChange(event, index, ingredientFields, setIngredientFields)}
                             value={ingredientFields.step}
                         />
+                        {/* <select
+                            name='measurement'
+                            onChange={event => handleFormChange(event, index, ingredientFields, setIngredientFields)}
+                            value={ingredientFields.measurement}
+                        >
+                        Dynamically get all the measurements stored in the database 
+                        </select> */}
                         <input
                             type='text' 
                             placeholder='Ingredient' 
@@ -124,18 +131,21 @@ function SubmitForm() {
                 })}
                 <button onClick={addIngredients}>Add Ingredient</button>
 
-                <br/>
                 <h3>Instructions</h3>
                 {instructionFields.map((instruction, index) => {
                     return (
                         <Fragment key={index}>
-                        <input
-                            type='text' 
-                            placeholder='Cooking Style' 
+                        <select
                             name='cookingStyle'
                             onChange={event => handleFormChange(event, index, instructionFields, setInstructionFields)}
                             value={instructionFields.cookingStyle}
-                        />
+                        >
+                            <option value="" disabled>Select Cooking Style</option>
+                            <option value="0">No Cooking Required</option>
+                            <option value="1">Microwave</option>
+                            <option value="2">Stove Top</option>
+                            <option value="3">Oven / Toaster Oven</option>
+                        </select>
                         <input
                             type='number' 
                             placeholder='Step' 
@@ -190,8 +200,8 @@ function SubmitForm() {
                 })}
                 <button onClick={event => addCookingTip(event)}>Add Cookware</button>
 
-    <button onClick={event => submit(event)}>SUBMIT</button>
-  </form>
+                <button onClick={event => submit(event)}>SUBMIT</button>
+            </form>
         </Fragment>
     )
 }
