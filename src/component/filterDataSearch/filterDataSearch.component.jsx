@@ -3,65 +3,80 @@ import { ingredientFilter } from '../home/../../api/fresh_start_recipe_api';
 import './filterDataSearch.css';
 
 function FilterDataSearch({ name, searchValueSetter }) {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState(''); 
+  const [debouncedTerm, setDebouncedTerm] = useState(''); 
   const [results, setResults] = useState([]);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState(null);
+
+
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      setDebouncedTerm(searchTerm); 
+    }, 500);
+
+    return () => clearTimeout(delayDebounceFn); 
+  }, [searchTerm]);
+
 
   useEffect(() => {
     const fetchData = async () => {
-      if (searchTerm) {
+      if (debouncedTerm) {
         try {
-          const data = await ingredientFilter(searchTerm);
-          console.log('data', data);
+          const data = await ingredientFilter(debouncedTerm);
           setResults(data.data);
-          setIsDropdownOpen(true);
         } catch (error) {
           console.error('Error fetching data:', error);
+          setResults([]); 
         }
       } else {
         setResults([]);
-        setIsDropdownOpen(false);
       }
     };
 
     fetchData();
-  }, [searchTerm]);
+  }, [debouncedTerm]);
 
   const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
+    setSearchTerm(event.target.value); 
   };
 
-  const handleSelectItem = (item) => {
-    setSearchTerm(item.attributes.name);
-    setIsDropdownOpen(false);
-    searchValueSetter(item.attributes.name)
+  const handleCheckboxChange = (item) => {
+    setSelectedId(item.id);
+    searchValueSetter(item.attributes.name);
   };
 
   return (
     <Fragment>
       <h2>{name}</h2>
-      <div className="dropdown-container">
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-          className="search-input"
-          onFocus={() => results.length > 0 && setIsDropdownOpen(true)}
-          onBlur={() => setTimeout(() => setIsDropdownOpen(false), 100)}
-        />
-        {isDropdownOpen && results.length > 0 && (
-          <ul className="dropdown-menu">
-            {results.map((item) => (
-              <li
-                key={item.id}
-                className="dropdown-item"
-                onMouseDown={() => handleSelectItem(item)}
-              >
+      <p>Input a name of an ingredient then select from checkbox</p>
+      <input
+        type="text"
+        placeholder="Search by Ingredient"
+        value={searchTerm}
+        onChange={handleSearchChange}
+        className="search-input"
+      />
+      
+      <div>
+        {results.length > 0 ? (
+          results.map((item) => (
+            <div key={item.id} className="filter-checkbox">
+              <input
+                type="checkbox"
+                id={`checkbox-${item.id}`}
+                checked={selectedId === item.id}
+                onChange={() => handleCheckboxChange(item)}
+              />
+              <label htmlFor={`checkbox-${item.id}`}>
                 {item.attributes.name}
-              </li>
-            ))}
-          </ul>
+              </label>
+            </div>
+          ))
+        ) : (
+          
+          debouncedTerm && (
+            <p className="no-results-message">No ingredients found for "{debouncedTerm}".</p>
+          )
         )}
       </div>
     </Fragment>

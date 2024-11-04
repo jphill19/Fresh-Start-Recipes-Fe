@@ -21,13 +21,13 @@ function FilterModal({ onClose, activeModal, onFilterChange}) {
     switch (activeModal) {
       case 'by_ingredient':
         return <FilterDataSearch 
-                name="Filter by a ingredient"
+                name="Filter by an ingredient"
                 searchValueSetter= {searchValueSetter}
               />;
       case 'by_style':
         return <FilterCheckBoxSearch 
-                  options={{ 1: 'Oven', 2: 'Microwave', 3: 'Stove', 4: 'None required' }} 
-                  name="Filter by a preffered cooking style"
+                  options={{ 3: 'Oven', 1: 'Microwave', 2: 'Stove', 0: 'None required' }} 
+                  name="Filter by a preferred cooking style"
                   searchValueSetter= {searchValueSetter}
               />;
       case 'by_serving':
@@ -38,7 +38,7 @@ function FilterModal({ onClose, activeModal, onFilterChange}) {
               />;
       case 'by_price':
         return <FilterCheckBoxSearch 
-                  options={{ '0': 'Less than $5', '2': 'Less than $10', '1': 'Greater than $5', '3': 'Greater than $10' }} 
+                  options={{ '2': 'Less than $10', '1': 'Greater than $5', '3': 'Greater than $10' }} 
                   name="Filter by Prices"
                   searchValueSetter= {searchValueSetter}
               />;

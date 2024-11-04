@@ -20,7 +20,7 @@ function FilterCheckBoxSearch({options, name, searchValueSetter}) {
             checked={selectedId === id}
             onChange={() => handleCheckboxChange(id)}
           />
-          {label}
+          <label htmlFor={`checkbox-${id}`}>{label}</label>
         </label>
       ))}
     </Fragment>

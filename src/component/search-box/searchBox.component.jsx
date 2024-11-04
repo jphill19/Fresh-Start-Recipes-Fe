@@ -4,7 +4,7 @@ import './searchBox.css'
 
 
 
-function SearchBox({ showSearch }) {
+function SearchBox({ showSearch, toggleSearch}) {
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
@@ -17,6 +17,8 @@ function SearchBox({ showSearch }) {
     if (searchQuery.trim()) {
       navigate(`/?by_recipe=${encodeURIComponent(searchQuery)}`);
     }
+    toggleSearch();
+    setSearchQuery('')
   };
 
 
@@ -24,8 +26,8 @@ function SearchBox({ showSearch }) {
     <div className={`search-container ${showSearch ? 'show' : ''}`}>
       <form onSubmit={handleSearchSubmit}>
         <input
-          type="text"
-          placeholder="Search..."
+          type="search"
+          placeholder="Search by Recipe Name..."
           value={searchQuery}
           onChange={handleInputChange}
           className="search-input"

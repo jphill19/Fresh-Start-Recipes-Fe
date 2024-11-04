@@ -21,7 +21,7 @@ function Header() {
             </button>
           </nav>
           
-           <SearchBox showSearch={showSearch}/>
+           <SearchBox showSearch={showSearch} toggleSearch={toggleSearch}/>
         </header>
         <Outlet/> 
     </Fragment>
