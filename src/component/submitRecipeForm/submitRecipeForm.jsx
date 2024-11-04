@@ -1,5 +1,6 @@
 import { Fragment, useState } from 'react';
 import './submitRecipeForm.css';
+import {recipePost} from '../home/../../api/fresh_start_recipe_api'
 
 function SubmitForm() {
     const [name, setName] = useState('');
@@ -77,6 +78,13 @@ function SubmitForm() {
             instructions: instructionFields
         }
         console.log(compiledData)
+        recipePost(compiledData)
+            .then(data => {
+                console.log("Recipe posted successfully:", data);
+            })
+            .catch(error => {
+                console.error("Error posting recipe:", error);
+            });   
     }
 
     const handleKeyDown = (event) => {
