@@ -1,0 +1,294 @@
+/* * {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vw;
+  background-color: gray;
+} */
+
+/* Initial Horizantal orientation */
+
+/* .recipe-card-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70vw;
+  height: 40vw;
+  border-radius: 10px;
+  background-color: #b95918;
+  font-family: "Rowdies", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.recipe-ingredient-and-image-display {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 75%;
+}
+
+.ingredients-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 50%;
+  height: 100%;
+}
+
+.ingredient-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 15%;
+}
+
+.button-element {
+  width: 90%;
+  height: 100%;
+  font-family: "Rowdies", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 100%;
+  border-radius: 10px;
+}
+
+.cost {
+  margin-left: 3%;
+}
+
+.recipe-image-contianer {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+}
+
+.recipe-image-actual {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  border-radius: 0px 10px 0px 0px;
+}
+
+.reipe-card-summary-bar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 25%;
+  border-radius: 0px 0px 10px 10px;
+  background-color: #bfbfbf;
+} */
+
+/* Horizantal orientation With vertical Scroller */
+
+
+
+/* Vertical orientation */
+
+/* .recipe-card-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90vw; 
+  height: auto; 
+  max-width: 600px; 
+  border-radius: 10px;
+  background-color: #b95918;
+  font-family: "Rowdies", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  margin-bottom: 16px;
+}
+
+
+.recipe-ingredient-and-image-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 8px;
+}
+
+.ingredients-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 95%;
+  height: 100%;
+}
+
+.ingredient-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 20%;
+}
+
+.button-element {
+  width: 100%;
+  height: 80%;
+  font-family: "Rowdies", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 140%;
+  border-radius: 10px;
+}
+
+.cost {
+  margin-left: 3%;
+}
+
+.recipe-image-contianer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 40%;
+}
+
+.recipe-image-actual {
+  width: 100%;
+  height: auto; 
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  aspect-ratio: 16 / 9;
+}
+
+.reipe-card-summary-bar {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  padding: 8px;
+  width: 100%;
+  background-color: #bfbfbf;
+  border-radius: 0 0 10px 10px;
+}
+
+.recipe-title, .total-cost, .seving-size {
+  font-size: 1rem; 
+  text-align: center;
+} */
+
+/* RecipeCard.css */
+
+/* RecipeCard.css */
+
+.recipe-card-wrap {
+  background-color: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px auto;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.recipe-title {
+  font-size: 1.5em;
+  color: #333333;
+  margin-bottom: 12px;
+}
+
+.recipe-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 16px;
+}
+
+/* .ingredients-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+} */
+
+.ingredients-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.ingredient-row {
+  display: flex;
+  align-items: center;
+}
+
+.ingredient-item {
+  flex: 1 1 45%;
+}
+
+.ingredient-button {
+  flex-grow: 1;
+  padding: 10px;
+  background-color: #f7f7f7;
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
+  text-align: left;
+  font-size: 0.9em;
+  color: #333333;
+  cursor: pointer;
+  margin-right: 8px;
+  white-space: nowrap;      
+  overflow: hidden;        
+  text-overflow: ellipsis;   
+}
+
+.ingredient-price {
+  font-size: 0.9em;
+  color: #555555;
+  min-width: 60px;
+  text-align: right;
+}
+
+.ingredient-button span {
+  float: right;
+  color: #999999;
+  font-size: 0.9em;
+}
+
+.recipe-card-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: #555555;
+  border-top: 1px solid #e2e2e2;
+  padding-top: 12px;
+}
+
+.serving-size,
+.total-cost {
+  margin: 0;
+}
+
+.ingredient-button.disabled {
+  background-color: #d3d3d3;
+  color: #888888;
+  text-decoration: line-through;
+}
+
+.ingredient-price.zeroed {
+  color: #888888;
+  text-decoration: line-through;
+}
