@@ -67,17 +67,36 @@ function SubmitForm() {
     }
     const submit = (e) => {
         e.preventDefault();
+        const compiledData = {
+            name: name,
+            servingSize: servingSize,
+            imageURL: imageUrl,
+            cookingTips: tipFields,
+            cookware: cookwareFields,
+            ingredients: ingredientFields,
+            instructions: instructionFields
+        }
+        console.log(compiledData)
     }
-    
+
+    const handleKeyDown = (event) => {
+        if (event.key === "Enter") {
+            if (event.target.tagName.toLowerCase() !== "button") {
+                event.preventDefault(); // Disable Enter on non-buttons
+            }
+        }
+    };
     return (
         <Fragment>
-            <form>
+            <form onSubmit={submit} onKeyDown={handleKeyDown}>
+                <h1>Submit Recipe</h1>
                 <input 
                     type='text'
                     placeholder='Recipe Name' 
                     name='name' 
                     value={name} 
                     onChange={event => setName(event.target.value)}
+                    required
                 />
                 <input
                     type='text' 
@@ -85,6 +104,7 @@ function SubmitForm() {
                     name='servingSize' 
                     value={servingSize} 
                     onChange={event => setServingSize(event.target.value)}
+                    required
                 />
                 <input
                     type='text' 
@@ -92,18 +112,20 @@ function SubmitForm() {
                     name='imageUrl' 
                     value={imageUrl} 
                     onChange={event => setImageUrl(event.target.value)}
+                    required
                 />
                 <br/>
                 <h3>Ingredients</h3>
                 {ingredientFields.map((ingredient, index) => {
                     return (
-                    <Fragment key={index}>
+                    <div className='ingredient' key={index}>
                         <input
                             type='number' 
                             placeholder='Quantity' 
                             name='quantity'
                             onChange={event => handleFormChange(event, index, ingredientFields, setIngredientFields)}
                             value={ingredientFields.quantity}
+                            required
                         />
                         <input
                             type='text' 
@@ -111,11 +133,17 @@ function SubmitForm() {
                             name='measurement' 
                             onChange={event => handleFormChange(event, index, ingredientFields, setIngredientFields)}
                             value={ingredientFields.step}
+                            required
                         />
                         {/* <select
                             name='measurement'
                             onChange={event => handleFormChange(event, index, ingredientFields, setIngredientFields)}
                             value={ingredientFields.measurement}
+                            <option value="" disabled>Select unit of measure</option>
+                            measurements.map((unit) => {
+                                return (
+                                <option value="unit">unit</option>
+                                )})
                         >
                         Dynamically get all the measurements stored in the database 
                         </select> */}
@@ -125,22 +153,24 @@ function SubmitForm() {
                             name='ingredient'
                             onChange={event => handleFormChange(event, index, ingredientFields, setIngredientFields)}
                             value={ingredientFields.ingredient}
+                            required
                         />
                         <button onClick={(e) => removeStep(e, index, ingredientFields, setIngredientFields)}>Remove</button>
-                    </Fragment>)
+                    </div>)
                 })}
                 <button onClick={addIngredients}>Add Ingredient</button>
 
                 <h3>Instructions</h3>
                 {instructionFields.map((instruction, index) => {
                     return (
-                        <Fragment key={index}>
+                        <div className='instruction' key={index}>
                         <select
                             name='cookingStyle'
                             onChange={event => handleFormChange(event, index, instructionFields, setInstructionFields)}
                             value={instructionFields.cookingStyle}
+                            required
                         >
-                            <option value="" disabled>Select Cooking Style</option>
+                            <option value="">Select Cooking Style</option>
                             <option value="0">No Cooking Required</option>
                             <option value="1">Microwave</option>
                             <option value="2">Stove Top</option>
@@ -152,6 +182,7 @@ function SubmitForm() {
                             name='step' 
                             onChange={event => handleFormChange(event, index, instructionFields, setInstructionFields)}
                             value={instructionFields.step}
+                            required
                         />
                         <input
                             type='text' 
@@ -159,9 +190,10 @@ function SubmitForm() {
                             name='instruction'
                             onChange={event => handleFormChange(event, index, instructionFields, setInstructionFields)}
                             value={instructionFields.instruction}
+                            required
                         />
                         <button onClick={(e) => removeStep(e, index, instructionFields, setInstructionFields)}>Remove</button>
-                        </Fragment>
+                        </div>
                     )
                 })}
                 <button onClick={addInstructions}>Add Instruction</button>
@@ -169,16 +201,17 @@ function SubmitForm() {
                 <h3>Cookware</h3>
                 {cookwareFields.map((cookware, index) => {
                     return (
-                        <Fragment key={index}>
+                        <div className='cookware' key={index}>
                             <input
                                 type='text' 
                                 placeholder='Cookware' 
                                 name='cookware' 
                                 value={cookwareFields.cookware} 
                                 onChange={event => handleFormChange(event, index, cookwareFields, setCookwareFields)}
+                                required
                             />
                             <button onClick={(e) => removeStep(e, index, cookwareFields, setCookwareFields)}>Remove</button>
-                        </Fragment>
+                        </div>
                     )
                 })}
                 <button onClick={event => addCookware(event)}>Add Cookware</button>
@@ -186,21 +219,22 @@ function SubmitForm() {
                 <h3>Cooking Tips</h3>
                 {tipFields.map((tip, index) => {
                     return (
-                        <Fragment key={index}>
+                        <div className='cookingTip' key={index}>
                             <input
                                 type='text' 
-                                placeholder='tips' 
-                                name='tips' 
-                                value={tipFields.tips} 
+                                placeholder='Tip' 
+                                name='tip' 
+                                value={tipFields.tip} 
                                 onChange={event => handleFormChange(event, index, tipFields, setTipFields)}
+                                required
                             />
                             <button onClick={(e) => removeStep(e, index, tipFields, setTipFields)}>Remove</button>
-                        </Fragment>
+                        </div>
                     )
                 })}
-                <button onClick={event => addCookingTip(event)}>Add Cookware</button>
+                <button onClick={event => addCookingTip(event)}>Add Cooking Tip</button>
 
-                <button onClick={event => submit(event)}>SUBMIT</button>
+                <button type='submit'>SUBMIT</button>
             </form>
         </Fragment>
     )
