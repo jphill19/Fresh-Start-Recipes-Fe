@@ -12,7 +12,7 @@
   background-color: #f7f7f7;
 }
 
-/* Checkbox styling */
+
 .filter-option input[type="checkbox"] {
   appearance: none;
   width: 18px;
@@ -27,7 +27,7 @@
   background-color: #ff6b6b;
 }
 
-/* Checkbox label styling */
+
 .filter-option label {
   font-size: 14px;
   color: #333;
@@ -38,7 +38,7 @@
   color: #ff6b6b;
 }
 
-/* Styling for the search input box */
+
 .search-input {
   width: 100%;
   padding: 10px;
@@ -52,4 +52,34 @@
 .search-input:focus {
   outline: none;
   border-color: #ff6b6b;
+}
+
+/* Existing styles remain the same */
+
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 200px; 
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  z-index: 1003;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.dropdown-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f7f7f7;
 }

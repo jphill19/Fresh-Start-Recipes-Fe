@@ -1,51 +1,83 @@
-import { Fragment, useState} from 'react';
-import './filterDataSearch.css'
+import { Fragment, useState, useEffect } from 'react';
+import { ingredientFilter } from '../home/../../api/fresh_start_recipe_api';
+import './filterDataSearch.css';
 
-
-function FilterDataSearch({ name, searchValueSetter}) {
-  const [searchTerm, setSearchTerm] = useState('');
+function FilterDataSearch({ name, searchValueSetter }) {
+  const [searchTerm, setSearchTerm] = useState(''); 
+  const [debouncedTerm, setDebouncedTerm] = useState(''); 
   const [results, setResults] = useState([]);
+  const [selectedId, setSelectedId] = useState(null);
 
-  // useEffect(() => {
-  //   if (searchTerm) {
-  //     const fetchData = async () => {
-  //       try {
-  //         const response = await fetch(`${apiEndpoint}?query=${searchTerm}`);
-  //         const data = await response.json();
-  //         setResults(data.results); // Update with fetched results
-  //       } catch (error) {
-  //         console.error('Error fetching data:', error);
-  //       }
-  //     };
 
-  //     fetchData();
-  //   } else {
-  //     setResults([]); // Clear results if search term is empty
-  //   }
-  // }, [searchTerm, apiEndpoint]);
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      setDebouncedTerm(searchTerm); 
+    }, 500);
+
+    return () => clearTimeout(delayDebounceFn); 
+  }, [searchTerm]);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (debouncedTerm) {
+        try {
+          const data = await ingredientFilter(debouncedTerm);
+          setResults(data.data);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          setResults([]); 
+        }
+      } else {
+        setResults([]);
+      }
+    };
+
+    fetchData();
+  }, [debouncedTerm]);
 
   const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
+    setSearchTerm(event.target.value); 
   };
 
+  const handleCheckboxChange = (item) => {
+    setSelectedId(item.id);
+    searchValueSetter(item.attributes.name);
+  };
 
   return (
     <Fragment>
       <h2>{name}</h2>
+      <p>Input a name of an ingredient then select from checkbox</p>
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="Search by Ingredient"
         value={searchTerm}
         onChange={handleSearchChange}
         className="search-input"
       />
+      
       <div>
-        {results.map((item) => (
-          <label key={item.id} className="filter-option">
-            <input type="checkbox" />
-            {item.name}
-          </label>
-        ))}
+        {results.length > 0 ? (
+          results.map((item) => (
+            <div key={item.id} className="filter-checkbox">
+              <input
+                type="checkbox"
+                id={`checkbox-${item.id}`}
+                checked={selectedId === item.id}
+                onChange={() => handleCheckboxChange(item)}
+              />
+              <label htmlFor={`checkbox-${item.id}`}>
+                {item.attributes.name}
+              </label>
+            </div>
+          ))
+        ) : (
+          
+          debouncedTerm && (
+            <p className="no-results-message">No ingredients found for "{debouncedTerm}".</p>
+          )
+        )}
       </div>
     </Fragment>
   );

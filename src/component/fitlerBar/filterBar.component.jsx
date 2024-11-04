@@ -17,16 +17,15 @@ function FilterIcon({ isActive }) {
 function FilterBar({ onFilterChange, activeFilters }) {
  
   const [activeModal, setActiveModal] = useState(null)
-  console.log(activeModal)
 
   const closeModal = () => {
     setActiveModal(null);
   };
 
-  const ingredientIcon = useMemo(() => <FilterIcon isActive={activeFilters['filterQuery-ingredient']} />, [activeFilters['filterQuery-ingredient']]);
-  const cookingStyleIcon = useMemo(() => <FilterIcon isActive={activeFilters['filterQuery-cookingStyle']} />, [activeFilters['filterQuery-cookingStyle']]);
-  const servingsIcon = useMemo(() => <FilterIcon isActive={activeFilters['filterQuery-servings']} />, [activeFilters['filterQuery-servings']]);
-  const priceIcon = useMemo(() => <FilterIcon isActive={activeFilters['filterQuery-price']} />, [activeFilters['filterQuery-price']]);
+  const ingredientIcon = useMemo(() => <FilterIcon isActive={activeFilters['by_ingredient']} />, [activeFilters['by_ingredient']]);
+  const cookingStyleIcon = useMemo(() => <FilterIcon isActive={activeFilters['by_style']} />, [activeFilters['by_style']]);
+  const servingsIcon = useMemo(() => <FilterIcon isActive={activeFilters['by_serving']} />, [activeFilters['by_serving']]);
+  const priceIcon = useMemo(() => <FilterIcon isActive={activeFilters['by_price']} />, [activeFilters['by_price']]);
   
  
   const handleFilterClick = useCallback((filterKey) => {
@@ -40,32 +39,32 @@ function FilterBar({ onFilterChange, activeFilters }) {
   return (
     <div className="filter-bar-container">
       <div
-        className={`filter-component ${activeFilters['filterQuery-ingredient'] ? 'highlighted' : ''}`}
-        onClick={() => handleFilterClick('filterQuery-ingredient')}
+        className={`filter-component ${activeFilters['by_ingredient'] ? 'highlighted' : ''}`}
+        onClick={() => handleFilterClick('by_ingredient')}
       >
         Ingredient
         {ingredientIcon}
       </div>
       
       <div
-        className={`filter-component ${activeFilters['filterQuery-cookingStyle'] ? 'highlighted' : ''}`}
-        onClick={() => handleFilterClick('filterQuery-cookingStyle')}
+        className={`filter-component ${activeFilters['by_style'] ? 'highlighted' : ''}`}
+        onClick={() => handleFilterClick('by_style')}
       >
         Cooking Style
         {cookingStyleIcon}
       </div>
       
       <div
-        className={`filter-component ${activeFilters['filterQuery-servings'] ? 'highlighted' : ''}`}
-        onClick={() => handleFilterClick('filterQuery-servings')}
+        className={`filter-component ${activeFilters['by_serving'] ? 'highlighted' : ''}`}
+        onClick={() => handleFilterClick('by_serving')}
       >
         Servings
         {servingsIcon}
       </div>
       
       <div
-        className={`filter-component ${activeFilters['filterQuery-price'] ? 'highlighted' : ''}`}
-        onClick={() => handleFilterClick('filterQuery-price')}
+        className={`filter-component ${activeFilters['by_price'] ? 'highlighted' : ''}`}
+        onClick={() => handleFilterClick('by_price')}
       >
         Price
         {priceIcon}
@@ -100,8 +99,8 @@ export default FilterBar;
   // }, []);
 
   // const handlePriceClick = useCallback(() => {
-  //   if (activeFilters['filterQuery-price']){
-  //     onFilterChange('filterQuery-price', null )
+  //   if (activeFilters['by_price']){
+  //     onFilterChange('by_price', null )
   //   } else { 
   //     setActiveModal('price');
   //   }
@@ -109,19 +108,19 @@ export default FilterBar;
 
  // Memoize event handlers to avoid recreating functions on each render
   // const handleIngredientFilter = useCallback(() => {
-  //   onFilterChange('filterQuery-ingredient', activeFilters['filterQuery-ingredient'] ? null : 123);
+  //   onFilterChange('by_ingredient', activeFilters['by_ingredient'] ? null : 123);
   // }, [onFilterChange, activeFilters]);
 
   // const handleCookingStyleFilter= useCallback(() => {
-  //   onFilterChange('filterQuery-cookingStyle', activeFilters['filterQuery-cookingStyle'] ? null : 1);
+  //   onFilterChange('by_style', activeFilters['by_style'] ? null : 1);
   // }, [onFilterChange, activeFilters]);
 
   // const handleServingsFilter = useCallback(() => {
-  //   onFilterChange('filterQuery-servings', activeFilters['filterQuery-servings'] ? null : 'batch');
+  //   onFilterChange('by_serving', activeFilters['by_serving'] ? null : 'batch');
   // }, [onFilterChange, activeFilters]);
 
   // const handlePriceFilter = useCallback(() => {
-  //   onFilterChange('filterQuery-price', activeFilters['filterQuery-price'] ? null : '<5');
+  //   onFilterChange('by_price', activeFilters['by_price'] ? null : '<5');
   // }, [onFilterChange, activeFilters]);
 
 
@@ -140,35 +139,35 @@ export default FilterBar;
 //   return (
 //     <div className='filter-bar-container'>
 //       <div
-//         className={`filter-component ${activeFilters['filterQuery-ingredient'] ? 'highlighted' : ''}`}
-//         onClick={() => onFilterChange('filterQuery-ingredient', activeFilters['filterQuery-ingredient'] ? null : 123)} // Replace 123 with actual ID
+//         className={`filter-component ${activeFilters['by_ingredient'] ? 'highlighted' : ''}`}
+//         onClick={() => onFilterChange('by_ingredient', activeFilters['by_ingredient'] ? null : 123)} // Replace 123 with actual ID
 //       >
 //         Ingredient
-//         <FilterIcon isActive={activeFilters['filterQuery-ingredient'] ? true : false} />
+//         <FilterIcon isActive={activeFilters['by_ingredient'] ? true : false} />
 //       </div>
       
 //       <div
-//         className={`filter-component ${activeFilters['filterQuery-cookingStyle'] ? 'highlighted' : ''}`}
-//         onClick={() => onFilterChange('filterQuery-cookingStyle', activeFilters['filterQuery-cookingStyle'] ? null : 1)} // Example enum value
+//         className={`filter-component ${activeFilters['by_style'] ? 'highlighted' : ''}`}
+//         onClick={() => onFilterChange('by_style', activeFilters['by_style'] ? null : 1)} // Example enum value
 //       >
 //         Cooking Style
-//         <FilterIcon isActive={activeFilters['filterQuery-cookingStyle'] ? true : false} />
+//         <FilterIcon isActive={activeFilters['by_style'] ? true : false} />
 //       </div>
       
 //       <div
-//         className={`filter-component ${activeFilters['filterQuery-servings'] ? 'highlighted' : ''}`}
-//         onClick={() => onFilterChange('filterQuery-servings', activeFilters['filterQuery-servings'] ? null : 'batch')}
+//         className={`filter-component ${activeFilters['by_serving'] ? 'highlighted' : ''}`}
+//         onClick={() => onFilterChange('by_serving', activeFilters['by_serving'] ? null : 'batch')}
 //       >
 //         Servings
-//         <FilterIcon isActive={activeFilters['filterQuery-servings'] ? true : false} />
+//         <FilterIcon isActive={activeFilters['by_serving'] ? true : false} />
 //       </div>
       
 //       <div
-//         className={`filter-component ${activeFilters['filterQuery-price'] ? 'highlighted' : ''}`}
-//         onClick={() => onFilterChange('filterQuery-price', activeFilters['filterQuery-price'] ? null : '<5')}
+//         className={`filter-component ${activeFilters['by_price'] ? 'highlighted' : ''}`}
+//         onClick={() => onFilterChange('by_price', activeFilters['by_price'] ? null : '<5')}
 //       >
 //         Price
-//         <FilterIcon isActive={activeFilters['filterQuery-price'] ? true : false} />
+//         <FilterIcon isActive={activeFilters['by_price'] ? true : false} />
 //       </div>
 //     </div>
 //   );

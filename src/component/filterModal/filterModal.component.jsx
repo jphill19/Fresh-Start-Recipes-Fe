@@ -19,26 +19,26 @@ function FilterModal({ onClose, activeModal, onFilterChange}) {
 
   const renderFilterContent = () => {
     switch (activeModal) {
-      case 'filterQuery-ingredient':
+      case 'by_ingredient':
         return <FilterDataSearch 
-                name="Filter by a ingredient"
+                name="Filter by an ingredient"
                 searchValueSetter= {searchValueSetter}
               />;
-      case 'filterQuery-cookingStyle':
+      case 'by_style':
         return <FilterCheckBoxSearch 
-                  options={{ 1: 'Oven', 2: 'Microwave', 3: 'Stove', 4: 'None required' }} 
-                  name="Filter by a preffered cooking style"
+                  options={{ 3: 'Oven', 1: 'Microwave', 2: 'Stove', 0: 'None required' }} 
+                  name="Filter by a preferred cooking style"
                   searchValueSetter= {searchValueSetter}
               />;
-      case 'filterQuery-servings':
+      case 'by_serving':
         return <FilterToggleSwitch
-                  options={{ 1: 'Oven', 2: 'Microwave', 3: 'Stove', 4: 'None required' }} 
+                  options={{ 3: 'Oven', 1: 'Microwave', 2: 'Stove', 0: 'None required' }} 
                   name="Filter by Servings"
                   searchValueSetter= {searchValueSetter}
               />;
-      case 'filterQuery-price':
+      case 'by_price':
         return <FilterCheckBoxSearch 
-                  options={{ '<5': 'Less than $5', '<10': 'Less than $10', '>5': 'Greater than $5', '>10': 'Greater than $10' }} 
+                  options={{ '2': 'Less than $10', '1': 'Greater than $5', '3': 'Greater than $10' }} 
                   name="Filter by Prices"
                   searchValueSetter= {searchValueSetter}
               />;

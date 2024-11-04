@@ -1,75 +1,34 @@
 import FilterBar from "../../component/fitlerBar/filterBar.component";
 import  { Fragment, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-
-
-
-const data = {
-  "data": [
-    {
-      "title": "Recipe 1",
-      "servingSize": 1,
-      "ingredients": [
-        {
-          "name": "Ingredient Button",
-          "price": "$$"
-        },
-        {
-          "name": "Ingredient Button",
-          "price": "$$"
-        },
-        {
-          "name": "Ingredient Button",
-          "price": "$$"
-        },
-        {
-          "name": "Ingredient Button",
-          "price": "00"
-        }
-      ],
-      "image": {
-        "src": "image-url-1",
-        "alt": "Recipe 1 Image"
-      },
-  
-    },
-    {
-      "title": "Recipe 2",
-      "servingSize": 4,
-      "ingredients": [
-        {
-          "name": "Ingredient Button",
-          "price": "$$"
-        },
-        {
-          "name": "Ingredient Button",
-          "price": "$$"
-        },
-        {
-          "name": "Ingredient Button",
-          "price": "$$"
-        }
-      ],
-      "image": {
-        "src": "image-url-2",
-        "alt": "Recipe 2 Image"
-      },
-
-    }
-  ]
-}
-
-
+import FilterResults from "../../component/filterResults/filterResults.component";
+import {recipeFetches} from '../home/../../api/fresh_start_recipe_api'
+import RecipeContainer from "../../component/RecipeContainer/RecipeContainer";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function Home() {
   const [indexData, setIndexData] = useState([]);
-  const [activeFilters, setActiveFilters] = useState({}); // Track filter values
+  const [activeFilters, setActiveFilters] = useState({}); 
+  const [loading, setLoading] = useState(false);
+
   const location = useLocation();
   const navigate = useNavigate();
 
-  const fetchFilteredData = (filters) => {
+
+  const fetchFilteredData = async (filters) => {
     console.log('Fetching data with filters:', filters.toString());
-    setIndexData([/* filtered data based on filters */]);
+    setLoading(true)
+  
+    try {
+      const data = await recipeFetches(filters.toString());
+      setIndexData(data.data);
+  
+    } catch (error) {
+      console.error('Error fetching filtered data:', error);
+    } finally {
+  
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -82,8 +41,6 @@ function Home() {
     });
 
     setActiveFilters(initialFilters);
-    //
-
     fetchFilteredData(filters);
   }, [location.search]);
 
@@ -108,11 +65,16 @@ function Home() {
   return (
     <Fragment>
       <FilterBar onFilterChange={handleFilterChange} activeFilters={activeFilters} />
-      <div>
-        {indexData.map((item, index) => (
-          <div key={index}>{/* Render item details */}</div>
-        ))}
-      </div>
+      {Object.keys(activeFilters).length > 0 ? (
+        <FilterResults resultsCount={indexData.length}/>
+      ) : null}
+      {loading ? (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
+          <ClipLoader color="#36d7b7" size={50} /> {/* Customize the spinner color and size */}
+        </div>
+      ) : (
+        <RecipeContainer data={indexData} />
+      )}
     </Fragment>
   );
 }
