@@ -4,22 +4,31 @@ import './submitRecipeForm.css';
 function SubmitForm() {
     const [name, setName] = useState('');
     const [servingSize, setServingSize] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
     const [instructionFields, setInstructionFields] = useState([
         {cookingStyle: '', step: '', instruction: ''}
     ]);
     const [ingredientFields, setIngredientFields] = useState([
         {quantity: '', measurement: '', ingredient: ''}
     ]);
-    console.log('>>>', instructionFields)
-    const handleIngredientFormChange = (event, index) => {
-        let data = [...ingredientFields];
+    const [tipFields, setTipFields] = useState([
+        {tip: ''}
+    ]);
+    const [cookwareFields, setCookwareFields] = useState([
+        {cookware: ''}
+    ]);
+
+    const handleFormChange = (event, index, dataSet, setDataSet) => {
+        let data = [...{dataSet}];
         data[index][event.target.name] = event.target.value;
-        setIngredientFields(data);
+        setDataSet(data);
     }
-    const handleInstructionFormChange = (event, index) => {
-        let data = [...instructionFields];
-        data[index][event.target.name] = event.target.value;
-        setInstructionFields(data);
+    
+    const removeStep = (e, index, dataSet, setDataSet) => {
+        e.preventDefault();
+        let data = [...{dataSet}];
+        data.splice(index, 1);
+        setDataSet(data);
     }
 
     const addIngredients = (e) => {
@@ -41,21 +50,21 @@ function SubmitForm() {
         setInstructionFields([...instructionFields, newInstruction])
     }
 
-    const removeInstruction = (e, index) => {
-        console.log('<><><>', e)
+    const addCookware = (e) => {
         e.preventDefault();
-        
-        let data = [...instructionFields];
-        data.splice(index, 1);
-        setInstructionFields(data)
-    };
-    const removeIngredient = (e, index) => {
-        e.preventDefault();
-        let data = [...ingredientFields];
-        data.splice(index, 1);
-        setIngredientFields(data)
+        let newCookware = {
+            cookware: ''
+        }
+        setCookwareFields([...cookwareFields, newCookware])
     }
 
+    const addCookingTip = (e) => {
+        e.preventDefault();
+        let newTip = {
+            tip: ''
+        }
+        setTipFields([...tipFields, newTip])
+    }
     const submit = (e) => {
         e.preventDefault();
     }
@@ -77,6 +86,13 @@ function SubmitForm() {
                     value={servingSize} 
                     onChange={event => setServingSize(event.target.value)}
                 />
+                <input
+                    type='text' 
+                    placeholder='Recipe Image url' 
+                    name='imageUrl' 
+                    value={imageUrl} 
+                    onChange={event => setImageUrl(event.target.value)}
+                />
                 <br/>
                 <h3>Ingredients</h3>
                 {ingredientFields.map((ingredient, index) => {
@@ -86,24 +102,24 @@ function SubmitForm() {
                             type='number' 
                             placeholder='Quantity' 
                             name='quantity'
-                            onChange={event => handleIngredientFormChange(event, index)}
+                            onChange={event => handleFormChange(event, index, ingredientFields, setIngredientFields)}
                             value={ingredientFields.quantity}
                         />
                         <input
                             type='text' 
                             placeholder='Unit of Measure' 
                             name='measurement' 
-                            onChange={event => handleIngredientFormChange(event, index)}
+                            onChange={event => handleFormChange(event, index, ingredientFields, setIngredientFields)}
                             value={ingredientFields.step}
                         />
                         <input
                             type='text' 
                             placeholder='Ingredient' 
                             name='ingredient'
-                            onChange={event => handleIngredientFormChange(event, index)}
+                            onChange={event => handleFormChange(event, index, ingredientFields, setIngredientFields)}
                             value={ingredientFields.ingredient}
                         />
-                        <button onClick={(e) => removeIngredient(e, index)}>Remove</button>
+                        <button onClick={(e) => removeStep(e, index, ingredientFields, setIngredientFields)}>Remove</button>
                     </Fragment>)
                 })}
                 <button onClick={addIngredients}>Add Ingredient</button>
@@ -117,38 +133,62 @@ function SubmitForm() {
                             type='text' 
                             placeholder='Cooking Style' 
                             name='cookingStyle'
-                            onChange={event => handleInstructionFormChange(event, index)}
+                            onChange={event => handleFormChange(event, index, instructionFields, setInstructionFields)}
                             value={instructionFields.cookingStyle}
                         />
                         <input
                             type='number' 
                             placeholder='Step' 
                             name='step' 
-                            onChange={event => handleInstructionFormChange(event, index)}
+                            onChange={event => handleFormChange(event, index, instructionFields, setInstructionFields)}
                             value={instructionFields.step}
                         />
                         <input
                             type='text' 
                             placeholder='Instruction' 
                             name='instruction'
-                            onChange={event => handleInstructionFormChange(event, index)}
+                            onChange={event => handleFormChange(event, index, instructionFields, setInstructionFields)}
                             value={instructionFields.instruction}
                         />
-                        <button onClick={(e) => removeInstruction(e, index)}>Remove</button>
+                        <button onClick={(e) => removeStep(e, index, instructionFields, setInstructionFields)}>Remove</button>
                         </Fragment>
                     )
                 })}
                 <button onClick={addInstructions}>Add Instruction</button>
         
-        {/* <h3>Cookware</h3>
-        <input
-        type='text' placeholder='Cookware' name='cookware' value={cookware} onChange={event => setCookware(event.target.value)}
-        />
-        <button onClick={event => addCookware(event)}>Add Cookware</button>
+                <h3>Cookware</h3>
+                {cookwareFields.map((cookware, index) => {
+                    return (
+                        <Fragment key={index}>
+                            <input
+                                type='text' 
+                                placeholder='Cookware' 
+                                name='cookware' 
+                                value={cookwareFields.cookware} 
+                                onChange={event => handleFormChange(event, index, cookwareFields, setCookwareFields)}
+                            />
+                            <button onClick={(e) => removeStep(e, index, cookwareFields, setCookwareFields)}>Remove</button>
+                        </Fragment>
+                    )
+                })}
+                <button onClick={event => addCookware(event)}>Add Cookware</button>
 
-        <h3>Cooking Tips</h3>
-        {/* Use ingredientForm */}
-        {/* <button onClick={event => addCookingTipe(event)}>Add Cooking Tip</button> */}
+                <h3>Cooking Tips</h3>
+                {tipFields.map((tip, index) => {
+                    return (
+                        <Fragment key={index}>
+                            <input
+                                type='text' 
+                                placeholder='tips' 
+                                name='tips' 
+                                value={tipFields.tips} 
+                                onChange={event => handleFormChange(event, index, tipFields, setTipFields)}
+                            />
+                            <button onClick={(e) => removeStep(e, index, tipFields, setTipFields)}>Remove</button>
+                        </Fragment>
+                    )
+                })}
+                <button onClick={event => addCookingTip(event)}>Add Cookware</button>
 
     <button onClick={event => submit(event)}>SUBMIT</button>
   </form>
