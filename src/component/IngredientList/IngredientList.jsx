@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
 import './IngredientList.css';
 
-function IngredientManager() {
-  const { recipeId } = useParams();
+function IngredientList({ ingredients }) {
+  console.log('ingredients: ', ingredients)
 
   return (
     <div className={'ingredients-container'}>
-      {
+      {/* {
         recipeId.ingredients.map((ingredient) => {
           return (
             <div className={'individual-ingredient'}>
@@ -14,9 +14,9 @@ function IngredientManager() {
             </div>
           )
         })
-      }
+      } */}
     </div>
   );
 };
 
-export default IngredientManager;
+export default IngredientList;

@@ -31,4 +31,18 @@ export async function ingredientFilter(filter) {
   }
 }
 
-
+export async function recipeDetailsFetches(recipeId) {
+  const endpoint = "http://localhost:3000/api/v1/";
+  const url = `${endpoint}recipes/${recipeId}`;
+  console.log("url: ", url)
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Network response was not ok: ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  }
+}

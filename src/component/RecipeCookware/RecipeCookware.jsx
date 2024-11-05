@@ -1,5 +1,5 @@
 import {useParams} from 'react-router-dom';
-import 'RecipeCookware.css';
+import './RecipeCookware.css';
 
 function RecipeCookware () {
   const {recipeId} = useParams();
