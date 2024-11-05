@@ -1,12 +1,24 @@
-import {useParams} from 'react-router-dom';
+// This is not completed
+// I think we want a parent container to hold these 
+// And display them in a drop down
+
+
 import './RecipeCookware.css';
 
-function RecipeCookware () {
-  const {recipeId} = useParams();
+function RecipeCookware ({ cookwares }) {
+  console.log('cookwares: ', cookwares)
 
   return (
-    <p>I will be a component...</p>
-  )
+    <div className="cookwares-container">
+    {
+      cookwares.map((cookware, index) => (
+        <div key={index} className="individual-cookware-container">
+          <p>{cookware}</p>
+        </div>
+      ))
+    }
+  </div>
+  );
 }
 
 export default RecipeCookware;

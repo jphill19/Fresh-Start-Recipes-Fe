@@ -44,9 +44,9 @@ function RecipePage() {
           {data.attributes && (
             <>
               <IngredientList ingredients={data.attributes.ingredients} />
-              <RecipeCookware />
-              <RecipeTips />
-              <CookingStyleContainer />
+              <RecipeCookware cookwares={data.attributes.cookwares} />
+              <RecipeTips cookingTips={data.attributes.cooking_tips} />
+              <CookingStyleContainer cookingStyle={data.attributes.instructions.cooking_style} />
               <RecipeInstructions />
             </>
           )}

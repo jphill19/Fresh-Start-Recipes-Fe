@@ -1,11 +1,18 @@
-import { useParams } from 'react-router-dom';
 import './RecipeTips.css';
 
-function RecipeTips () {
-  const {recipeId} = useParams();
+function RecipeTips ({ cookingTips }) {
   
+  // Cooking tips for Recipe #3 displaying duplicate tips
   return (
-    <p>I will be a component...</p>
+    <div className="cooking-tips-container">
+    {
+      cookingTips.map((cookingTip, index) => (
+        <div key={index} className="individual-cooking-tip-container">
+          <p>{cookingTip}</p>
+        </div>
+      ))
+    }
+  </div>
   )
 };
 
