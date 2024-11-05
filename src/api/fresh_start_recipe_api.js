@@ -32,7 +32,7 @@ export async function ingredientFilter(filter) {
 }
 
 export async function recipePost(fullDetails) {
-  const endpoint = "http://localhost:3000/api/v1/recipes"
+  const endpoint = "http://localhost:3000/api/v1/recipe_builder"
   const metaData = {
     method: 'POST',
     headers: {

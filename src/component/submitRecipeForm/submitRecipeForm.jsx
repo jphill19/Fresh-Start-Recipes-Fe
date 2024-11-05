@@ -70,9 +70,9 @@ function SubmitForm() {
         e.preventDefault();
         const compiledData = {
             name: name,
-            servingSize: servingSize,
-            imageURL: imageUrl,
-            cookingTips: tipFields,
+            serving_size: servingSize,
+            image_url: imageUrl,
+            cooking_tips: tipFields,
             cookware: cookwareFields,
             ingredients: ingredientFields,
             instructions: instructionFields
