@@ -4,7 +4,9 @@ export async function recipeFetches(filter) {
   const url = `${endpoint}recipes?${filter}`;
   console.log("url: ", url)
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      mode: 'cors'
+    });
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.statusText}`);
     }
@@ -20,7 +22,9 @@ export async function ingredientFilter(filter, params='for_ingredient=') {
   const url = `${endpoint}${params}${filter}`;
   console.log("url: ", url)
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      mode: 'cors'
+    });
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.statusText}`);
     }
@@ -38,7 +42,8 @@ export async function recipePost(fullDetails) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(fullDetails)
+    body: JSON.stringify(fullDetails),
+    mode: 'cors'
   }
 
   try {
