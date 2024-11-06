@@ -1,26 +1,47 @@
 import './IngredientList.css';
+import { useState } from 'react';
 
 function IngredientList({ ingredients }) {
-  console.log('ingredients: ', ingredients)
+  const [excludedIngredients, setExcludedIngredients] = useState({});
 
-  const totalCost = ingredients.reduce((total, ingredient) => {
-    return total + ingredient.price;
+  const handleIngredientClick = (ingredientName) => {
+    setExcludedIngredients((prevState) => {
+      const newState = { ...prevState };
+      if (newState[ingredientName]) {
+        delete newState[ingredientName];
+      } else {
+        newState[ingredientName] = true;
+      }
+      return newState;
+    });
+  };
+
+  const totalPrice = ingredients.reduce((total, ingredient) => {
+    const isExcluded = excludedIngredients[ingredient.ingredient];
+    return total + (isExcluded ? 0 : ingredient.price);
   }, 0);
 
   return (
     <div className="ingredients-container">
       <h2>Ingredient List</h2>
-      {
-        ingredients.map((ingredient, index) => (
-          <div key={index} className="individual-ingredient">
-            <p>{ingredient.ingredient}</p>
-            <p>{ingredient.quantity} {ingredient.measurement}</p>
-            <p>${ingredient.price.toFixed(2)}</p>
+      {ingredients.map((ingredient) => {
+        const isExcluded = excludedIngredients[ingredient.ingredient] || false;
+
+        return (
+          <div key={ingredient.ingredient_id} className="individual-ingredient">
+            <button
+              className={`ingredient-button ${ingredient.ingredient} ${isExcluded ? 'disabled' : ''}`}
+              onClick={() => handleIngredientClick(ingredient.ingredient)}
+              >
+              {ingredient.ingredient} <br />
+              {ingredient.quantity} {ingredient.measurement} <br />
+              ${isExcluded ? '0.00' : ingredient.price.toFixed(2)}
+            </button>
           </div>
-        ))
-      }
+        );
+      })}
       <div className="total-price">
-        <h3>Total Cost: ${totalCost.toFixed(2)}</h3>
+        <h3>Total Price: ${totalPrice.toFixed(2)}</h3>
       </div>
     </div>
   );
