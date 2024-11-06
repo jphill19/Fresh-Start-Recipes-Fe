@@ -32,7 +32,7 @@ export function RecipeCard ({ recipe , excludedIngredients, onIngredientClick}) 
     <div className="recipe-card-wrap" alt={`Recipe card for ${recipe_name}`} tabIndex="0">
       <Link to={`/recipe/${recipeId}`} className="recipe-link">
         <h2 className="recipe-title">{recipe_name}</h2>
-        <img className="recipe-image" src={"/taco.jpeg"} alt={image.alt} />
+        <img className="recipe-image" src={image} alt={image.alt} />
       </Link>
       <div className="ingredients-box">
         {ingredients.map(renderIngredientRow)}
