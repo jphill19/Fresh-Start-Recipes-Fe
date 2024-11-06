@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react';
+import IngredientModal from '../ingredientModal/ingredientModal'
 import './submitRecipeForm.css';
 import {recipePost} from '../home/../../api/fresh_start_recipe_api'
 
@@ -9,27 +10,39 @@ function SubmitForm() {
     const [instructionFields, setInstructionFields] = useState([
         {cookingStyle: '', step: '', instruction: ''}
     ]);
-    const [ingredientFields, setIngredientFields] = useState([
-        {quantity: '', measurement: '', ingredient: ''}
-    ]);
+    const [ingredientFields, setIngredientFields] = useState([]);
     const [tipFields, setTipFields] = useState([
         {tip: ''}
     ]);
     const [cookwareFields, setCookwareFields] = useState([
         {cookware: ''}
     ]);
+    const [activeModal, setActiveModal] = useState(null)
+
+    const closeModal = () => {
+      setActiveModal(null);
+    };
 
     const handleFormChange = (event, index, dataSet, setDataSet) => {
         let data = [...dataSet];
         data[index][event.target.name] = event.target.value;
         setDataSet(data);
     }
-    
+
+    const onFilterChange = (dataChange) => {
+        setIngredientFields((prevFields) => [...prevFields, dataChange]);
+    }
+    console.log('<>', ingredientFields)
     const removeStep = (e, index, dataSet, setDataSet) => {
         e.preventDefault();
         let data = [...dataSet];
         data.splice(index, 1);
         setDataSet(data);
+    }
+
+    const addIngredients2 = (e) => {
+        e.preventDefault();
+        setActiveModal(true)
     }
 
     const addIngredients = (e) => {
@@ -127,46 +140,11 @@ function SubmitForm() {
                 {ingredientFields.map((ingredient, index) => {
                     return (
                     <div className='ingredient' key={index}>
-                        <input
-                            type='number' 
-                            placeholder='Quantity' 
-                            name='quantity'
-                            onChange={event => handleFormChange(event, index, ingredientFields, setIngredientFields)}
-                            value={ingredientFields.quantity}
-                            required
-                        />
-                        <input
-                            type='text' 
-                            placeholder='Unit of Measure' 
-                            name='measurement' 
-                            onChange={event => handleFormChange(event, index, ingredientFields, setIngredientFields)}
-                            value={ingredientFields.step}
-                            required
-                        />
-                        {/* <select
-                            name='measurement'
-                            onChange={event => handleFormChange(event, index, ingredientFields, setIngredientFields)}
-                            value={ingredientFields.measurement}
-                            <option value="" disabled>Select unit of measure</option>
-                            measurements.map((unit) => {
-                                return (
-                                <option value="unit">unit</option>
-                                )})
-                        >
-                        Dynamically get all the measurements stored in the database 
-                        </select> */}
-                        <input
-                            type='text' 
-                            placeholder='Ingredient' 
-                            name='ingredient'
-                            onChange={event => handleFormChange(event, index, ingredientFields, setIngredientFields)}
-                            value={ingredientFields.ingredient}
-                            required
-                        />
+                        <p>{ingredient.quantity} {ingredient.measurement} {ingredient.ingredient}</p>
                         <button onClick={(e) => removeStep(e, index, ingredientFields, setIngredientFields)}>Remove</button>
                     </div>)
                 })}
-                <button onClick={addIngredients}>Add Ingredient</button>
+                <button onClick={addIngredients2}>Add Ingredient</button>
 
                 <h3>Instructions</h3>
                 {instructionFields.map((instruction, index) => {
@@ -244,6 +222,11 @@ function SubmitForm() {
 
                 <button type='submit'>SUBMIT</button>
             </form>
+            {activeModal && (
+                <IngredientModal 
+                    onClose={closeModal}
+                    onFilterChange={onFilterChange} />
+            )}
         </Fragment>
     )
 }

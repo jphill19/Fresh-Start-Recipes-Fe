@@ -15,9 +15,9 @@ export async function recipeFetches(filter) {
   }
 }
 
-export async function ingredientFilter(filter) {
-  const endpoint = "http://localhost:3000/api/v1/ingredients?for_ingredient="
-  const url = `${endpoint}${filter}`;
+export async function ingredientFilter(filter, params='for_ingredient=') {
+  const endpoint = "http://localhost:3000/api/v1/ingredients?"
+  const url = `${endpoint}${params}${filter}`;
   console.log("url: ", url)
   try {
     const response = await fetch(url);
