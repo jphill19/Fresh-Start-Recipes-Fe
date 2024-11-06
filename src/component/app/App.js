@@ -6,14 +6,16 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Header />}>
-          <Route index element={<Home />} />
-          <Route path="/recipe/:recipeId" element={<RecipePage />} />
-        </Route>
-      </Routes>
-    </Router>
+    <div className={'app'}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Header />}>
+            <Route index element={<Home />} />
+            <Route path="/recipe/:recipeId" element={<RecipePage />} />
+          </Route>
+        </Routes>
+      </Router>
+    </div>
   );
 }
 export default App;

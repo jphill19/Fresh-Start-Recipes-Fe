@@ -1,0 +1,27 @@
+.cookwares-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 99%;
+  height: 20%;
+  border-radius: 10px;
+  background-color: #a44615;
+}
+
+.individual-cookware-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 95%;
+  height: 25%;
+  border-radius: 10px;
+  background-color: #dc6222;
+  p {
+    width: 100%;
+    margin: 0;
+    margin-left: 1%;
+    text-align: center;
+  }
+}

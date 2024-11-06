@@ -5,12 +5,13 @@ function IngredientList({ ingredients }) {
 
   return (
     <div className="ingredients-container">
+      <h2>Ingredient List</h2>
       {
         ingredients.map((ingredient, index) => (
           <div key={index} className="individual-ingredient">
-            <p>Name: {ingredient.ingredient}</p>
-            <p>Measurement: {ingredient.measurement}</p>
-            <p>Price: {ingredient.price}</p>
+            <p>{ingredient.ingredient}</p>
+            <p>{ingredient.quantity} {ingredient.measurement}</p>
+            <p>${ingredient.price}</p>
           </div>
         ))
       }

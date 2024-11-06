@@ -41,6 +41,7 @@ function RecipePage() {
           <div className="recipe-image-container">
             <img src="/taco.jpeg" alt="Recipe" />
           </div>
+          <p className={'recipe-page-title'} >{data.attributes.recipe_name}</p>
           {data.attributes && (
             <>
               <IngredientList ingredients={data.attributes.ingredients} />
