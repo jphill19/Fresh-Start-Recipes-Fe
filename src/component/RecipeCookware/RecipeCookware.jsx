@@ -7,7 +7,6 @@ import './RecipeCookware.css';
 
 function RecipeCookware({ cookwares }) {
   const [open, setOpen] = useState(false);
-  console.log('cookwares: ', cookwares)
 
   return (
     <ul className={open ? "cookwares-container-open" : "cookwares-container"}>

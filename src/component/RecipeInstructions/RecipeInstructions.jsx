@@ -1,9 +1,16 @@
-import {useParams} from 'react-router-dom';
 import './RecipeInstructions.css';
 
-function RecipeInstructions () {
+function RecipeInstructions ({ instructions }) {
+  console.log('INSTRUCTIONS: ', instructions)
   return (
-    <p>I will be the instructions component...</p>
+    <div className="instructions-container">
+      <h3>Instructions:</h3>
+      {instructions.map((style, index) => (
+        <div key={index} className="cooking-style">
+          <p>Step {style.instruction_step}: {style.instruction}</p>
+        </div>
+      ))}
+    </div>
   )
 };
 
