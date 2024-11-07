@@ -1,8 +1,9 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect, Fragment} from "react";
 import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
 import {locationFetch} from '../home/../../api/fresh_start_recipe_api'
 import Map from "../../component/map/map.component";
 import StoreCard from "../../component/storeCard/storeCard.component";
+import ClipLoader from "react-spinners/ClipLoader";
 import './location.css'
 
 const libraries = ['places']; 
@@ -32,6 +33,7 @@ function Location() {
   const [locations, setLocations] = useState(initial_store);
   const [autocomplete, setAutocomplete] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -71,10 +73,12 @@ function Location() {
 
   const handleUseLocation = () => {
     if (navigator.geolocation) {
+      setIsLoading(true);
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
           setUserLocation({ latitude, longitude });
+          setIsLoading(false)
         },
         (error) => {
           console.error("Error fetching user location:", error);
@@ -103,20 +107,29 @@ function Location() {
             type="text"
             placeholder="Enter your address"
             className="input-field"
+            maxLength="50"
           />
         </Autocomplete>
       )}
-      <Map locations={locations} userLocation={userLocation} onLocationClick={handleLocationClick}/>
-      <div className="store-cards-container">
-        {locations.map((location) => (
-          <StoreCard
-            key={location.locationId}
-            location={location}
-            isSelected={location === selectedLocation}
-            id={location.locationId}
-          />
-        ))}
+    {isLoading ? (
+      <div className="loader-container">
+        <ClipLoader color="#36d7b7" size={50} loading={isLoading} />
       </div>
+    ) : (
+      <Fragment>
+        <Map locations={locations} userLocation={userLocation} onLocationClick={handleLocationClick}/>
+        <div className="store-cards-container">
+          {locations.map((location) => (
+            <StoreCard
+              key={location.locationId}
+              location={location}
+              isSelected={location === selectedLocation}
+              id={location.locationId}
+            />
+          ))}
+        </div>
+      </Fragment>
+    )}
     </div>
   );
 }

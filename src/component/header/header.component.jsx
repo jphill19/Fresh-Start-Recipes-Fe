@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Link, NavLink, Outlet,  useLocation, useNavigate } from "react-router-dom";
 import { useStoreLocation } from '../../context/StoreLocationContext';
 import SearchBox from '../search-box/searchBox.component'
@@ -17,9 +17,15 @@ function Header() {
   };
 
   const handleHomeClick = () => {
-    if (showSearch) setShowSearch(false);
     navigate("/");
   };
+
+  useEffect(() => {
+    if (!isHomePage) {
+      setShowSearch(false);
+    }
+  }, [isHomePage]);
+
 
   return (
     <Fragment>
