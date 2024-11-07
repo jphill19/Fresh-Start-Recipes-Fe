@@ -33,9 +33,9 @@ function IngredientList({ ingredients }) {
               className={`ingredient-button ${ingredient.ingredient} ${isExcluded ? 'disabled' : ''}`}
               onClick={() => handleIngredientClick(ingredient.ingredient)}
               >
-              {ingredient.ingredient} <br />
-              {ingredient.quantity} {ingredient.measurement} <br />
-              ${isExcluded ? '0.00' : ingredient.price.toFixed(2)}
+              <p>{ingredient.ingredient}</p> <br />
+              <p>{ingredient.quantity} {ingredient.measurement}</p> <br />
+              <p>${isExcluded ? '0.00' : ingredient.price.toFixed(2)}</p>
             </button>
           </div>
         );

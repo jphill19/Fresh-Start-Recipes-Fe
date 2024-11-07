@@ -18,6 +18,7 @@ function RecipePage() {
       try {
         setLoading(true);
         const data = await recipeDetailsFetches(recipeId);
+        console.log(recipeId, '<-- CHECK THIS')
         setData(data.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -41,12 +42,12 @@ function RecipePage() {
           <div className="recipe-image-container">
             <img src="/taco.jpeg" alt="Recipe" />
           </div>
-          <p className={'recipe-page-title'} >{data.attributes.recipe_name}</p>
+          <p className={'recipe-page-title'}>{data.attributes.recipe_name}</p>
           {data.attributes && (
             <>
               <IngredientList ingredients={data.attributes.ingredients} />
               <RecipeCookware cookwares={data.attributes.cookwares} />
-              <RecipeTips cookingTips={data.attributes.cooking_tips} />
+              {/* <RecipeTips cookingTips={data.attributes.cooking_tips} /> */}
               <CookingStyleContainer 
                 cookingStyles={data.attributes.instructions} />
             </>

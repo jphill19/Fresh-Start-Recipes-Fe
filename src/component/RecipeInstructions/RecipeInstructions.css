@@ -1,0 +1,62 @@
+/* * {
+  border: 1px solid red;
+} */
+
+.cooking-style-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 99%;
+  height: 20%;
+  border-radius: 10px;
+  h3 {
+    margin: 0%;
+  }
+}
+
+.cooking-style {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #a45a15;
+  width: 99%;
+  height: 5%;
+  border-radius: 10px;
+}
+
+.instructions-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 99%;
+  height: 20%;
+  border-radius: 10px;
+  background-color: #a45a15;
+  h4 {
+    margin: 2% 0% 2% 0%;
+  }
+}
+
+.cooking-instruction {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 95%;
+  height: 15%;
+  border-radius: 10px;
+  background-color: #F39237;
+  p {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 95%;
+    height: 90%;
+    margin: 0%;
+    font-size: 90%;
+  }
+}

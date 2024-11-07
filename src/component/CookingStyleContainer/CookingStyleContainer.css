@@ -1,0 +1,31 @@
+/* .cooking-style-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 99%;
+  height: 35%;
+  border-radius: 10px;
+}
+
+.cooking-style {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #a45a15;
+  width: 99%;
+  height: 20%;
+  border-radius: 10px;
+  h3 {
+    margin: 0;
+  }
+} */
+
+/* .instructions-list-open {
+  display: contents;
+}
+
+.instructions-list {
+  display: none;
+} */
