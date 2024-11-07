@@ -96,6 +96,7 @@ function Location() {
       <button onClick={handleUseLocation}>Use Your Location</button>
   
       <Map locations={locations} userLocation={userLocation} />
+      {/* <Map /> */}
     </div>
   );
 }
