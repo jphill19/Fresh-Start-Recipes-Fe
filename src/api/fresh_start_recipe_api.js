@@ -10,8 +10,7 @@ export async function recipeFetches(filter) {
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.statusText}`);
     }
-    await let test = response.json();
-    await console.log(test, '<-- CHECK RESPONSE JSON IN RECIPE FETCHES')
+    // await console.log(response.json(), '<-- CHECK RESPONSE JSON IN RECIPE FETCHES')
     return await response.json();
   } catch (error) {
     console.error('Fetch error:', error);

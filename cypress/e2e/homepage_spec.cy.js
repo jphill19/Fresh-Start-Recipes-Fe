@@ -4,9 +4,7 @@ describe('Home Page', () => {
   beforeEach(() => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?', {
       statusCode: 200,
-      body: {
-        fixture: 'recipe-data'
-      }
+      fixture: 'recipe-data'
     }).as('recipe-data')
     
     cy.visit('http://localhost:3001/')
@@ -14,19 +12,39 @@ describe('Home Page', () => {
   })
   
   it('DISPLAYS all elements on the home page', () => {
-    cy.get('.header-section').should('exist')
+    cy.get('.header-section').should('exist') // do we need to add nav-bar here?
     .get('.location-icon').should('exist')
     .get('.location-icon').should('be.visible')
     .get('.logo').should('exist')
     .get('.logo').should('be.visible')
     .get('.search-icon').should('exist')
     .get('.search-icon').should('be.visible')
+    .get('.search-container').should('exist')
+    .get('.filter-bar-container').should('exist')
+    .get('.filter-bar-container').should('be.visible')
+    .get('.filter-bar-container > :nth-child(1)').should('contain', 'Ingredient')
+    .get('.filter-bar-container > :nth-child(2)').should('contain', 'Cooking Style')
+    .get('.filter-bar-container > :nth-child(3)').should('contain', 'Servings')
+    .get('.filter-bar-container > :nth-child(4)').should('contain', 'Price')
+    .get('.recipes-container').should('exist')
+    .get('.recipes-container').children().should('have.length', 2)
+    .get('.recipes-container > :nth-child(1) > .recipe-link > .recipe-title').should('contain', 'Baked Potato')
+    .get('.recipes-container > :nth-child(1) > .recipe-link > .recipe-image').should('exist')
+    .get('.recipes-container > :nth-child(1) > .ingredients-box').children().should('have.length', 3)
+    .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(1) > .ingredient-button').contains('Russet Potato')
+    .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(1) > .ingredient-price').should('contain', '$0.89')
   })
+
 
   // it.skip('NAVIGATES to the location component upon clicking the location-icon', () => {
   //   cy.get('.header-section')
-  //   .get('.location-icon').click
+  //   .find('.location-icon').click();
+    
+  //   cy.url().should('eq', 'http://localhost:3001/location');
+  // })
 
+  // it.skip('NAVIGATES back to the homepage from other URLs', () => {
+    
   // })
 
 })
