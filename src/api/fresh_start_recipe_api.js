@@ -36,12 +36,13 @@ export async function ingredientFilter(filter, params='for_ingredient=') {
 }
 
 
-export async function recipePost(fullDetails) {
+export async function recipePost(fullDetails, apiKey) {
   const endpoint = "https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipe_builder"
   const metaData = {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': apiKey
     },
     body: JSON.stringify(fullDetails),
     mode: 'cors'
