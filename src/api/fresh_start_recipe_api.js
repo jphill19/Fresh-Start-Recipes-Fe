@@ -1,10 +1,12 @@
-
+// https://whispering-thicket-76959-66145e05673c.herokuapp.com/
 export async function recipeFetches(filter) {
-  const endpoint = "http://localhost:3000/api/v1/";
+  const endpoint = "https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/";
   const url = `${endpoint}recipes?${filter}`;
   console.log("url: ", url)
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      mode: 'cors'
+    });
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.statusText}`);
     }
@@ -15,12 +17,14 @@ export async function recipeFetches(filter) {
   }
 }
 
-export async function ingredientFilter(filter) {
-  const endpoint = "http://localhost:3000/api/v1/ingredients?for_ingredient="
-  const url = `${endpoint}${filter}`;
+export async function ingredientFilter(filter, params='for_ingredient=') {
+  const endpoint = "https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/ingredients?"
+  const url = `${endpoint}${params}${filter}`;
   console.log("url: ", url)
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      mode: 'cors'
+    });
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.statusText}`);
     }
@@ -30,6 +34,7 @@ export async function ingredientFilter(filter) {
     throw error;
   }
 }
+
 
 export async function locationFetch(lat, long) {
   const endpoint = "http://localhost:3000/api/v1/locations";
@@ -42,6 +47,32 @@ export async function locationFetch(lat, long) {
       const errorData = await response.json();
       throw new Error(`Fetch error: ${errorData.message} (Status: ${errorData.status})`);
     }
+
+export async function recipePost(fullDetails) {
+  const endpoint = "https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipe_builder"
+  const metaData = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(fullDetails),
+    mode: 'cors'
+  }
+
+  try {
+    const response = await fetch(endpoint, metaData);
+    if (!response.ok) {
+      throw new Error(`Network response was not ok: ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  }
+}
+
+
+
 
     return await response.json();
   } catch (error) {
