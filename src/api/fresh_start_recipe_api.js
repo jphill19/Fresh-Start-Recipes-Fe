@@ -60,7 +60,7 @@ export async function recipePost(fullDetails) {
 
 
 export async function locationFetch(lat, long) {
-  const endpoint = "http://localhost:3000/api/v1/locations";
+  const endpoint = "https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/";
   const url = `${endpoint}?lat=${lat}&long=${long}`;
   console.log("url:", url);
   try {
