@@ -36,18 +36,6 @@ export async function ingredientFilter(filter, params='for_ingredient=') {
 }
 
 
-export async function locationFetch(lat, long) {
-  const endpoint = "http://localhost:3000/api/v1/locations";
-  const url = `${endpoint}?lat=${lat}&long=${long}`;
-  console.log("url:", url);
-  try {
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(`Fetch error: ${errorData.message} (Status: ${errorData.status})`);
-    }
-
 export async function recipePost(fullDetails) {
   const endpoint = "https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipe_builder"
   const metaData = {
@@ -73,11 +61,11 @@ export async function recipePost(fullDetails) {
 
 
 export async function locationFetch(lat, long) {
-  const endpoint = "http://localhost:3000/api/v1/locations";
+  const endpoint = "https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/locations";
   const url = `${endpoint}?lat=${lat}&long=${long}`;
   console.log("url:", url);
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {mode: 'cors'});
     if (!response.ok) {
       const errorData = await response.json();
       throw new Error(`Fetch error: ${errorData.message} (Status: ${errorData.status})`);
