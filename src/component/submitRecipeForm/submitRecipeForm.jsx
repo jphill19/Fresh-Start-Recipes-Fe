@@ -7,6 +7,7 @@ function SubmitForm() {
     const [name, setName] = useState('');
     const [servingSize, setServingSize] = useState('');
     const [imageUrl, setImageUrl] = useState('');
+    const [apiKey, setApiKey] = useState('');
     const [instructionFields, setInstructionFields] = useState([
         {cookingStyle: '', step: '', instruction: ''}
     ]);
@@ -45,15 +46,6 @@ function SubmitForm() {
         setActiveModal(true)
     }
 
-    const addIngredients = (e) => {
-        e.preventDefault();
-        let newIngredient = {
-            quantity: '',
-            measurement: '',
-            ingredient: ''
-        }
-        setIngredientFields([...ingredientFields, newIngredient])
-    }
     const addInstructions = (e) => {
         e.preventDefault();
         let newInstruction = {
@@ -91,9 +83,16 @@ function SubmitForm() {
             instructions: instructionFields
         }
         console.log(compiledData)
-        recipePost(compiledData)
+        recipePost(compiledData, apiKey)
             .then(data => {
                 console.log("Recipe posted successfully:", data);
+                setName('');
+                setServingSize('');
+                setImageUrl('');
+                setTipFields([{tip: ''}]); 
+                setCookwareFields([{cookware: ''}]); 
+                setIngredientFields([]); 
+                setInstructionFields([{cookingStyle: '', step: '', instruction: ''}]);
             })
             .catch(error => {
                 console.error("Error posting recipe:", error);
@@ -219,7 +218,17 @@ function SubmitForm() {
                     )
                 })}
                 <button onClick={event => addCookingTip(event)}>Add Cooking Tip</button>
-
+                <br />
+                <br />
+                <input 
+                    type='text'
+                    placeholder='API key' 
+                    name='apiKey' 
+                    value={apiKey} 
+                    onChange={event => setApiKey(event.target.value)}
+                    required
+                />
+                <br />
                 <button type='submit'>SUBMIT</button>
             </form>
             {activeModal && (
