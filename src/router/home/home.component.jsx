@@ -21,6 +21,7 @@ function Home() {
   
     try {
       const data = await recipeFetches(filters.toString());
+      console.log(data, '<-- CHECK HERE')
       setIndexData(data.data);
   
     } catch (error) {

@@ -1,0 +1,84 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Baked Potato",
+        "total_price": 7.0,
+        "image": "../../public/taco.jpeg",
+        "serving_size": 1,
+        "ingredients": [
+          {
+            "ingredient": "Russett Potato",
+            "price": 1.0,
+            "quantity": 1.0,
+            "measurement": "lb"
+          },
+          {
+            "ingredient": "16oz Bag of Shredded Cheddar Cheese",
+            "price": 2.0,
+            "quantity": 2.0,
+            "measurement": "ounces"
+          },
+          {
+            "ingredient": "Olive Oil",
+            "price": 4.0,
+            "quantity": 2.0,
+            "measurement": "tablespoons"
+          }
+        ],
+        "cookwares": ["Microwave-Safe Baking Dish", "Oven-Safe Baking Dish"],
+        "instructions": [
+          {
+            "cooking_style": 1,
+            "instructions": [
+              {
+                "instruction_step": 1,
+                "instruction": "Wash the dirt off the potato"
+              },
+              {
+                "instruction_step": 2,
+                "instruction": "Poke holes in the potato to allow steam to escape"
+              },
+              {
+                "instruction_step": 3,
+                "instruction": "Put on plate in microwave and cook for 8 minutes"
+              },
+              {
+                "instruction_step": 4,
+                "instruction": "If a fork is easily pushed in, its done, otherwise cook for an additional 2 minutes"
+              }
+            ]
+          },
+          {
+            "cooking_style": 3,
+            "instructions": [
+              {
+                "instruction_step": 1,
+                "instruction": "Preheat oven to 400 degrees"
+              },
+              {
+                "instruction_step": 2,
+                "instruction": "Wash the dirt off the potato"
+              },
+              {
+                "instruction_step": 3,
+                "instruction": "Poke holes in the potato to allow steam to escape"
+              },
+              {
+                "instruction_step": 4,
+                "instruction": "Place potato on oven safe tray and cook for 45 minutes"
+              },
+              {
+                "instruction_step": 5,
+                "instruction": "If a fork is easily pushed in, its done, otherwise cook for an additional 2 minutes"
+              }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    }
+  ]
+}
