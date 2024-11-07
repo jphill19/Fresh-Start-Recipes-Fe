@@ -29,8 +29,10 @@ function SearchBox({ showSearch, toggleSearch}) {
           type="search"
           placeholder="Search by Recipe Name..."
           value={searchQuery}
+          maxLength="50"              
           onChange={handleInputChange}
           className="search-input"
+          title="Only letters and spaces are allowed"
         />
       </form>
     </div>

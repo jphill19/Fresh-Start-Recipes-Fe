@@ -12,7 +12,7 @@ function FilterDataSearch({ name, searchValueSetter }) {
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       setDebouncedTerm(searchTerm); 
-    }, 500);
+    }, 1000);
 
     return () => clearTimeout(delayDebounceFn); 
   }, [searchTerm]);
@@ -66,6 +66,7 @@ function FilterDataSearch({ name, searchValueSetter }) {
                 id={`checkbox-${item.id}`}
                 checked={selectedId === item.id}
                 onChange={() => handleCheckboxChange(item)}
+                maxLength="40"  
               />
               <label htmlFor={`checkbox-${item.id}`}>
                 {item.attributes.name}

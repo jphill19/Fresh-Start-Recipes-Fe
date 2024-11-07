@@ -70,7 +70,7 @@ function Home() {
       ) : null}
       {loading ? (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
-          <ClipLoader color="#36d7b7" size={50} /> {/* Customize the spinner color and size */}
+          <ClipLoader color="#36d7b7" size={50} />
         </div>
       ) : (
         <RecipeContainer data={indexData} />
