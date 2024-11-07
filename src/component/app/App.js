@@ -11,6 +11,7 @@ function App() {
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
           <Route path="/location" element={<Location/>} />
+          <Route path="/location/:id" element={<Location/>} />
         </Route>
       </Routes>
     </Router>

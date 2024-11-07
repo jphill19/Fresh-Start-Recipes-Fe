@@ -12,12 +12,35 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
   padding: 1rem;
 }
 
+/* Section styling */
+.nav-section {
+  display: flex;
+  align-items: center;
+}
+
+/* Align left section to the far left */
+.left-section {
+  flex: 1;
+  justify-content: flex-start;
+}
+
+/* Center section for logo alignment */
+.center-section {
+  flex: 0;
+  justify-content: center;
+}
+
+/* Align right section to the far right */
+.right-section {
+  flex: 1;
+  justify-content: flex-end;
+}
+
 /* Links and buttons */
-.nav-link, .search-button {
+.nav-link, .search-button, .home-button {
   text-decoration: none;
   background: none;
   border: none;
@@ -35,7 +58,7 @@
 }
 
 /* Icons */
-.search-icon, .location-icon {
+.search-icon, .location-icon, .home-icon {
   width: 40px;
   height: 40px;
 }
@@ -45,11 +68,40 @@
   transition: transform 0.6s ease;
 }
 
+/* Location icon and label */
+.location-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* Minimal space between icon and label */
+}
+
+.location-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.location-inline-label {
+  font-size: 0.9rem;
+  color: #666;
+  max-width: 100px;
+  white-space: normal; 
+  overflow-wrap: break-word; 
+}
+
 /* Search button focus animation */
 .rotate {
   animation: rotateIcon 0.6s ease;
 }
 
+/* Keyframes for rotating the search icon */
+@keyframes rotateIcon {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 /* Search container (hidden by height initially) */
 .search-container {
@@ -81,16 +133,6 @@
   width: 100%;
 }
 
-/* Keyframes for rotating the search icon */
-@keyframes rotateIcon {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 /* Mobile styles */
 @media (max-width: 768px) {
   .header-section {
@@ -105,7 +147,7 @@
     max-width: 60px;
   }
 
-  .search-icon, .location-icon {
+  .search-icon, .location-icon, .home-icon {
     width: 24px;
     height: 24px;
   }
@@ -117,10 +159,20 @@
   }
 
   .search-container.show {
-    max-height: 50px; /* Slightly larger for mobile */
+    max-height: 50px;
   }
 
   .search-input {
     font-size: 0.9rem;
+  }
+
+  .location-wrapper {
+    gap: 2px;
+  }
+
+  .location-inline-label {
+    font-size: 0.7rem;
+    color: #888;
+    max-width: 80px; 
   }
 }
