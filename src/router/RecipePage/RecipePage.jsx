@@ -40,8 +40,8 @@ function RecipePage() {
         </div>
       ) : (
         <>
-          <h2 className="recipe-page-title">{data.attributes.recipe_name}</h2>
           <img className="recipe-page-image" src={`${data.attributes.image}`} alt={`${data.attributes.recipe_name}`}/>
+          <h2 className="recipe-page-title">{data.attributes.recipe_name}</h2>
           {data.attributes && (
             <>
               <IngredientList ingredients={data.attributes.ingredients} servingSize={data.attributes.serving_size} recipeId={recipeId}/>
