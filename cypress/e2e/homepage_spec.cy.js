@@ -73,6 +73,8 @@ describe('Home Page', () => {
   //   // .get('.filter-bar-container > :nth-child(1)').click()
   // })
 
+//////////////////////////////////////////
+
   // PASSING
   // it('DISPLAYS price filter modal upon clicking dropdown', () => {
   //   cy.get('.modal-content').should('not.exist')
@@ -103,28 +105,28 @@ describe('Home Page', () => {
   //   .get('.view-results').should('be.visible')
   // })
 
-  // // PASSING
-  // // This needs the logic updated
-  // // Test is written for when it's been fixed
-  // it('FILTERS recipes Less than $5', () => {
-  //   cy.url().should('eq', 'http://localhost:3001/')
+  // PASSING
+  // This needs the logic updated
+  // Test is written for when it's been fixed
+  it('FILTERS recipes Less than $5', () => {
+    cy.url().should('eq', 'http://localhost:3001/')
 
-  //   cy.get(':nth-child(4) > .dropdown-arrow').click()
+    cy.get(':nth-child(4) > .dropdown-arrow').click()
 
-  //   .get('.modal-content').should('be.visible')
-  //   .get('.modal-backdrop').should('be.visible')
+    .get('.modal-content').should('be.visible')
+    .get('.modal-backdrop').should('be.visible')
 
-  //   .get(':nth-child(2) > input').should('not.be.checked')
-  //   .get(':nth-child(2) > input').click()
-  //   .get('.view-results').click()
+    .get(':nth-child(2) > input').should('not.be.checked')
+    .get(':nth-child(2) > input').click()
+    .get('.view-results').click()
 
-  //   .get('.modal-content').should('not.exist')
-  //   .get('.modal-backdrop').should('not.exist')
+    .get('.modal-content').should('not.exist')
+    .get('.modal-backdrop').should('not.exist')
 
-  //   // Change to .should('contain', 'Cup of Dirt)
-  //   .get('.recipe-title').should('contain', 'Baked Potato')
-  //   cy.url().should('eq', 'http://localhost:3001/?by_price=1')
-  // })
+    // Change to .should('contain', 'Cup of Dirt)
+    .get('.recipe-title').should('contain', 'Baked Potato')
+    cy.url().should('eq', 'http://localhost:3001/?by_price=1')
+  })
 
   // // PASSING
   // it('FILTERS recipes Less than $10', () => {
@@ -256,7 +258,20 @@ describe('Home Page', () => {
     //   .get('.recipes-container').children().should('have.length', 3)
     // })
 
-
+  //   it('tests opening and the contents of the servings filter option', () => {
+  //     cy.get('.filter-bar-container > :nth-child(3)').click()
+  //     .get('.filter-bar-container > .modal-backdrop').should('be.visible')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content').should('be.visible')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content').children().should('have.length', 3)
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').should('be.visible')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').contains('Filter by Servings')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .toggle-switch').children().should('have.length', 3)
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .toggle-switch > :nth-child(1)').should('class', 'toggle-option active').should('contain', 'Single')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .toggle-switch > :nth-child(2)').should('class', 'toggle-option').should('contain', 'Multiple')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions').should('be.visible')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .reset').contains('Reset')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').contains('View Results')
+  //   })
   
   // it('DISPLAYS serving size filter modal upon clicking dropdown', () => {
   //   cy.get('.modal-content').should('not.exist')
