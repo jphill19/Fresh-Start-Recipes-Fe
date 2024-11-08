@@ -173,7 +173,7 @@
         "recipe_name": "Cup of Dirt",
         "total_price": 10.0,
         "image": "../../public/taco.jpeg",
-        "serving_size": 6,
+        "serving_size": 3,
         "ingredients": [
           {
             "ingredient": "Dirt",
