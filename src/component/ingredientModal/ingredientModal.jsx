@@ -14,7 +14,6 @@ function IngredientModal({ onClose, onFilterChange}) {
   const searchValueSetter = (value) => {
     setSearchValue(value);
   };
-  console.log(searchValue)
 
   const handleResultSearch = () => {
     const ingredientObject = {
@@ -42,7 +41,7 @@ function IngredientModal({ onClose, onFilterChange}) {
             setProductId={setProductId}/>
         <div className="modal-actions">
           <button className="modal-button reset" onClick={onClose}>Reset</button>
-          <button className="modal-button view-results" onClick={handleResultSearch}>View Results</button>
+          <button className="modal-button view-results" onClick={handleResultSearch}>Add Ingredient</button>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-/* Toggle switch container */
+
 .toggle-switch {
   position: relative;
   display: flex;
@@ -13,7 +13,7 @@
   transition: background-color 0.3s;
 }
 
-/* Options text */
+
 .toggle-option {
   position: relative; 
   color: #666;
@@ -23,13 +23,13 @@
   transition: color 0.3s;
 }
 
-/* Active option styling */
+
 .toggle-option.active {
   color: #fff;
   font-weight: bold;
 }
 
-/* Toggle slider */
+
 .toggle-slider {
   position: absolute;
   top: 0;

@@ -10,7 +10,6 @@ function FilterModal({ onClose, activeModal, onFilterChange}) {
   const searchValueSetter = (value) => {
     setSearchValue(value);
   };
-  console.log(searchValue)
 
   const handleResultSearch = () => {
     onFilterChange(activeModal, searchValue)
@@ -38,7 +37,7 @@ function FilterModal({ onClose, activeModal, onFilterChange}) {
               />;
       case 'by_price':
         return <FilterCheckBoxSearch 
-                  options={{ '2': 'Less than $10', '1': 'Greater than $5', '3': 'Greater than $10' }} 
+                  options={{ '0': 'Less than $5','2': 'Less than $10',  '3': 'Greater than $10' }} 
                   name="Filter by Prices"
                   searchValueSetter= {searchValueSetter}
               />;

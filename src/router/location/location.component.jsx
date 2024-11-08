@@ -40,7 +40,6 @@ function Location() {
     libraries
   });
 
-  console.log("selected location",selectedLocation)
   useEffect(() => {
     if (userLocation) {
       const fetchLocations = async () => {

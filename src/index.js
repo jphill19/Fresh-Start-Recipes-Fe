@@ -8,9 +8,7 @@ import { StoreLocationProvider } from './context/StoreLocationContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <StoreLocationProvider>
-    <React.StrictMode>
       <App />
-    </React.StrictMode>
   </StoreLocationProvider>,
 );
 

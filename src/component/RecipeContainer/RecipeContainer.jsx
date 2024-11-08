@@ -4,10 +4,11 @@ import { useState, useEffect } from 'react';
 
 function RecipeContainer({ data = [] }) { 
   const [excludedIngredients, setExcludedIngredients] = useState({});
-
+  
   useEffect(() => {
     setExcludedIngredients({});
   }, []); // the dependancy was 'data' but this cause a crap ton of errors.
+
 
   const handleIngredientClick = (ingredientId) => {
     setExcludedIngredients((prevState) => {
@@ -30,6 +31,7 @@ function RecipeContainer({ data = [] }) {
             excludedIngredients={excludedIngredients}
             onIngredientClick={handleIngredientClick}
             key={recipe.id} 
+            recipeId = {recipe.id}
           />
         ))
       ) : (
