@@ -1,3 +1,5 @@
+// Location Page
+
 it('DISPLAYS all content of location component', () => {
   cy.visit('http://localhost:3001/location');
 
@@ -31,16 +33,13 @@ it('DISPLAYS all content of location component', () => {
   .get('.store-chain').should('contain', 'KINGSOOPERS')
   .get('.store-address').should('exist')
   .get('.store-address').should('be.visible')
+  // Will address info require fixture files?
   .find('p').eq(0).should('contain', '1950 Chestnut Pl')
   .next().should('contain', 'Denver, CO 80202')
   .get('.store-select-button').should('exist')
+  .get('.store-select-button').should('contain', 'Select Store')
 })
-
-// Clicking location-icon from location page should not refresh/redirect page
-
-
-
-
+// Move to homepage
 it('NAVIGATES to the location component upon clicking the location-icon', () => {
   cy.get('.header-section')
   .find('.location-icon').click();
@@ -54,15 +53,30 @@ it('NAVIGATES to homepage from loation URL via logo-icon click', () => {
   cy.url().should('eq', 'http://localhost:3001/');
 })
 
-
 it('NAVIGATES to homepage from location URL via home-icon click', () => {
   cy.visit('http://localhost:3001/location');
   cy.get('.header-section')
   .find('.home-icon').click();
   cy.url().should('eq', 'http://localhost:3001/');
+  // swaps out icon
 })
 
+it('Does NOT REFRESH/NAVIGATE away upon clicking location-icon from location URL', () => {
+  cy.visit('http://localhost:3001/location');
+  cy.get('.header-section')
+  .find('.location-icon').click();
+  cy.url().should('eq', 'http://localhost:3001/location');
+})
 
+it('Shows nearest Kroger stores when user clicks `Use Your Location` button', () => {
+// How are we going to test the Map Box functionality?
+// Do we use fixture files for that as well?
+})
+
+it('Allows users to search nearest stores by entering their address', () => {
+// How are we going to test the Map Box functionality?
+// Do we use fixture files for that as well?
+})
 
 
 /* 
