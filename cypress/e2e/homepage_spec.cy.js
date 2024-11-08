@@ -57,24 +57,52 @@ describe('Home Page', () => {
   //   .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $12.00')
   // })
 
-  it.skip('tests interactions on the home page', () => {
-    cy.get('.search-icon').click()
-    .get('.search-container > form > .search-input').should('exist')
-    .get('.search-container > form > .search-input').should('be.visible')
-    // .get('.filter-bar-container > :nth-child(1)').click()
-  })
-
-
-  // it.skip('NAVIGATES to the location component upon clicking the location-icon', () => {
+  // Will require intercept/fixture files
+  // it('NAVIGATES to the location component upon clicking the location-icon', () => {
   //   cy.get('.header-section')
   //   .find('.location-icon').click();
-    
   //   cy.url().should('eq', 'http://localhost:3001/location');
   // })
 
-  // it.skip('NAVIGATES back to the homepage from other URLs', () => {
-    
+  // it.skip('tests interactions on the home page', () => {
+  //   cy.get('.search-icon').click()
+  //   .get('.search-container > form > .search-input').should('exist')
+  //   .get('.search-container > form > .search-input').should('be.visible')
+  //   // .get('.filter-bar-container > :nth-child(1)').click()
   // })
+
+  it('DISPLAYS price filter modal upon clicking dropdown', () => {
+    cy.get('.modal-content').should('not.exist')
+    .get('.modal-backdrop').should('not.exist')
+    .get(':nth-child(4) > .dropdown-arrow').click()
+    // Open modal
+    .get('.modal-backdrop').should('exist')
+    .get('.modal-content').should('be.visible')
+    // Check contents of modal
+    .get('.modal-content > h2').should('be.visible')
+    .get('.modal-content > h2').should('contain', 'Filter by Prices')
+    .get('.modal-content > :nth-child(2)').should('be.visible')
+    // Change to 'Less than $5' later
+    .get('.modal-content > :nth-child(2) > input').should('be.visible')
+    .get('.modal-content > :nth-child(2)').should('contain', 'Greater than $5')
+    .get(':nth-child(2) > input').should('be.visible')
+    .get('.modal-content > :nth-child(3)').should('be.visible')
+    .get('.modal-content > :nth-child(3)').should('contain', 'Less than $10')
+    .get(':nth-child(3) > input').should('be.visible')
+    .get('.modal-content > :nth-child(2) > input').should('be.visible')
+    .get('.modal-content > :nth-child(4)').should('be.visible')
+    .get('.modal-content > :nth-child(4)').should('contain', 'Greater than $10')
+    .get(':nth-child(4) > input').should('be.visible')
+    .get('.modal-content > :nth-child(2) > input').should('be.visible')
+    // .get('')
+  })
+
+  it('FILTERS recipes less than $5', () => {
+    cy.get(':nth-child(4) > .dropdown-arrow').click();
+
+    cy.get('.modal-content').should('be.visible');
+    cy.get('.modal-backdrop').should('be.visible');
+  })
 
 })
 

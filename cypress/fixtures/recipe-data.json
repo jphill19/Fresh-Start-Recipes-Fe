@@ -165,6 +165,46 @@
           }
         ]
       }
+    },
+    {
+      "id": 3,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Cup of Dirt",
+        "total_price": 10.0,
+        "image": "../../public/taco.jpeg",
+        "serving_size": 6,
+        "ingredients": [
+          {
+            "ingredient": "Dirt",
+            "price": 1.0,
+            "quantity": 3.0,
+            "measurement": "lb"
+          }
+        ],
+        "cookwares": ["Opposable Thumbs"],
+        "instructions": [
+          {
+            "cooking_style": 0,
+            "instructions": [
+              {
+                "instruction_step": 1,
+                "instruction": "Eat the cup of dirt."
+              },
+              {
+                "instruction_step": 2,
+                "instruction": "And LIKE it."
+              }
+            ]
+          }
+        ],
+        "cooking_tips": [
+          {
+            "tip_number": 1,
+            "tip": "For a less 'earthy' flavor; don't eat the dirt."
+          }
+        ]
+      }
     }
   ]
 }
