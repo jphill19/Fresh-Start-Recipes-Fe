@@ -60,18 +60,18 @@ describe('Home Page', () => {
   // })
 
   // Will require intercept/fixture files
-  // it('NAVIGATES to the location component upon clicking the location-icon', () => {
-  //   cy.get('.header-section')
-  //   .find('.location-icon').click();
-  //   cy.url().should('eq', 'http://localhost:3001/location');
-  // })
+  it('NAVIGATES to the location component upon clicking the location-icon', () => {
+    cy.get('.header-section')
+    .find('.location-icon').click();
+    cy.url().should('eq', 'http://localhost:3001/location');
+  })
 
-  // it.skip('tests interactions on the home page', () => {
-  //   cy.get('.search-icon').click()
-  //   .get('.search-container > form > .search-input').should('exist')
-  //   .get('.search-container > form > .search-input').should('be.visible')
-  //   // .get('.filter-bar-container > :nth-child(1)').click()
-  // })
+  it.skip('tests interactions on the home page', () => {
+    cy.get('.search-icon').click()
+    .get('.search-container > form > .search-input').should('exist')
+    .get('.search-container > form > .search-input').should('be.visible')
+    // .get('.filter-bar-container > :nth-child(1)').click()
+  })
 
 //////////////////////////////////////////
 

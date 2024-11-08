@@ -6,7 +6,7 @@
       "attributes": {
         "recipe_name": "Baked Potato",
         "total_price": 7.0,
-        "image": "../../public/taco.jpeg",
+        "image": "/baked_potato.jpg",
         "serving_size": 1,
         "ingredients": [
           {
@@ -86,7 +86,7 @@
       "attributes": {
         "recipe_name": "Hamburger Potato Soup",
         "total_price": 10.0,
-        "image": "../../public/taco.jpeg",
+        "image": "/hamburger_potato_soup.jpg",
         "serving_size": 6,
         "ingredients": [
           {
@@ -170,40 +170,26 @@
       "id": 3,
       "type": "recipe",
       "attributes": {
-        "recipe_name": "Cup of Dirt",
-        "total_price": 10.0,
-        "image": "../../public/taco.jpeg",
-        "serving_size": 3,
+        "recipe_name": "Tuna Sandwich",
+        "total_price": 3.0,
+        "image": "/tuna_sandwich.png",
+        "serving_size": 1,
         "ingredients": [
-          {
-            "ingredient": "Dirt",
-            "price": 1.0,
-            "quantity": 3.0,
-            "measurement": "lb"
-          }
+          { "ingredient": "Tuna Can", "price": 1.5, "quantity": 1.0, "measurement": "can" },
+          { "ingredient": "Bread", "price": 1.0, "quantity": 2.0, "measurement": "slices" },
+          { "ingredient": "Mayonnaise", "price": 0.5, "quantity": 1.0, "measurement": "tablespoon" }
         ],
-        "cookwares": ["Opposable Thumbs"],
+        "cookwares": ["Knife"],
         "instructions": [
           {
             "cooking_style": 0,
             "instructions": [
-              {
-                "instruction_step": 1,
-                "instruction": "Eat the cup of dirt."
-              },
-              {
-                "instruction_step": 2,
-                "instruction": "And LIKE it."
-              }
+              { "instruction_step": 1, "instruction": "Mix tuna with mayonnaise." },
+              { "instruction_step": 2, "instruction": "Spread mixture on bread and assemble sandwich." }
             ]
           }
         ],
-        "cooking_tips": [
-          {
-            "tip_number": 1,
-            "tip": "For a less 'earthy' flavor; don't eat the dirt."
-          }
-        ]
+        "cooking_tips": []
       }
     },
     {
@@ -212,7 +198,7 @@
       "attributes": {
         "recipe_name": "Vegetable Stir Fry",
         "total_price": 4.5,
-        "image": "../../public/stir_fry.jpeg",
+        "image": "/stir_fry.png",
         "serving_size": 2,
         "ingredients": [
           { "ingredient": "Broccoli", "price": 1.0, "quantity": 1.0, "measurement": "cup" },
@@ -240,7 +226,7 @@
       "attributes": {
         "recipe_name": "Pancakes",
         "total_price": 3.5,
-        "image": "../../public/pancakes.jpeg",
+        "image": "/pancake.png",
         "serving_size": 4,
         "ingredients": [
           { "ingredient": "Flour", "price": 1.0, "quantity": 2.0, "measurement": "cups" },
@@ -269,7 +255,7 @@
       "attributes": {
         "recipe_name": "Baked Chicken",
         "total_price": 8.0,
-        "image": "../../public/grilled_chicken.jpeg",
+        "image": "/baked_chicken.png",
         "serving_size": 2,
         "ingredients": [
           { "ingredient": "Chicken Breast", "price": 6.0, "quantity": 2.0, "measurement": "pieces" },
@@ -305,7 +291,7 @@
       "attributes": {
         "recipe_name": "Spaghetti Carbonara",
         "total_price": 12.0,
-        "image": "../../public/carbonara.jpeg",
+        "image": "/spaghetti_carbonara.png",
         "serving_size": 4,
         "ingredients": [
           { "ingredient": "Spaghetti", "price": 2.0, "quantity": 8.0, "measurement": "ounces" },
@@ -344,7 +330,7 @@
       "attributes": {
         "recipe_name": "Caesar Salad",
         "total_price": 6.0,
-        "image": "../../public/caesar_salad.jpeg",
+        "image": "/ceasar_salad.png",
         "serving_size": 2,
         "ingredients": [
           { "ingredient": "Romaine Lettuce", "price": 2.0, "quantity": 1.0, "measurement": "head" },
@@ -369,7 +355,7 @@
       "attributes": {
         "recipe_name": "Beef Stew",
         "total_price": 15.0,
-        "image": "../../public/beef_stew.jpeg",
+        "image": "/beef_stew.png",
         "serving_size": 6,
         "ingredients": [
           { "ingredient": "Beef Chuck", "price": 10.0, "quantity": 2.0, "measurement": "lb" },
@@ -404,26 +390,40 @@
       "id": 10,
       "type": "recipe",
       "attributes": {
-        "recipe_name": "Tuna Sandwich",
-        "total_price": 3.0,
-        "image": "../../public/tuna_sandwich.jpeg",
-        "serving_size": 1,
+        "recipe_name": "Cup of Dirt",
+        "total_price": 10.0,
+        "image": "/cup_of_dirt.png",
+        "serving_size": 3,
         "ingredients": [
-          { "ingredient": "Tuna Can", "price": 1.5, "quantity": 1.0, "measurement": "can" },
-          { "ingredient": "Bread", "price": 1.0, "quantity": 2.0, "measurement": "slices" },
-          { "ingredient": "Mayonnaise", "price": 0.5, "quantity": 1.0, "measurement": "tablespoon" }
+          {
+            "ingredient": "Dirt",
+            "price": 1.0,
+            "quantity": 3.0,
+            "measurement": "lb"
+          }
         ],
-        "cookwares": ["Knife"],
+        "cookwares": ["Opposable Thumbs"],
         "instructions": [
           {
             "cooking_style": 0,
             "instructions": [
-              { "instruction_step": 1, "instruction": "Mix tuna with mayonnaise." },
-              { "instruction_step": 2, "instruction": "Spread mixture on bread and assemble sandwich." }
+              {
+                "instruction_step": 1,
+                "instruction": "Eat the cup of dirt."
+              },
+              {
+                "instruction_step": 2,
+                "instruction": "And LIKE it."
+              }
             ]
           }
         ],
-        "cooking_tips": []
+        "cooking_tips": [
+          {
+            "tip_number": 1,
+            "tip": "For a less 'earthy' flavor; don't eat the dirt."
+          }
+        ]
       }
     }
   ]
