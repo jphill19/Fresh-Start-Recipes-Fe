@@ -14,7 +14,6 @@ function IngredientModal({ onClose, onFilterChange}) {
   const searchValueSetter = (value) => {
     setSearchValue(value);
   };
-  console.log(searchValue)
 
   const handleResultSearch = () => {
     const ingredientObject = {
