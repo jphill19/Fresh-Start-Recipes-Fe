@@ -41,12 +41,11 @@ function RecipePage() {
       ) : (
         <>
           <h2 className="recipe-page-title">{data.attributes.recipe_name}</h2>
-          <img className="recipe-page-image" src="/taco.jpeg" alt={`${data.attributes.image}`} />
+          <img className="recipe-page-image" src={`${data.attributes.image}`} alt={`${data.attributes.recipe_name}`}/>
           {data.attributes && (
             <>
               <IngredientList ingredients={data.attributes.ingredients} servingSize={data.attributes.serving_size} recipeId={recipeId}/>
               <RecipeList items={data.attributes.cookwares} title="Cookware List" />
-              <RecipeList items={data.attributes.cookwares} title="Recipe Tips"  />
               {data.attributes.cooking_tips && data.attributes.cooking_tips.length > 0 && (
                 <RecipeList items={data.attributes.cooking_tips} title="Recipe Tips" />
               )}
