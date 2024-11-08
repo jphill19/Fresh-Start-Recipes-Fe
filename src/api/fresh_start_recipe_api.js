@@ -79,7 +79,7 @@ export async function locationFetch(lat, long) {
 }
 
 export async function recipeDetailsFetches(recipeId, locationId = null) {
-  const endpoint = "http://localhost:3000/api/v1/";
+  const endpoint = "https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/locations";
   let url = `${endpoint}recipes/${recipeId}`;
 
   if (locationId) {
