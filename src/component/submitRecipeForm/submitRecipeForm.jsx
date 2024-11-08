@@ -33,7 +33,6 @@ function SubmitForm() {
     const onFilterChange = (dataChange) => {
         setIngredientFields((prevFields) => [...prevFields, dataChange]);
     }
-    console.log('<>', ingredientFields)
     const removeStep = (e, index, dataSet, setDataSet) => {
         e.preventDefault();
         let data = [...dataSet];
@@ -82,7 +81,6 @@ function SubmitForm() {
             ingredients: ingredientFields,
             instructions: instructionFields
         }
-        console.log(compiledData)
         recipePost(compiledData, apiKey)
             .then(data => {
                 console.log("Recipe posted successfully:", data);

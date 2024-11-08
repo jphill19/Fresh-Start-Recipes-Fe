@@ -10,7 +10,6 @@ function FilterModal({ onClose, activeModal, onFilterChange}) {
   const searchValueSetter = (value) => {
     setSearchValue(value);
   };
-  console.log(searchValue)
 
   const handleResultSearch = () => {
     onFilterChange(activeModal, searchValue)

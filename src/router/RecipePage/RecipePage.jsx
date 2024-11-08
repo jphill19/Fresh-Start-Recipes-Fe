@@ -20,8 +20,6 @@ function RecipePage() {
       try {
         setLoading(true);
         const data = await recipeDetailsFetches(recipeId, locationData ? locationData.id : undefined);
-        console.log(recipeId, '<-- CHECK THIS');
-        console.log("data", data.data);
         setData(data.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -34,7 +32,6 @@ function RecipePage() {
     fetchData();
   }, [recipeId]);
 
-  console.log("data", data)
   return (
     <Fragment>
       {loading ? (

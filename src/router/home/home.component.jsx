@@ -16,7 +16,6 @@ function Home() {
 
 
   const fetchFilteredData = async (filters) => {
-    console.log('Fetching data with filters:', filters.toString());
     setLoading(true)
   
     try {
