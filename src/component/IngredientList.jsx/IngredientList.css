@@ -1,0 +1,124 @@
+.ingredients-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.ingredient-list-title {
+  text-align: left;
+  color: #ff6b6b; 
+  margin-bottom: 20px;
+  font-size: 1.7em;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); 
+  letter-spacing: 1px;
+}
+
+
+.serving-size {
+  font-size: 1em;
+  color: #666666;
+  margin-bottom: 12px; 
+}
+
+.individual-ingredient {
+  margin-bottom: 12px;
+}
+
+.ingredient-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 12px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95em;
+  color: #333;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.ingredient-button.disabled {
+  background-color: #f2f2f2;
+  color: #999999;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.ingredient-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ingredient-name {
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 4px;
+}
+
+.ingredient-measurement {
+  color: #666666;
+  font-size: 0.9em;
+}
+
+.ingredient-price {
+  color: #333333;
+  font-weight: bold;
+  text-align: right;
+  min-width: 60px;
+}
+
+.total-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #333333;
+  margin-top: 20px;
+}
+
+.total-price-label {
+  font-size: 1.1em;
+  color: #333333;
+}
+
+.total-price-amount {
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: right;
+  color: #333333;
+  min-width: 60px;
+}
+
+.set-location-button {
+  display: block;
+  padding: 12px;
+  margin-top: 16px;
+  background-color: #ff6b6b;
+  color: #ffffff;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
+}
+
+.set-location-button:hover {
+  background-color: #e85c5c;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.set-location-button:active {
+  background-color: #d14d4d;
+}

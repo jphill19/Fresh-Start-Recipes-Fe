@@ -78,3 +78,25 @@ export async function locationFetch(lat, long) {
     throw error;
   }
 }
+
+export async function recipeDetailsFetches(recipeId, locationId = null) {
+  const endpoint = "https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/locations";
+  let url = `${endpoint}recipes/${recipeId}`;
+
+  if (locationId) {
+    url += `?by_location=${locationId}`;
+  }
+
+  console.log("url: ", url);
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Network response was not ok: ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  }
+}

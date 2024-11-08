@@ -1,0 +1,20 @@
+
+.recipe-page-title {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: bold;
+  margin: 8px 0 16px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap;
+}
+
+.recipe-page-image {
+  width: 100vw; 
+  max-width: 100%; 
+  height: auto; 
+  display: block;
+  border-radius: 8px;
+  margin: 0 auto;
+}
