@@ -24,7 +24,7 @@ describe('Home Page', () => {
       .get('.filter-bar-container > :nth-child(3)').should('contain', 'Servings')
       .get('.filter-bar-container > :nth-child(4)').should('contain', 'Price')
       .get('.recipes-container').should('exist')
-      .get('.recipes-container').children().should('have.length', 2)
+      .get('.recipes-container').children().should('have.length', 3)
       .get('.recipes-container > :nth-child(1) > .recipe-link > .recipe-title').should('contain', 'Baked Potato')
       .get('.recipes-container > :nth-child(1) > .recipe-link > .recipe-image').should('exist')
       .get('.recipes-container > :nth-child(1) > .ingredients-box').children().should('have.length', 3)

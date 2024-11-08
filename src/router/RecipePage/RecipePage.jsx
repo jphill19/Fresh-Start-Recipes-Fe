@@ -40,6 +40,7 @@ function RecipePage() {
         </div>
       ) : (
         <>
+          {console.log(data, '<-- CHECK DATA HERE')}
           <img className="recipe-page-image" src={`${data.attributes.image}`} alt={`${data.attributes.recipe_name}`}/>
           <h2 className="recipe-page-title">{data.attributes.recipe_name}</h2>
           {data.attributes && (
