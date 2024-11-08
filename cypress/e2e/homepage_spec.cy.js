@@ -1,139 +1,440 @@
-
-
 describe('Home Page', () => {
   beforeEach(() => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?', {
       statusCode: 200,
       fixture: 'recipe-data'
     }).as('recipe-data')
-    
     cy.visit('http://localhost:3001/')
     cy.wait('@recipe-data')
   })
-  
-  // it.skip('DISPLAYS all elements on the home page', () => {
-  //   cy.get('.header-section').should('exist')
-  //   .get('.location-icon').should('exist')
-  //   .get('.location-icon').should('be.visible')
-  //   .get('.logo').should('exist')
-  //   .get('.logo').should('be.visible')
-  //   .get('.search-icon').should('exist')
-  //   .get('.search-icon').should('be.visible')
-  //   .get('.search-container').should('exist')
-  //   .get('.filter-bar-container').should('exist')
-  //   .get('.filter-bar-container').should('be.visible')
-  //   .get('.filter-bar-container > :nth-child(1)').should('contain', 'Ingredient')
-  //   .get('.filter-bar-container > :nth-child(2)').should('contain', 'Cooking Style')
-  //   .get('.filter-bar-container > :nth-child(3)').should('contain', 'Servings')
-  //   .get('.filter-bar-container > :nth-child(4)').should('contain', 'Price')
-  //   .get('.recipes-container').should('exist')
-  //   .get('.recipes-container').children().should('have.length', 2)
-  //   .get('.recipes-container > :nth-child(1) > .recipe-link > .recipe-title').should('contain', 'Baked Potato')
-  //   .get('.recipes-container > :nth-child(1) > .recipe-link > .recipe-image').should('exist')
-  //   .get('.recipes-container > :nth-child(1) > .ingredients-box').children().should('have.length', 3)
-  //   .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(1) > .ingredient-button').should('contain', 'Russett Potato')
-  //   .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(1) > .ingredient-price').should('contain', '$1.00')
-  //   .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(2) > .ingredient-button').should('contain', '16oz Bag of Shredded Cheddar Cheese')
-  //   .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(2) > .ingredient-price').should('contain', '$2.00')
-  //   .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(3) > .ingredient-button').should('contain', 'Olive Oil')
-  //   .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(3) > .ingredient-price').should('contain', '$4.00')
-  //   .get('.recipes-container > :nth-child(1) > .recipe-card-footer').should('exist')
-  //   .get('.recipes-container > :nth-child(1) > .recipe-card-footer > .serving-size').should('contain', 'Servings: 1')
-  //   .get('.recipes-container > :nth-child(1) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $7.00')
 
-  //   .get('.recipes-container > :nth-child(2) > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
-  //   .get('.recipes-container > :nth-child(2) > .recipe-link > .recipe-image').should('exist')
-  //   .get('.recipes-container > :nth-child(2) > .ingredients-box').children().should('have.length', 4)
-  //   .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(1) > .ingredient-button').should('contain', 'Russett Potato')
-  //   .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(1) > .ingredient-price').should('contain', '$1.00')
-  //   .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(2) > .ingredient-button').should('contain', 'Ground Beef')
-  //   .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(2) > .ingredient-price').should('contain', '$6.00')
-  //   .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(3) > .ingredient-button').should('contain', 'Onion')
-  //   .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(3) > .ingredient-price').should('contain', '$1.00')
-  //   .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(4) > .ingredient-button').should('contain', 'Olive Oil')
-  //   .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(4) > .ingredient-price').should('contain', '$4.00')
-  //   .get('.recipes-container > :nth-child(2) > .recipe-card-footer').should('exist')
-  //   .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .serving-size').should('contain', 'Servings: 6')
-  //   .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $12.00')
-  // })
+  it.skip('DISPLAYS all elements on the home page', () => {
+    cy.get('.header-section').should('exist')
+      .get('.location-icon').should('exist')
+      .get('.location-icon').should('be.visible')
+      .get('.logo').should('exist')
+      .get('.logo').should('be.visible')
+      .get('.search-icon').should('exist')
+      .get('.search-icon').should('be.visible')
+      .get('.search-container').should('exist')
+      .get('.filter-bar-container').should('exist')
+      .get('.filter-bar-container').should('be.visible')
+      .get('.filter-bar-container > :nth-child(1)').should('contain', 'Ingredient')
+      .get('.filter-bar-container > :nth-child(2)').should('contain', 'Cooking Style')
+      .get('.filter-bar-container > :nth-child(3)').should('contain', 'Servings')
+      .get('.filter-bar-container > :nth-child(4)').should('contain', 'Price')
+      .get('.recipes-container').should('exist')
+      .get('.recipes-container').children().should('have.length', 2)
+      .get('.recipes-container > :nth-child(1) > .recipe-link > .recipe-title').should('contain', 'Baked Potato')
+      .get('.recipes-container > :nth-child(1) > .recipe-link > .recipe-image').should('exist')
+      .get('.recipes-container > :nth-child(1) > .ingredients-box').children().should('have.length', 3)
+      .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(1) > .ingredient-button').should('contain', 'Russett Potato')
+      .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(1) > .ingredient-price').should('contain', '$1.00')
+      .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(2) > .ingredient-button').should('contain', '16oz Bag of Shredded Cheddar Cheese')
+      .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(2) > .ingredient-price').should('contain', '$2.00')
+      .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(3) > .ingredient-button').should('contain', 'Olive Oil')
+      .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(3) > .ingredient-price').should('contain', '$4.00')
+      .get('.recipes-container > :nth-child(1) > .recipe-card-footer').should('exist')
+      .get('.recipes-container > :nth-child(1) > .recipe-card-footer > .serving-size').should('contain', 'Servings: 1')
+      .get('.recipes-container > :nth-child(1) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $7.00')
 
-  it.skip('tests interactions on the home page', () => {
-    cy.get('.search-icon').click()
-    .get('.search-container > form > .search-input').should('exist')
-    .get('.search-container > form > .search-input').should('be.visible')
-    // .get('.filter-bar-container > :nth-child(1)').click()
+      .get('.recipes-container > :nth-child(2) > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
+      .get('.recipes-container > :nth-child(2) > .recipe-link > .recipe-image').should('exist')
+      .get('.recipes-container > :nth-child(2) > .ingredients-box').children().should('have.length', 4)
+      .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(1) > .ingredient-button').should('contain', 'Russett Potato')
+      .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(1) > .ingredient-price').should('contain', '$1.00')
+      .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(2) > .ingredient-button').should('contain', 'Ground Beef')
+      .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(2) > .ingredient-price').should('contain', '$6.00')
+      .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(3) > .ingredient-button').should('contain', 'Onion')
+      .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(3) > .ingredient-price').should('contain', '$1.00')
+      .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(4) > .ingredient-button').should('contain', 'Olive Oil')
+      .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(4) > .ingredient-price').should('contain', '$4.00')
+      .get('.recipes-container > :nth-child(2) > .recipe-card-footer').should('exist')
+      .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .serving-size').should('contain', 'Servings: 6')
+      .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $12.00')
   })
 
+  it.skip('tests interactions in the header and search sections', () => {
+    cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_recipe=hamburger+potato+soup', {
+      statusCode: 200,
+      fixture: 'search-result'
+    })
+    cy.get('.search-icon').click()
+      .get('.search-container > form > .search-input').should('exist')
+      .get('.search-container > form > .search-input').should('be.visible')
+      .get('.search-container > form > .search-input').type('hamburger potato soup{enter}')
+      .get('.results-count').contains('1 results')
+      .get('.recipe-card-wrap > .recipe-link > .recipe-title').contains('Hamburger Potato Soup')
+      .get('.recipe-card-wrap > .ingredients-box > :nth-child(2)').contains('Ground Beef')
+      .get('.recipe-card-wrap > .ingredients-box > :nth-child(2) > .ingredient-price').contains('$6.00')
+      .get('.recipe-card-wrap > .recipe-card-footer > .serving-size').contains('Servings: 6')
+      .get('.recipe-card-wrap > .recipe-card-footer > .total-cost').contains('$12.00')
+  })
 
-  // it.skip('NAVIGATES to the location component upon clicking the location-icon', () => {
-  //   cy.get('.header-section')
-  //   .find('.location-icon').click();
-    
-  //   cy.url().should('eq', 'http://localhost:3001/location');
+  it.skip('tests opening and the contents of the ingredient filter option', () => {
+    cy.get('.filter-bar-container > :nth-child(1)').click()
+      .get('.filter-bar-container > .modal-backdrop').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').contains('Filter by an ingredient')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > p').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > p').contains('Input a name of an ingredient then select from checkbox')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .search-input').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .reset').contains('Reset')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').contains('View Results')
+  })
+
+  it.skip('tests interactions with the ingredient filter option', () => {
+    cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/ingredients?for_ingredient=ground%20beef', {
+      statusCode: 200,
+      fixture: 'ingredient-search'
+    })
+    cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_ingredient=Ground+Beef', {
+      statusCode: 200,
+      fixture: 'search-result'
+    })
+    cy.get('.filter-bar-container > :nth-child(1)').click()
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .search-input').type('ground beef')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > div > .filter-checkbox').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > div > .filter-checkbox').contains('Ground Beef')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > div > .filter-checkbox > #checkbox-1').click()
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').click()
+      .get('.filter-bar-container > :nth-child(1)').should('class', 'highlighted')
+      .get('.results-count').contains('1 results')
+      .get('.recipe-card-wrap > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
+      .get('.recipe-card-wrap > .ingredients-box > :nth-child(2)').should('contain', 'Ground Beef')
+      .get('.recipe-card-wrap > .ingredients-box > :nth-child(2) > .ingredient-price').should('contain', '$6.00')
+      .get('.recipe-card-wrap > .recipe-card-footer > .serving-size').should('contain', 'Servings: 6')
+      .get('.recipe-card-wrap > .recipe-card-footer > .total-cost').should('contain', '$12.00')
+      .get('.filter-results-container > .reset-button').click()
+      .get('.recipes-container > :nth-child(1) > .recipe-link > .recipe-title').should('contain', 'Baked Potato')
+      .get('.recipes-container > :nth-child(2) > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
+  })
+
+  it.skip('tests opening and the contents of the cooking style filter option', () => {
+    cy.get('.filter-bar-container > :nth-child(2)').click()
+      .get('.filter-bar-container > .modal-backdrop').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content').children().should('have.length', 6)
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').contains('Filter by a preferred cooking style')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(2)').should('contain', 'None required')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(3)').should('contain', 'Microwave')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(4)').should('contain', 'Stove')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(5)').should('contain', 'Oven')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .reset').contains('Reset')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').contains('View Results')
+  })
+
+  it.skip('tests interactions with the cooking style filter option', () => {
+    cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_style=2', {
+      statusCode: 200,
+      fixture: 'search-result'
+    })
+    cy.get('.filter-bar-container > :nth-child(2)').click()
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(4)').click()
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').click()
+      .get('.filter-bar-container > :nth-child(2)').should('class', 'highlighted')
+      .get('.results-count').should('contain', '1 results')
+      .get('.recipe-card-wrap > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
+      .get('.recipe-card-wrap > .ingredients-box > :nth-child(2)').should('contain', 'Ground Beef')
+      .get('.recipe-card-wrap > .ingredients-box > :nth-child(2) > .ingredient-price').should('contain', '$6.00')
+      .get('.recipe-card-wrap > .recipe-card-footer > .serving-size').should('contain', 'Servings: 6')
+      .get('.recipe-card-wrap > .recipe-card-footer > .total-cost').should('contain', '$12.00')
+      .get('.filter-results-container > .reset-button').click()
+      .get('.recipes-container > :nth-child(1) > .recipe-link > .recipe-title').should('contain', 'Baked Potato')
+      .get('.recipes-container > :nth-child(2) > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
+  })
+
+  // it.skip('tests opening and the contents of the servings filter option', () => {
+  //   cy.get('.filter-bar-container > :nth-child(3)').click()
+  //     .get('.filter-bar-container > .modal-backdrop').should('be.visible')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content').should('be.visible')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content').children().should('have.length', 3)
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').should('be.visible')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').contains('Filter by Servings')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .toggle-switch').children().should('have.length', 3)
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .toggle-switch > :nth-child(1)').should('class', 'toggle-option active').should('contain', 'Single')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .toggle-switch > :nth-child(2)').should('class', 'toggle-option').should('contain', 'Multiple')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions').should('be.visible')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .reset').contains('Reset')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').contains('View Results')
   // })
 
-  // it.skip('NAVIGATES back to the homepage from other URLs', () => {
-    
+  // it.skip('tests interactions with the servings filter option', () => {
+  //   cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_serving=Multiple', {
+  //     statusCode: 200,
+  //     fixture: 'search-result'
+  //   })
+  //   cy.get('.filter-bar-container > :nth-child(3)').click()
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .toggle-switch > :nth-child(1)').click()
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .toggle-switch > :nth-child(2)').should('class', 'toggle-option active').should('contain', 'Multiple')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').click()
+  //     .get('.filter-bar-container > :nth-child(3)').should('class', 'highlighted')
+  //     .get('.results-count').should('contain', '1 results')
+  //     .get('.recipe-card-wrap > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
+  //     .get('.recipe-card-wrap > .ingredients-box > :nth-child(2)').should('contain', 'Ground Beef')
+  //     .get('.recipe-card-wrap > .ingredients-box > :nth-child(2) > .ingredient-price').should('contain', '$6.00')
+  //     .get('.recipe-card-wrap > .recipe-card-footer > .serving-size').should('contain', 'Servings: 6')
+  //     .get('.recipe-card-wrap > .recipe-card-footer > .total-cost').should('contain', '$12.00')
+  //     .get('.filter-results-container > .reset-button').click()
+  //     .get('.recipes-container > :nth-child(1) > .recipe-link > .recipe-title').should('contain', 'Baked Potato')
+  //     .get('.recipes-container > :nth-child(2) > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
   // })
 
+  // it.skip('tests opening and the contents of the price filter option', () => {
+  //   cy.get('.filter-bar-container > :nth-child(4)').click()
+  //     .get('.filter-bar-container > .modal-backdrop').should('be.visible')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content').should('be.visible')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content').children().should('have.length', 5)
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').should('be.visible')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').contains('Filter by Prices')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(2) > [type=checkbox]').should('be.visible')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(2) > [for=checkbox-0]').should('be.visible').should('contain', 'Less than $5') // Change to less than $5 after correction.
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(3) > [type=checkbox]').should('be.visible')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(3) > [for=checkbox-2]').should('be.visible').should('contain', 'Less than $10')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(4) > [type=checkbox]').should('be.visible')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(4) > [for=checkbox-3]').should('be.visible').should('contain', 'Greater than $10')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions').should('be.visible')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .reset').contains('Reset')
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').contains('View Results')
+  // })
+
+  // it.skip('tests interactions with the price filter option', () => {
+  //   cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_price=3', {
+  //     statusCode: 200,
+  //     fixture: 'search-result'
+  //   })
+  //   cy.get('.filter-bar-container > :nth-child(4)').click()
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(4) > [type=checkbox]').click()
+  //     .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').click()
+  //     .get('.filter-bar-container > :nth-child(4)').should('class', 'highlighted')
+  //     .get('.results-count').should('contain', '1 results')
+  //     .get('.recipe-card-wrap > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
+  //     .get('.recipe-card-wrap > .ingredients-box > :nth-child(2)').should('contain', 'Ground Beef')
+  //     .get('.recipe-card-wrap > .ingredients-box > :nth-child(2) > .ingredient-price').should('contain', '$6.00')
+  //     .get('.recipe-card-wrap > .recipe-card-footer > .serving-size').should('contain', 'Servings: 6')
+  //     .get('.recipe-card-wrap > .recipe-card-footer > .total-cost').should('contain', '$12.00')
+  //     .get('.filter-results-container > .reset-button').click()
+  //     .get('.recipes-container > :nth-child(1) > .recipe-link > .recipe-title').should('contain', 'Baked Potato')
+  //     .get('.recipes-container > :nth-child(2) > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
+  // })
+
+  it.skip('tests the calculation functionality for the recipe cards', () => {
+    cy.get('.recipes-container > :nth-child(1)').should('be.visible')
+      .get('.recipes-container > :nth-child(1) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $7.00')
+      .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(1) > .ingredient-button').click()
+      .get('.recipes-container > :nth-child(1) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $6.00')
+      .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(2) > .ingredient-button').click()
+      .get('.recipes-container > :nth-child(1) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $4.00')
+      .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(3) > .ingredient-button').click()
+      .get('.recipes-container > :nth-child(1) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $0.00')
+
+      .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $7.00')
+      .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(2) > .ingredient-button').click()
+      .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $1.00')
+      .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(3) > .ingredient-button').click()
+      .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $0.00')
+  })
 })
 
 
 
 /* 
-header-section
-  nav-bar
-    nav-section left-section
-    nav-section center-section
-    nav-section right-section
-    
-  search-container
 
-  img.location-icon
-  img.logo
-  img.search-icon
+{
+  "data": [
+      {
+          "id": "1",
+          "type": "ingredient",
+          "attributes": {
+              "name": "Ground Beef"
+          }
+      }
+  ]
+}
 
-filter-bar-container
-  filter-bar-component
-    text = Ingredient
-    img.dropdown-arrow
-  filter-bar-component
-    text = Cooking Style
-    img.dropdown-arrow
-  filter-bar-component
-    text = Servings
-    img.dropdown-arrow
-  filter-bar-component
-    text = Price
-    img.dropdown-arrow
+{
+  "data": [
+    {
+      "id": 2,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Hamburger Potato Soup",
+        "total_price": 10.0,
+        "image": "/hamburger_potato_soup_test_pic.jpg",
+        "serving_size": 6,
+        "ingredients": [
+          {
+            "ingredient": "Russett Potato",
+            "price": 1.0,
+            "quantity": 3.0,
+            "measurement": "lb"
+          },
+          {
+            "ingredient": "Ground Beef",
+            "price": 6.00,
+            "quantity": 2.0,
+            "measurement": "lb"
+          },
+          {
+            "ingredient": "Onion",
+            "price": 1.00,
+            "quantity": 1.0,
+            "measurement": "Medium Sized"
+          },
+          {
+            "ingredient": "Olive Oil",
+            "price": 4.0,
+            "quantity": 2.0,
+            "measurement": "tablespoons"
+          }
+        ],
+        "cookwares": ["Medium Soup Pot", "Cooking Spoon", "Knife", "Cutting Surface"],
+        "instructions": [
+          {
+            "cooking_style": 3,
+            "instructions": [
+              {
+                "instruction_step": 1,
+                "instruction": "Wash the dirt off the potato"
+              },
+              {
+                "instruction_step": 2,
+                "instruction": "Cut potatoes into roughly 1 inch cubes."
+              },
+              {
+                "instruction_step": 3,
+                "instruction": "Place potatoes in the medium cooking pot with just enough water to cover them; turn the stove on to a medium to high heat to bring the water to a gentle boil."
+              },
+              {
+                "instruction_step": 4,
+                "instruction": "As you wait for the water to boil; begin cooking the hamburger meat in the frying pan on a medium heat. Place meat in the pan and break into chunks with cooking spoon"
+              },
+              {
+                "instruction_step": 5,
+                "instruction": "Once potatoes have softened and the hamburger meat is all brown; carefully dump hamburger meat into the pot with the potatoes; place heat on low and cover pot."
+              },
+              {
+                "instruction_step": 6,
+                "instruction": "Cut onion into roughly 1 inch chunks and break apart layers if desired; place the cut up onion in the pot and let the soup simmer for about 15 minutes."
+              },
+              {
+                "instruction_step": 7,
+                "instruction": "turn off heat, and place soup into a bowel adding salt and pepper as desired. Enjoy soup carefully as it will be hot."
+              }
+            ]
+          }
+        ],
+        "cooking_tips": [
+          {
+            "tip_number": 1,
+            "tip": "For a less 'earthy' flavor; peel potatoes of their skin before cutting."
+          },
+          {
+            "tip_number": 2,
+            "tip": "For a more flavorful cook on beef; brown the hamburger on a lower heat setting to keep the fot contained in the meat in a liquid state; pour into soup with the meat during step 5."
+          },
+          {
+            "tip_number": 3,
+            "tip": "Add parsley to your bowel of soup for a more 'earthy' flavor."
+          }
+        ]
+      }
+    }
+  ]
+}
 
-recipes-container
-  recipe-card-wrap (exists)
-    a.recipe-link
-      h2.recipe-title
-      img.recipe-image
-
-  ingredients-box
-    button.ingredient-button
-      ingredient-row
-        text = Russet Potato
-        ingredient-button
-        ingredient-price
-          $0.89
-
-      ingredient-row
-        text = 
-        ingredient-button
-        ingredient-price
-      ingredient-row
-        ingredient-button
-        ingredient-price
-        
-  recipe-card-footer
-    serving-size
-    total-cost
-
-
+{
+  "data": {
+      "id": 2,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Hamburger Potato Soup",
+        "total_price": 10.0,
+        "image": "/hamburger_potato_soup_test_pic.jpg",
+        "serving_size": 6,
+        "ingredients": [
+          {
+            "ingredient": "Russett Potato",
+            "price": 1.0,
+            "quantity": 3.0,
+            "measurement": "lb"
+          },
+          {
+            "ingredient": "Ground Beef",
+            "price": 6.00,
+            "quantity": 2.0,
+            "measurement": "lb"
+          },
+          {
+            "ingredient": "Onion",
+            "price": 1.00,
+            "quantity": 1.0,
+            "measurement": "Medium Sized"
+          },
+          {
+            "ingredient": "Olive Oil",
+            "price": 4.0,
+            "quantity": 2.0,
+            "measurement": "tablespoons"
+          }
+        ],
+        "cookwares": ["Medium Soup Pot", "Cooking Spoon", "Knife", "Cutting Surface"],
+        "instructions": [
+          {
+            "cooking_style": 3,
+            "instructions": [
+              {
+                "instruction_step": 1,
+                "instruction": "Wash the dirt off the potato"
+              },
+              {
+                "instruction_step": 2,
+                "instruction": "Cut potatoes into roughly 1 inch cubes."
+              },
+              {
+                "instruction_step": 3,
+                "instruction": "Place potatoes in the medium cooking pot with just enough water to cover them; turn the stove on to a medium to high heat to bring the water to a gentle boil."
+              },
+              {
+                "instruction_step": 4,
+                "instruction": "As you wait for the water to boil; begin cooking the hamburger meat in the frying pan on a medium heat. Place meat in the pan and break into chunks with cooking spoon"
+              },
+              {
+                "instruction_step": 5,
+                "instruction": "Once potatoes have softened and the hamburger meat is all brown; carefully dump hamburger meat into the pot with the potatoes; place heat on low and cover pot."
+              },
+              {
+                "instruction_step": 6,
+                "instruction": "Cut onion into roughly 1 inch chunks and break apart layers if desired; place the cut up onion in the pot and let the soup simmer for about 15 minutes."
+              },
+              {
+                "instruction_step": 7,
+                "instruction": "turn off heat, and place soup into a bowel adding salt and pepper as desired. Enjoy soup carefully as it will be hot."
+              }
+            ]
+          }
+        ],
+        "cooking_tips": [
+          {
+            "tip_number": 1,
+            "tip": "For a less 'earthy' flavor; peel potatoes of their skin before cutting."
+          },
+          {
+            "tip_number": 2,
+            "tip": "For a more flavorful cook on beef; brown the hamburger on a lower heat setting to keep the fot contained in the meat in a liquid state; pour into soup with the meat during step 5."
+          },
+          {
+            "tip_number": 3,
+            "tip": "Add parsley to your bowel of soup for a more 'earthy' flavor."
+          }
+        ]
+      }
+    }
+}
 
 
 

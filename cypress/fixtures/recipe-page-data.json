@@ -1,0 +1,93 @@
+{
+  "data": {
+    "id": 2,
+    "type": "recipe",
+    "attributes": {
+      "recipe_name": "Hamburger Potato Soup",
+      "total_price": 10.0,
+      "image": "/hamburger_potato_soup_test_pic.jpg",
+      "serving_size": 6,
+      "ingredients": [
+        {
+          "ingredient": "Russett Potato",
+          "price": 1.0,
+          "quantity": 3.0,
+          "measurement": "lb"
+        },
+        {
+          "ingredient": "Ground Beef",
+          "price": 6.00,
+          "quantity": 2.0,
+          "measurement": "lb"
+        },
+        {
+          "ingredient": "Onion",
+          "price": 1.00,
+          "quantity": 1.0,
+          "measurement": "Medium Sized"
+        },
+        {
+          "ingredient": "Olive Oil",
+          "price": 4.0,
+          "quantity": 2.0,
+          "measurement": "tablespoons"
+        }
+      ],
+      "cookwares": [
+        "Medium Soup Pot",
+        "Cooking Spoon",
+        "Knife",
+        "Cutting Surface"
+      ],
+      "instructions": [
+        {
+          "cooking_style": 3,
+          "instructions": [
+            {
+              "instruction_step": 1,
+              "instruction": "Wash the dirt off the potato"
+            },
+            {
+              "instruction_step": 2,
+              "instruction": "Cut potatoes into roughly 1 inch cubes."
+            },
+            {
+              "instruction_step": 3,
+              "instruction": "Place potatoes in the medium cooking pot with just enough water to cover them; turn the stove on to a medium to high heat to bring the water to a gentle boil."
+            },
+            {
+              "instruction_step": 4,
+              "instruction": "As you wait for the water to boil; begin cooking the hamburger meat in the frying pan on a medium heat. Place meat in the pan and break into chunks with cooking spoon"
+            },
+            {
+              "instruction_step": 5,
+              "instruction": "Once potatoes have softened and the hamburger meat is all brown; carefully dump hamburger meat into the pot with the potatoes; place heat on low and cover pot."
+            },
+            {
+              "instruction_step": 6,
+              "instruction": "Cut onion into roughly 1 inch chunks and break apart layers if desired; place the cut up onion in the pot and let the soup simmer for about 15 minutes."
+            },
+            {
+              "instruction_step": 7,
+              "instruction": "turn off heat, and place soup into a bowel adding salt and pepper as desired. Enjoy soup carefully as it will be hot."
+            }
+          ]
+        }
+      ],
+      "cooking_tips": [
+        {
+          "tip_number": 1,
+          "tip": "For a less 'earthy' flavor; peel potatoes of their skin before cutting."
+        },
+        {
+          "tip_number": 2,
+          "tip": "For a more flavorful cook on beef; brown the hamburger on a lower heat setting to keep the fot contained in the meat in a liquid state; pour into soup with the meat during step 5."
+        },
+        {
+          "tip_number": 3,
+          "tip": "Add parsley to your bowel of soup for a more 'earthy' flavor."
+        }
+      ]
+    }
+  }
+}

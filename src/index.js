@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './component/app/App';
+import App from './component/app/App.js';
 import reportWebVitals from './reportWebVitals';
 import { StoreLocationProvider } from './context/StoreLocationContext';
 
