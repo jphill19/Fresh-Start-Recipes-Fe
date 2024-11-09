@@ -13,10 +13,9 @@ describe('Filtering Functionality', () => {
   it('FILTERS recipes Less than $5', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_price=0', {
       statusCode: 200,
-      fixture: ''
+      fixture: 'filter-less-than-5'
     });
-    cy.url().should('eq', 'http://localhost:3001/recipes?by_price=0');
-
+    
     cy.get(':nth-child(4) > .dropdown-arrow').click()
       .get('.modal-content').should('be.visible')
       .get('.modal-backdrop').should('be.visible')
@@ -24,12 +23,16 @@ describe('Filtering Functionality', () => {
       .get('.view-results').click()
       .get('.modal-content').should('not.exist')
       .get('.modal-backdrop').should('not.exist')
-      .url().should('eq', 'http://localhost:3001/recipes?by_price=0');
+      .get('.recipes-container').children().should('have.length', 2)
+      .url().should('eq', 'http://localhost:3001/?by_price=0')
   });
 
   // // PASSING
   // it('FILTERS recipes Less than $10', () => {
-  //   cy.url().should('eq', 'http://localhost:3001/');
+  //   cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_price=2', {
+  //     statusCode: 200,
+  //     fixture: 'filter-less-than-10'
+  //   });
 
   //   cy.get(':nth-child(4) > .dropdown-arrow').click()
   //     .get('.modal-content').should('be.visible')
@@ -38,13 +41,16 @@ describe('Filtering Functionality', () => {
   //     .get('.view-results').click()
   //     .get('.modal-content').should('not.exist')
   //     .get('.modal-backdrop').should('not.exist')
-  //     .get('.recipe-title').should('contain', 'Baked Potato')
+  //     .get('.recipes-container').children().should('have.length', 5)
   //     .url().should('eq', 'http://localhost:3001/?by_price=2');
   // });
 
-  // // NOT PASSING
-  // it('FILTERS recipes Greater than $10', () => {
-  //   cy.url().should('eq', 'http://localhost:3001/');
+  // //  PASSING
+  // it('FILTERS recipes Greater than $10', () => {      
+  //   cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_price=3', {
+  //     statusCode: 200,
+  //     fixture: 'filter-greater-than-10'
+  //   });
 
   //   cy.get(':nth-child(4) > .dropdown-arrow').click()
   //     .get('.modal-content').should('be.visible')
@@ -53,7 +59,7 @@ describe('Filtering Functionality', () => {
   //     .get('.view-results').click()
   //     .get('.modal-content').should('not.exist')
   //     .get('.modal-backdrop').should('not.exist')
-  //     .get('.recipe-title').should('contain', 'Hamburger Potato Soup')
+  //     .get('.recipes-container').children().should('have.length', 5)
   //     .url().should('eq', 'http://localhost:3001/?by_price=3');
   // });
 
@@ -64,7 +70,7 @@ describe('Filtering Functionality', () => {
   //     .get('.reset').click()
   //     .get('.modal-content').should('not.exist')
   //     .get('.modal-backdrop').should('not.exist')
-  //     .get('.recipes-container').children().should('have.length', 3);
+  //     .get('.recipes-container').children().should('have.length', 10);
   // });
 
   // // PASSING
@@ -74,7 +80,7 @@ describe('Filtering Functionality', () => {
   //     .get('.reset').click()
   //     .get('.modal-content').should('not.exist')
   //     .get('.modal-backdrop').should('not.exist')
-  //     .get('.recipes-container').children().should('have.length', 3);
+  //     .get('.recipes-container').children().should('have.length', 10);
   // });
 
   // // PASSING
@@ -84,7 +90,7 @@ describe('Filtering Functionality', () => {
   //     .get('.reset').click()
   //     .get('.modal-content').should('not.exist')
   //     .get('.modal-backdrop').should('not.exist')
-  //     .get('.recipes-container').children().should('have.length', 3);
+  //     .get('.recipes-container').children().should('have.length', 10);
   // });
 
   // // UPDATE BE DATA AND THIS WILL PASS

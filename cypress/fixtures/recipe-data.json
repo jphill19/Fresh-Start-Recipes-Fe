@@ -5,75 +5,23 @@
       "type": "recipe",
       "attributes": {
         "recipe_name": "Baked Potato",
-        "total_price": 7.0,
+        "total_price": 11.0,
         "image": "/baked_potato.jpg",
         "serving_size": 1,
         "ingredients": [
-          {
-            "ingredient": "Russett Potato",
-            "price": 1.0,
-            "quantity": 1.0,
-            "measurement": "lb"
-          },
-          {
-            "ingredient": "16oz Bag of Shredded Cheddar Cheese",
-            "price": 2.0,
-            "quantity": 2.0,
-            "measurement": "ounces"
-          },
-          {
-            "ingredient": "Olive Oil",
-            "price": 4.0,
-            "quantity": 2.0,
-            "measurement": "tablespoons"
-          }
+          { "ingredient": "Russett Potato", "price": 1.0, "quantity": 1.0, "measurement": "lb" },
+          { "ingredient": "16oz Bag of Shredded Cheddar Cheese", "price": 2.0, "quantity": 2.0, "measurement": "ounces" },
+          { "ingredient": "Olive Oil", "price": 4.0, "quantity": 2.0, "measurement": "tablespoons" }
         ],
         "cookwares": ["Microwave-Safe Baking Dish", "Oven-Safe Baking Dish"],
         "instructions": [
           {
             "cooking_style": 1,
             "instructions": [
-              {
-                "instruction_step": 1,
-                "instruction": "Wash the dirt off the potato"
-              },
-              {
-                "instruction_step": 2,
-                "instruction": "Poke holes in the potato to allow steam to escape"
-              },
-              {
-                "instruction_step": 3,
-                "instruction": "Put on plate in microwave and cook for 8 minutes"
-              },
-              {
-                "instruction_step": 4,
-                "instruction": "If a fork is easily pushed in, its done, otherwise cook for an additional 2 minutes"
-              }
-            ]
-          },
-          {
-            "cooking_style": 3,
-            "instructions": [
-              {
-                "instruction_step": 1,
-                "instruction": "Preheat oven to 400 degrees"
-              },
-              {
-                "instruction_step": 2,
-                "instruction": "Wash the dirt off the potato"
-              },
-              {
-                "instruction_step": 3,
-                "instruction": "Poke holes in the potato to allow steam to escape"
-              },
-              {
-                "instruction_step": 4,
-                "instruction": "Place potato on oven safe tray and cook for 45 minutes"
-              },
-              {
-                "instruction_step": 5,
-                "instruction": "If a fork is easily pushed in, its done, otherwise cook for an additional 2 minutes"
-              }
+              { "instruction_step": 1, "instruction": "Wash the dirt off the potato" },
+              { "instruction_step": 2, "instruction": "Poke holes in the potato to allow steam to escape" },
+              { "instruction_step": 3, "instruction": "Put on plate in microwave and cook for 8 minutes" },
+              { "instruction_step": 4, "instruction": "If a fork is easily pushed in, it's done, otherwise cook for an additional 2 minutes" }
             ]
           }
         ],
@@ -85,85 +33,27 @@
       "type": "recipe",
       "attributes": {
         "recipe_name": "Hamburger Potato Soup",
-        "total_price": 10.0,
+        "total_price": 19.0,
         "image": "/hamburger_potato_soup.jpg",
         "serving_size": 6,
         "ingredients": [
-          {
-            "ingredient": "Russett Potato",
-            "price": 1.0,
-            "quantity": 3.0,
-            "measurement": "lb"
-          },
-          {
-            "ingredient": "Ground Beef",
-            "price": 6.00,
-            "quantity": 2.0,
-            "measurement": "lb"
-          },
-          {
-            "ingredient": "Onion",
-            "price": 1.00,
-            "quantity": 1.0,
-            "measurement": "Medium Sized"
-          },
-          {
-            "ingredient": "Olive Oil",
-            "price": 4.0,
-            "quantity": 2.0,
-            "measurement": "tablespoons"
-          }
+          { "ingredient": "Russett Potato", "price": 1.0, "quantity": 3.0, "measurement": "lb" },
+          { "ingredient": "Ground Beef", "price": 6.0, "quantity": 2.0, "measurement": "lb" },
+          { "ingredient": "Onion", "price": 1.0, "quantity": 1.0, "measurement": "Medium Sized" },
+          { "ingredient": "Olive Oil", "price": 4.0, "quantity": 2.0, "measurement": "tablespoons" }
         ],
-        "cookwares": ["Medium Soup Pot", "Cooking Spoon", "Knife", "Cutting Surface"],
+        "cookwares": ["Medium Soup Pot", "Cooking Spoon"],
         "instructions": [
           {
             "cooking_style": 3,
             "instructions": [
-              {
-                "instruction_step": 1,
-                "instruction": "Wash the dirt off the potato"
-              },
-              {
-                "instruction_step": 2,
-                "instruction": "Cut potatoes into roughly 1 inch cubes."
-              },
-              {
-                "instruction_step": 3,
-                "instruction": "Place potatoes in the medium cooking pot with just enough water to cover them; turn the stove on to a medium to high heat to bring the water to a gentle boil."
-              },
-              {
-                "instruction_step": 4,
-                "instruction": "As you wait for the water to boil; begin cooking the hamburger meat in the frying pan on a medium heat. Place meat in the pan and break into chunks with cooking spoon"
-              },
-              {
-                "instruction_step": 5,
-                "instruction": "Once potatoes have softened and the hamburger meat is all brown; carefully dump hamburger meat into the pot with the potatoes; place heat on low and cover pot."
-              },
-              {
-                "instruction_step": 6,
-                "instruction": "Cut onion into roughly 1 inch chunks and break apart layers if desired; place the cut up onion in the pot and let the soup simmer for about 15 minutes."
-              },
-              {
-                "instruction_step": 7,
-                "instruction": "turn off heat, and place soup into a bowel adding salt and pepper as desired. Enjoy soup carefully as it will be hot."
-              }
+              { "instruction_step": 1, "instruction": "Wash the dirt off the potato" },
+              { "instruction_step": 2, "instruction": "Cut potatoes into cubes." },
+              { "instruction_step": 3, "instruction": "Boil the potatoes and brown meat." }
             ]
           }
         ],
-        "cooking_tips": [
-          {
-            "tip_number": 1,
-            "tip": "For a less 'earthy' flavor; peel potatoes of their skin before cutting."
-          },
-          {
-            "tip_number": 2,
-            "tip": "For a more flavorful cook on beef; brown the hamburger on a lower heat setting to keep the fot contained in the meat in a liquid state; pour into soup with the meat during step 5."
-          },
-          {
-            "tip_number": 3,
-            "tip": "Add parsley to your bowel of soup for a more 'earthy' flavor."
-          }
-        ]
+        "cooking_tips": []
       }
     },
     {
@@ -171,13 +61,12 @@
       "type": "recipe",
       "attributes": {
         "recipe_name": "Tuna Sandwich",
-        "total_price": 3.0,
+        "total_price": 4.5,
         "image": "/tuna_sandwich.png",
         "serving_size": 1,
         "ingredients": [
           { "ingredient": "Tuna Can", "price": 1.5, "quantity": 1.0, "measurement": "can" },
-          { "ingredient": "Bread", "price": 1.0, "quantity": 2.0, "measurement": "slices" },
-          { "ingredient": "Mayonnaise", "price": 0.5, "quantity": 1.0, "measurement": "tablespoon" }
+          { "ingredient": "Bread", "price": 1.0, "quantity": 2.0, "measurement": "slices" }
         ],
         "cookwares": ["Knife"],
         "instructions": [
@@ -185,7 +74,7 @@
             "cooking_style": 0,
             "instructions": [
               { "instruction_step": 1, "instruction": "Mix tuna with mayonnaise." },
-              { "instruction_step": 2, "instruction": "Spread mixture on bread and assemble sandwich." }
+              { "instruction_step": 2, "instruction": "Spread mixture on bread." }
             ]
           }
         ],
@@ -197,14 +86,12 @@
       "type": "recipe",
       "attributes": {
         "recipe_name": "Vegetable Stir Fry",
-        "total_price": 4.5,
+        "total_price": 5.5,
         "image": "/stir_fry.png",
         "serving_size": 2,
         "ingredients": [
           { "ingredient": "Broccoli", "price": 1.0, "quantity": 1.0, "measurement": "cup" },
-          { "ingredient": "Carrot", "price": 0.5, "quantity": 1.0, "measurement": "cup" },
-          { "ingredient": "Soy Sauce", "price": 2.0, "quantity": 2.0, "measurement": "tablespoons" },
-          { "ingredient": "Olive Oil", "price": 1.0, "quantity": 1.0, "measurement": "tablespoon" }
+          { "ingredient": "Carrot", "price": 0.5, "quantity": 1.0, "measurement": "cup" }
         ],
         "cookwares": ["Wok", "Spatula"],
         "instructions": [
@@ -212,8 +99,7 @@
             "cooking_style": 4,
             "instructions": [
               { "instruction_step": 1, "instruction": "Heat wok with olive oil." },
-              { "instruction_step": 2, "instruction": "Add vegetables and stir fry for 5-7 minutes." },
-              { "instruction_step": 3, "instruction": "Add soy sauce and stir for another 2 minutes." }
+              { "instruction_step": 2, "instruction": "Add vegetables and stir fry for 5-7 minutes." }
             ]
           }
         ],
@@ -225,28 +111,24 @@
       "type": "recipe",
       "attributes": {
         "recipe_name": "Pancakes",
-        "total_price": 3.5,
-        "image": "/pancake.png",
+        "total_price": 5.5,
+        "image": "/pancakes.png",
         "serving_size": 4,
         "ingredients": [
           { "ingredient": "Flour", "price": 1.0, "quantity": 2.0, "measurement": "cups" },
-          { "ingredient": "Eggs", "price": 1.5, "quantity": 2.0, "measurement": "pieces" },
-          { "ingredient": "Milk", "price": 1.0, "quantity": 1.5, "measurement": "cups" }
+          { "ingredient": "Eggs", "price": 1.5, "quantity": 2.0, "measurement": "pieces" }
         ],
-        "cookwares": ["Mixing Bowl", "Frying Pan", "Spatula"],
+        "cookwares": ["Mixing Bowl"],
         "instructions": [
           {
             "cooking_style": 2,
             "instructions": [
-              { "instruction_step": 1, "instruction": "Mix all ingredients in a bowl." },
-              { "instruction_step": 2, "instruction": "Heat frying pan and pour batter." },
-              { "instruction_step": 3, "instruction": "Cook each side for 2-3 minutes." }
+              { "instruction_step": 1, "instruction": "Mix all ingredients." },
+              { "instruction_step": 2, "instruction": "Heat pan and pour batter." }
             ]
           }
         ],
-        "cooking_tips": [
-          { "tip_number": 1, "tip": "For fluffier pancakes, let the batter rest for 10 minutes." }
-        ]
+        "cooking_tips": []
       }
     },
     {
@@ -254,31 +136,19 @@
       "type": "recipe",
       "attributes": {
         "recipe_name": "Baked Chicken",
-        "total_price": 8.0,
+        "total_price": 15.0,
         "image": "/baked_chicken.png",
         "serving_size": 2,
         "ingredients": [
-          { "ingredient": "Chicken Breast", "price": 6.0, "quantity": 2.0, "measurement": "pieces" },
-          { "ingredient": "Garlic", "price": 0.5, "quantity": 2.0, "measurement": "cloves" },
-          { "ingredient": "Olive Oil", "price": 1.5, "quantity": 2.0, "measurement": "tablespoons" }
+          { "ingredient": "Chicken Breast", "price": 6.0, "quantity": 2.0, "measurement": "pieces" }
         ],
-        "cookwares": ["Tongs", "Glass Baking Dish"],
+        "cookwares": ["Glass Baking Dish"],
         "instructions": [
           {
             "cooking_style": 3,
             "instructions": [
-              { "instruction_step": 1, "instruction": "Marinate chicken with garlic and olive oil." },
-              { "instruction_step": 2, "instruction": "Preheat oven and cook chicken for 5-6 minutes each side." }
-            ]
-          },
-          {
-            "cooking_style": 3,
-            "instructions": [
-              { "instruction_step": 1, "instruction": "Preheat oven to 375°F (190°C)." },
-              { "instruction_step": 2, "instruction": "Rub chicken breasts with olive oil and minced garlic." },
-              { "instruction_step": 3, "instruction": "Place the chicken in an oven-safe dish." },
-              { "instruction_step": 4, "instruction": "Bake for 25-30 minutes or until the internal temperature reaches 165°F (74°C)." },
-              { "instruction_step": 5, "instruction": "Let chicken rest for 5 minutes before serving." }
+              { "instruction_step": 1, "instruction": "Preheat oven to 375°F." },
+              { "instruction_step": 2, "instruction": "Bake chicken for 25 minutes." }
             ]
           }
         ],
@@ -290,34 +160,19 @@
       "type": "recipe",
       "attributes": {
         "recipe_name": "Spaghetti Carbonara",
-        "total_price": 12.0,
+        "total_price": 16.0,
         "image": "/spaghetti_carbonara.png",
         "serving_size": 4,
         "ingredients": [
-          { "ingredient": "Spaghetti", "price": 2.0, "quantity": 8.0, "measurement": "ounces" },
-          { "ingredient": "Bacon", "price": 5.0, "quantity": 4.0, "measurement": "slices" },
-          { "ingredient": "Eggs", "price": 3.0, "quantity": 2.0, "measurement": "pieces" },
-          { "ingredient": "Parmesan", "price": 2.0, "quantity": 1.0, "measurement": "cup" }
+          { "ingredient": "Spaghetti", "price": 2.0, "quantity": 8.0, "measurement": "ounces" }
         ],
-        "cookwares": ["Pot", "Frying Pan", "Mixing Bowl"],
+        "cookwares": ["Pot", "Frying Pan"],
         "instructions": [
           {
             "cooking_style": 2,
             "instructions": [
               { "instruction_step": 1, "instruction": "Cook spaghetti until al dente." },
-              { "instruction_step": 2, "instruction": "Cook bacon until crispy, then chop." },
-              { "instruction_step": 3, "instruction": "Mix eggs and parmesan in a bowl." },
-              { "instruction_step": 4, "instruction": "Combine spaghetti, bacon, and egg mixture." }
-            ]
-          },
-          {
-            "cooking_style": 1,
-            "instructions": [
-              { "instruction_step": 1, "instruction": "Cook spaghetti in a microwave-safe bowl with water for 8-10 minutes." },
-              { "instruction_step": 2, "instruction": "Microwave chopped bacon on high for 3-4 minutes until crispy." },
-              { "instruction_step": 3, "instruction": "Whisk eggs and parmesan cheese together in a bowl." },
-              { "instruction_step": 4, "instruction": "Combine drained pasta, bacon, and egg mixture." },
-              { "instruction_step": 5, "instruction": "Microwave the mixture for 1 minute to warm thoroughly." }
+              { "instruction_step": 2, "instruction": "Mix with bacon." }
             ]
           }
         ],
@@ -329,20 +184,18 @@
       "type": "recipe",
       "attributes": {
         "recipe_name": "Caesar Salad",
-        "total_price": 6.0,
-        "image": "/ceasar_salad.png",
+        "total_price": 5.0,
+        "image": "/caesar_salad.png",
         "serving_size": 2,
         "ingredients": [
-          { "ingredient": "Romaine Lettuce", "price": 2.0, "quantity": 1.0, "measurement": "head" },
-          { "ingredient": "Croutons", "price": 1.5, "quantity": 1.0, "measurement": "cup" },
-          { "ingredient": "Caesar Dressing", "price": 2.5, "quantity": 0.5, "measurement": "cup" }
+          { "ingredient": "Lettuce", "price": 2.0, "quantity": 1.0, "measurement": "head" }
         ],
-        "cookwares": ["Salad Bowl", "Tongs"],
+        "cookwares": ["Salad Bowl"],
         "instructions": [
           {
             "cooking_style": 0,
             "instructions": [
-              { "instruction_step": 1, "instruction": "Chop lettuce and mix with croutons and dressing." }
+              { "instruction_step": 1, "instruction": "Mix lettuce and croutons." }
             ]
           }
         ],
@@ -354,7 +207,7 @@
       "type": "recipe",
       "attributes": {
         "recipe_name": "Beef Stew",
-        "total_price": 15.0,
+        "total_price": 25.0,
         "image": "/beef_stew.png",
         "serving_size": 6,
         "ingredients": [
@@ -370,17 +223,6 @@
               { "instruction_step": 1, "instruction": "Brown beef in Dutch oven." },
               { "instruction_step": 2, "instruction": "Add vegetables and simmer for 2 hours." }
             ]
-          },
-          {
-            "cooking_style": 1,
-            "instructions": [
-              { "instruction_step": 1, "instruction": "Place beef chunks in a microwave-safe dish with a lid." },
-              { "instruction_step": 2, "instruction": "Add a small amount of water or broth. Cover and microwave on high for 5 minutes." },
-              { "instruction_step": 3, "instruction": "Stir the beef and continue microwaving in 3-minute intervals until tender (10-12 minutes total)." },
-              { "instruction_step": 4, "instruction": "In a separate microwave-safe bowl, add diced potatoes and carrots with enough water to cover them." },
-              { "instruction_step": 5, "instruction": "Microwave on high for 8-10 minutes, or until the vegetables are tender." },
-              { "instruction_step": 6, "instruction": "Combine the beef and vegetables in one dish. Microwave for 2 additional minutes." }
-            ]
           }
         ],
         "cooking_tips": []
@@ -391,38 +233,24 @@
       "type": "recipe",
       "attributes": {
         "recipe_name": "Cup of Dirt",
-        "total_price": 1.0,
+        "total_price": 3.0,
         "image": "/cup_of_dirt.png",
         "serving_size": 3,
         "ingredients": [
-          {
-            "ingredient": "Dirt",
-            "price": 1.0,
-            "quantity": 3.0,
-            "measurement": "lb"
-          }
+          { "ingredient": "Dirt", "price": 1.0, "quantity": 3.0, "measurement": "lb" }
         ],
         "cookwares": ["Opposable Thumbs"],
         "instructions": [
           {
             "cooking_style": 0,
             "instructions": [
-              {
-                "instruction_step": 1,
-                "instruction": "Eat the cup of dirt."
-              },
-              {
-                "instruction_step": 2,
-                "instruction": "And LIKE it."
-              }
+              { "instruction_step": 1, "instruction": "Eat the cup of dirt." },
+              { "instruction_step": 2, "instruction": "And LIKE it." }
             ]
           }
         ],
         "cooking_tips": [
-          {
-            "tip_number": 1,
-            "tip": "For a less 'earthy' flavor; don't eat the dirt."
-          }
+          { "tip_number": 1, "tip": "For a less 'earthy' flavor, don't eat the dirt." }
         ]
       }
     }
