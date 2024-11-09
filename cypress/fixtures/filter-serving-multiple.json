@@ -1,0 +1,205 @@
+{
+  "data": [
+    {
+      "id": 2,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Hamburger Potato Soup",
+        "total_price": 19.0,
+        "image": "/hamburger_potato_soup.jpg",
+        "serving_size": 6,
+        "ingredients": [
+          { "ingredient": "Russett Potato", "price": 1.0, "quantity": 3.0, "measurement": "lb" },
+          { "ingredient": "Ground Beef", "price": 6.0, "quantity": 2.0, "measurement": "lb" },
+          { "ingredient": "Onion", "price": 1.0, "quantity": 1.0, "measurement": "Medium Sized" },
+          { "ingredient": "Olive Oil", "price": 4.0, "quantity": 2.0, "measurement": "tablespoons" }
+        ],
+        "cookwares": ["Medium Soup Pot", "Cooking Spoon"],
+        "instructions": [
+          {
+            "cooking_style": 3,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Wash the dirt off the potato" },
+              { "instruction_step": 2, "instruction": "Cut potatoes into cubes." },
+              { "instruction_step": 3, "instruction": "Boil the potatoes and brown meat." }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    },
+    {
+      "id": 4,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Vegetable Stir Fry",
+        "total_price": 5.5,
+        "image": "/stir_fry.png",
+        "serving_size": 2,
+        "ingredients": [
+          { "ingredient": "Broccoli", "price": 1.0, "quantity": 1.0, "measurement": "cup" },
+          { "ingredient": "Carrot", "price": 0.5, "quantity": 1.0, "measurement": "cup" }
+        ],
+        "cookwares": ["Wok", "Spatula"],
+        "instructions": [
+          {
+            "cooking_style": 4,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Heat wok with olive oil." },
+              { "instruction_step": 2, "instruction": "Add vegetables and stir fry for 5-7 minutes." }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    },
+    {
+      "id": 5,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Pancakes",
+        "total_price": 5.5,
+        "image": "/pancakes.png",
+        "serving_size": 4,
+        "ingredients": [
+          { "ingredient": "Flour", "price": 1.0, "quantity": 2.0, "measurement": "cups" },
+          { "ingredient": "Eggs", "price": 1.5, "quantity": 2.0, "measurement": "pieces" }
+        ],
+        "cookwares": ["Mixing Bowl"],
+        "instructions": [
+          {
+            "cooking_style": 2,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Mix all ingredients." },
+              { "instruction_step": 2, "instruction": "Heat pan and pour batter." }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    },
+    {
+      "id": 6,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Baked Chicken",
+        "total_price": 15.0,
+        "image": "/baked_chicken.png",
+        "serving_size": 2,
+        "ingredients": [
+          { "ingredient": "Chicken Breast", "price": 6.0, "quantity": 2.0, "measurement": "pieces" }
+        ],
+        "cookwares": ["Glass Baking Dish"],
+        "instructions": [
+          {
+            "cooking_style": 3,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Preheat oven to 375°F." },
+              { "instruction_step": 2, "instruction": "Bake chicken for 25 minutes." }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    },
+    {
+      "id": 7,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Spaghetti Carbonara",
+        "total_price": 16.0,
+        "image": "/spaghetti_carbonara.png",
+        "serving_size": 4,
+        "ingredients": [
+          { "ingredient": "Spaghetti", "price": 2.0, "quantity": 8.0, "measurement": "ounces" }
+        ],
+        "cookwares": ["Pot", "Frying Pan"],
+        "instructions": [
+          {
+            "cooking_style": 2,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Cook spaghetti until al dente." },
+              { "instruction_step": 2, "instruction": "Mix with bacon." }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    },
+    {
+      "id": 8,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Caesar Salad",
+        "total_price": 5.0,
+        "image": "/caesar_salad.png",
+        "serving_size": 2,
+        "ingredients": [
+          { "ingredient": "Lettuce", "price": 2.0, "quantity": 1.0, "measurement": "head" }
+        ],
+        "cookwares": ["Salad Bowl"],
+        "instructions": [
+          {
+            "cooking_style": 0,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Mix lettuce and croutons." }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    },
+    {
+      "id": 9,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Beef Stew",
+        "total_price": 25.0,
+        "image": "/beef_stew.png",
+        "serving_size": 6,
+        "ingredients": [
+          { "ingredient": "Beef Chuck", "price": 10.0, "quantity": 2.0, "measurement": "lb" },
+          { "ingredient": "Potatoes", "price": 3.0, "quantity": 2.0, "measurement": "lb" },
+          { "ingredient": "Carrots", "price": 2.0, "quantity": 1.0, "measurement": "lb" }
+        ],
+        "cookwares": ["Pot", "Knife"],
+        "instructions": [
+          {
+            "cooking_style": 2,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Brown beef in Dutch oven." },
+              { "instruction_step": 2, "instruction": "Add vegetables and simmer for 2 hours." }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    },
+    {
+      "id": 10,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Cup of Dirt",
+        "total_price": 3.0,
+        "image": "/cup_of_dirt.png",
+        "serving_size": 3,
+        "ingredients": [
+          { "ingredient": "Dirt", "price": 1.0, "quantity": 3.0, "measurement": "lb" }
+        ],
+        "cookwares": ["Opposable Thumbs"],
+        "instructions": [
+          {
+            "cooking_style": 0,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Eat the cup of dirt." },
+              { "instruction_step": 2, "instruction": "And LIKE it." }
+            ]
+          }
+        ],
+        "cooking_tips": [
+          { "tip_number": 1, "tip": "For a less 'earthy' flavor, don't eat the dirt." }
+        ]
+      }
+    }
+  ]
+}

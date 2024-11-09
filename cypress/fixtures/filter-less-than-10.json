@@ -1,0 +1,138 @@
+{
+  "data": [
+    {
+      "id": 3,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Tuna Sandwich",
+        "total_price": 4.5,
+        "image": "/tuna_sandwich.png",
+        "serving_size": 1,
+        "ingredients": [
+          { "ingredient": "Tuna Can", "price": 1.5, "quantity": 1.0, "measurement": "can" },
+          { "ingredient": "Bread", "price": 1.0, "quantity": 2.0, "measurement": "slices" },
+          { "ingredient": "Mayonnaise", "price": 0.5, "quantity": 1.0, "measurement": "tablespoon" }
+        ],
+        "cookwares": ["Knife"],
+        "instructions": [
+          {
+            "cooking_style": 0,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Mix tuna with mayonnaise." },
+              { "instruction_step": 2, "instruction": "Spread mixture on bread and assemble sandwich." }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    },
+    {
+      "id": 4,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Vegetable Stir Fry",
+        "total_price": 5.5,
+        "image": "/stir_fry.png",
+        "serving_size": 2,
+        "ingredients": [
+          { "ingredient": "Broccoli", "price": 1.0, "quantity": 1.0, "measurement": "cup" },
+          { "ingredient": "Carrot", "price": 0.5, "quantity": 1.0, "measurement": "cup" },
+          { "ingredient": "Soy Sauce", "price": 2.0, "quantity": 2.0, "measurement": "tablespoons" },
+          { "ingredient": "Olive Oil", "price": 1.0, "quantity": 1.0, "measurement": "tablespoon" }
+        ],
+        "cookwares": ["Wok", "Spatula"],
+        "instructions": [
+          {
+            "cooking_style": 4,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Heat wok with olive oil." },
+              { "instruction_step": 2, "instruction": "Add vegetables and stir fry for 5-7 minutes." },
+              { "instruction_step": 3, "instruction": "Add soy sauce and stir for another 2 minutes." }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    },
+    {
+      "id": 5,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Pancakes",
+        "total_price": 5.5,
+        "image": "/pancake.png",
+        "serving_size": 4,
+        "ingredients": [
+          { "ingredient": "Flour", "price": 1.0, "quantity": 2.0, "measurement": "cups" },
+          { "ingredient": "Eggs", "price": 1.5, "quantity": 2.0, "measurement": "pieces" },
+          { "ingredient": "Milk", "price": 1.0, "quantity": 1.5, "measurement": "cups" }
+        ],
+        "cookwares": ["Mixing Bowl", "Frying Pan", "Spatula"],
+        "instructions": [
+          {
+            "cooking_style": 2,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Mix all ingredients in a bowl." },
+              { "instruction_step": 2, "instruction": "Heat frying pan and pour batter." },
+              { "instruction_step": 3, "instruction": "Cook each side for 2-3 minutes." }
+            ]
+          }
+        ],
+        "cooking_tips": [
+          { "tip_number": 1, "tip": "For fluffier pancakes, let the batter rest for 10 minutes." }
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Caesar Salad",
+        "total_price": 5.0,
+        "image": "/caesar_salad.png",
+        "serving_size": 2,
+        "ingredients": [
+          { "ingredient": "Romaine Lettuce", "price": 2.0, "quantity": 1.0, "measurement": "head" },
+          { "ingredient": "Croutons", "price": 1.5, "quantity": 1.0, "measurement": "cup" },
+          { "ingredient": "Caesar Dressing", "price": 1.5, "quantity": 1.0, "measurement": "cup" }
+        ],
+        "cookwares": ["Salad Bowl", "Tongs"],
+        "instructions": [
+          {
+            "cooking_style": 0,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Chop lettuce and mix with croutons and dressing." }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    },
+    {
+      "id": 10,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Cup of Dirt",
+        "total_price": 3.0,
+        "image": "/cup_of_dirt.png",
+        "serving_size": 3,
+        "ingredients": [
+          { "ingredient": "Dirt", "price": 1.0, "quantity": 3.0, "measurement": "lb" }
+        ],
+        "cookwares": ["Opposable Thumbs"],
+        "instructions": [
+          {
+            "cooking_style": 0,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Eat the cup of dirt." },
+              { "instruction_step": 2, "instruction": "And LIKE it." }
+            ]
+          }
+        ],
+        "cooking_tips": [
+          { "tip_number": 1, "tip": "For a less 'earthy' flavor, don't eat the dirt." }
+        ]
+      }
+    }
+  ]
+}

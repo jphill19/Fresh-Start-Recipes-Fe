@@ -1,0 +1,56 @@
+{
+  "data": [
+    {
+      "id": 2,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Hamburger Potato Soup",
+        "total_price": 19.0,
+        "image": "/hamburger_potato_soup.jpg",
+        "serving_size": 6,
+        "ingredients": [
+          { "ingredient": "Russett Potato", "price": 1.0, "quantity": 3.0, "measurement": "lb" },
+          { "ingredient": "Ground Beef", "price": 6.0, "quantity": 2.0, "measurement": "lb" },
+          { "ingredient": "Onion", "price": 1.0, "quantity": 1.0, "measurement": "Medium Sized" },
+          { "ingredient": "Olive Oil", "price": 4.0, "quantity": 2.0, "measurement": "tablespoons" }
+        ],
+        "cookwares": ["Medium Soup Pot", "Cooking Spoon"],
+        "instructions": [
+          {
+            "cooking_style": 3,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Wash the dirt off the potato" },
+              { "instruction_step": 2, "instruction": "Cut potatoes into cubes." },
+              { "instruction_step": 3, "instruction": "Boil the potatoes and brown meat." }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    },
+    {
+      "id": 6,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Baked Chicken",
+        "total_price": 15.0,
+        "image": "/baked_chicken.png",
+        "serving_size": 2,
+        "ingredients": [
+          { "ingredient": "Chicken Breast", "price": 6.0, "quantity": 2.0, "measurement": "pieces" }
+        ],
+        "cookwares": ["Glass Baking Dish"],
+        "instructions": [
+          {
+            "cooking_style": 3,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Preheat oven to 375°F." },
+              { "instruction_step": 2, "instruction": "Bake chicken for 25 minutes." }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    }
+  ]
+}
