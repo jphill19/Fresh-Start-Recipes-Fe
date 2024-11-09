@@ -7,7 +7,7 @@ describe('Recipe Page', () => {
     cy.visit('http://localhost:3001/recipe/1')
   })
 
-  it.skip('Checks the page content on load for a recipe with a single set of cooking instructions', () => {
+  it.skip('Checks the page content on load for a recipe with a single set of cooking instructions and no cooking tips', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes/2', {
       statusCode: 200,
       fixture: 'recipe-page-data'
@@ -58,7 +58,7 @@ describe('Recipe Page', () => {
     .get('.instructions-container > .instructions-list > :nth-child(7) > .instruction-text').should('contain', 'turn off heat, and place soup into a bowel adding salt and pepper as desired. Enjoy soup carefully as it will be hot.')
   })
 
-  it.skip('Checks the page content on load for a recipe with multiple sets of cooking instructions', () => {
+  it.skip('Checks the page content on load for a recipe with multiple sets of cooking instructions and 2 cooking tips', () => {
     cy.get('.header-section').should('be.visible')
     .get('.location-icon').should('be.visible')
     .get('.logo').should('be.visible')

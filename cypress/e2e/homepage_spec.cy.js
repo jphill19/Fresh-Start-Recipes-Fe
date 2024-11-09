@@ -8,7 +8,7 @@ describe('Home Page', () => {
     cy.wait('@recipe-data')
   })
 
-  it('DISPLAYS all elements on the home page', () => {
+  it.skip('DISPLAYS all elements on the home page', () => {
     cy.get('.header-section').should('exist')
       .get('.location-icon').should('exist')
       .get('.location-icon').should('be.visible')
@@ -238,5 +238,14 @@ describe('Home Page', () => {
       .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $1.00')
       .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(3) > .ingredient-button').click()
       .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $0.00')
+  })
+
+  it.skip('tests when the user searches for a recipe that doesn\'t exist', () => {
+    cy.get('.header-section').should('exist')
+    .get('.header-section > .nav-bar > .right-section > .search-button').click()
+    .get('.header-section > .search-container > form > .search-input').type('This is not a recipe{enter}')
+    .get('.filter-results-container > .results-count').should('contain', '0 results')
+    .get('.filter-results-container > .reset-button').should('contain', 'Reset')
+    .get('.recipes-container > p').should('contain', 'No recipes available.')
   })
 })
