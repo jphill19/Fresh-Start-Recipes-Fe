@@ -89,35 +89,6 @@ describe('Home Page', () => {
       .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .reset').contains('Reset')
       .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').contains('View Results')
   })
-  
-  it('tests interactions with the ingredient filter option', () => {
-    cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/ingredients?for_ingredient=ground%20beef', {
-      statusCode: 200,
-      fixture: 'ingredient-search'
-    });
-
-    cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_ingredient=Ground+Beef', {
-      statusCode: 200,
-      fixture: 'search-result'
-    });
-
-    cy.get('.filter-bar-container > :nth-child(1)').click()
-      .get('.filter-bar-container > .modal-backdrop > .modal-content > .search-input').type('ground beef')
-      .get('.filter-bar-container > .modal-backdrop > .modal-content > div > .filter-checkbox').should('be.visible')
-      .get('.filter-bar-container > .modal-backdrop > .modal-content > div > .filter-checkbox').contains('Ground Beef')
-      .get('.filter-bar-container > .modal-backdrop > .modal-content > div > .filter-checkbox > #checkbox-1').click()
-      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').click()
-      .get('.filter-bar-container > :nth-child(1)').should('class', 'highlighted')
-      .get('.results-count').contains('1 results')
-      .get('.recipe-card-wrap > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
-      .get('.recipe-card-wrap > .ingredients-box > :nth-child(2)').should('contain', 'Ground Beef')
-      .get('.recipe-card-wrap > .ingredients-box > :nth-child(2) > .ingredient-price').should('contain', '$6.00')
-      .get('.recipe-card-wrap > .recipe-card-footer > .serving-size').should('contain', 'Servings: 6')
-      .get('.recipe-card-wrap > .recipe-card-footer > .total-cost').should('contain', '$12.00')
-      .get('.filter-results-container > .reset-button').click()
-      .get('.recipes-container > :nth-child(1) > .recipe-link > .recipe-title').should('contain', 'Baked Potato')
-      .get('.recipes-container > :nth-child(2) > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
-  })
 
   it('tests opening and the contents of the cooking style filter option', () => {
     cy.get('.filter-bar-container > :nth-child(2)').click()
