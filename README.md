@@ -3,9 +3,9 @@
 Welcome to **Fresh Start Recipes** – a mobile app designed to support those navigating hard times or new beginnings. This app offers simple, affordable recipes that use ingredients available at local King Soopers stores, with real-time pricing based on your nearby location. Whether you're new to a government home, unhoused, or just looking to stretch your budget, Fresh Start Recipes is here to make cooking affordable and accessible. 
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-  <img src="home.png" alt="Home Page" width="30%" />
-  <img src="details.png" alt="Details Page" width="30%" />
-  <img src="location.png" alt="Location Page" width="30%" />
+  <img src="./assets/home.png" alt="Home Page" width="30%" />
+  <img src="./assets/details.png" alt="Details Page" width="30%" />
+  <img src="./assets/location.png" alt="Location Page" width="30%" />
 </div>
 
 ## 📑 Table of Contents
@@ -17,6 +17,7 @@ Welcome to **Fresh Start Recipes** – a mobile app designed to support those na
 6. [Project Structure 🔍](#project-structure)
 7. [Future Plans 🚀](#future-plans)
 8. [Contributing 🤝](#contributing)
+9. [Authors 👥](#contributors)
 
 
 ## About Fresh Start Recipes
@@ -143,7 +144,14 @@ Fresh Start Recipes is all about community, so contributions are always welcome!
 If you’re a chef or culinary enthusiast with recipe ideas, we invite you to reach out to us! By requesting an API key, you’ll gain access to our recipe submission form on the front end, allowing you to share your creations with the Fresh Start Recipes community.
 
 
+## Authors 👥
 
+Meet the team behind Fresh Start Recipes:
+
+- [John Hill](https://github.com/jphill19)  
+- [Shane Galvin](https://github.com/Sgalvin36)  
+- [Lito Croy](https://github.com/litobot)  
+- [Charles Banks](https://github.com/DRIF7ER)  
 
 
 ---
