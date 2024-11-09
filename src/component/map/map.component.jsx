@@ -7,6 +7,7 @@ const mapboxApiKey = process.env.REACT_APP_MAPBOX_API_KEY;
 mapboxgl.accessToken = mapboxApiKey;
 
 function Map({ locations, userLocation,  onLocationClick }) {
+
   const mapContainerRef = useRef(null);
   const [map, setMap] = useState(null);
   const prevUserLocation = useRef(null);

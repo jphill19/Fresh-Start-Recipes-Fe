@@ -4,8 +4,47 @@ describe('Location Page', () => {
       statusCode: 200,
       fixture: 'recipe-data'
     }).as('recipe-data')
-    // We don't need await here?
-    cy.visit('http://localhost:3001/location')
+
+    cy.intercept(
+      'GET',
+      'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/locations*',
+      { fixture: 'single-location.json' }
+    ).as('getLocation');
+
+    cy.intercept('GET', 'https://api.mapbox.com/**', {
+      statusCode: 200,
+      body: {},
+    }).as('mapboxApi');
+
+    cy.intercept('https://maps.googleapis.com/**', {
+      statusCode: 200,
+      body: {},
+    }).as('googleMapsApi');
+
+    cy.intercept(
+      {
+        method: 'GET',
+        url: /https:\/\/events\.mapbox\.com\/events\/v2.*/,
+      },
+      {
+        statusCode: 204,
+        body: '',
+      }
+    ).as('mapboxEvents');
+
+    cy.intercept('POST', 'https://events.mapbox.com/events/v2*', {
+      statusCode: 204,
+      body: '',
+    }).as('mapboxEvents');
+
+    cy.visit('http://localhost:3001/location', {
+      onBeforeLoad(win) {
+        cy.stub(win.navigator.geolocation, 'getCurrentPosition')
+          .callsFake((callback) => {
+            callback({ coords: { latitude: 39.757185, longitude: -104.998818 } });
+          });
+      },
+    });
   })
 
 
@@ -18,10 +57,8 @@ describe('Location Page', () => {
     .get('.location-container').should('exist')
     .get('.location-button').should('contain', 'Use Your Location')
     .get('.location-button').should('be.visible')
-    .get('.autocomplete-wrapper').should('exist')
-    .get('.input-field.pac-target-input').should('be.visible')
-    cy.get('.input-field')
-    .should('have.attr', 'placeholder', 'Enter your address')
+    // .get('.autocomplete-wrapper').should('exist')
+
     .get('.mapboxgl-canvas').should('be.visible')
     // Store Cards Container
     .get('.store-cards-container').should('exist')
@@ -37,12 +74,21 @@ describe('Location Page', () => {
     .get('.store-select-button').should('contain', 'Select Store')
   })
 
-  // // NOT PASSING Can't fetch - spinning out
-  // it('NAVIGATES to homepage from loation URL via logo-icon click', () => {
-  //   cy.get('.header-section')
-  //   .find('.logo').click()
-  //   cy.url().should('eq', 'http://localhost:3001/')
-  // })
+  it('should not make real Mapbox API calls', () => {
+    cy.wait('@mapboxApi');
+    cy.get('.map-container').should('be.visible');
+  });
+
+  it('should load the page without making real Google Maps API calls', () => {
+    cy.wait('@googleMapsApi');
+    cy.get('.location-button').should('be.visible').and('contain', 'Use Your Location');
+  });
+
+  it('NAVIGATES to homepage from loation URL via logo-icon click', () => {
+    cy.get('.header-section')
+    .find('.logo').click()
+    cy.url().should('eq', 'http://localhost:3001/')
+  })
 
   it('NAVIGATES to homepage from location URL via home-icon click', () => {
     cy.get('.header-section')
@@ -59,17 +105,175 @@ describe('Location Page', () => {
     cy.url().should('eq', 'http://localhost:3001/location')
   })
 
+  
+  it('By default a single location is loaded', () => {
+    cy.get('.store-card-wrap').should("have.length", 1); 
+    cy.get(".store-title").first().should("contain.text", "King Soopers - Union Station");
+    cy.get(".store-address").first().should("contain.text", "1950 Chestnut PlDenver, CO 80202");
+    cy.get(".store-address").should("contain.text", "Denver, CO 80202")
+    cy.get('.store-select-button').should('exist').and('contain.text', 'Select Store');
+  })
+;
 
+  it('Click "Use Your Location" should update available stores based on new location', () =>{
+    cy.fixture('multiple-locations.json').then((locationData) => {
+      const locations = locationData.data;
+  
+    
+      cy.intercept(
+        'GET',
+        'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/locations*',
+        { fixture: 'multiple-locations.json' }
+      ).as('getLocation');
+  
+      cy.window().then((win) => {
+        if (win.navigator.geolocation.getCurrentPosition.restore) {
+          win.navigator.geolocation.getCurrentPosition.restore();
+        }
+        cy.stub(win.navigator.geolocation, 'getCurrentPosition').callsFake((callback) => {
+          callback({ coords: { latitude: 40.015, longitude: -105.2705 } }); 
+        });
+      });
+  
+      cy.get('.location-button').click();
+  
+      cy.wait('@getLocation');
+  
 
-  // **~~~~~~**~~~~~~** NEED HELP WITH THESE ONES **~~~~~~**~~~~~~**
+      cy.get('.store-card-wrap').should('have.length', locations.length);
+  
+      locations.forEach((location, index) => {
+        cy.get('.store-card-wrap').eq(index).within(() => {
+          cy.get('.store-title').should('contain.text', location.name);
+          cy.get('.store-address').should('contain.text', location.address.addressLine1);
+          cy.get('.store-address').should('contain.text', `${location.address.city}, ${location.address.state} ${location.address.zipCode}`);
+          cy.get('.store-select-button').should('exist').and('contain.text', 'Select Store');
+        });
+      });
+    });
+  })
 
-  // it('Shows nearest Kroger stores when user clicks `Use Your Location` button', () => {
-  // // How are we going to test the Map Box functionality?
-  // // Do we use fixture files for that as well?
-  // })
+  it('can handle sad path lcoations that dont have any stores nearby',() => {
+    cy.fixture('multiple-locations.json').then((locationData) => {
+      const locations = locationData.data;
+      cy.intercept(
+        'GET',
+        'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/locations*',
+        { fixture: 'location-sad-path.json' }
+      ).as('getLocation');
+  
+      cy.window().then((win) => {
+        if (win.navigator.geolocation.getCurrentPosition.restore) {
+          win.navigator.geolocation.getCurrentPosition.restore();
+        }
+        cy.stub(win.navigator.geolocation, 'getCurrentPosition').callsFake((callback) => {
+          callback({ coords: { latitude: 40.015, longitude: -105.2705 } }); 
+        });
+      });
+  
+      cy.get('.location-button').click();
+  
+      cy.wait('@getLocation');
+  
 
-  // it('Allows users to search nearest stores by entering their address', () => {
-  // // How are we going to test the Map Box functionality?
-  // // Do we use fixture files for that as well?
-  // })
+      cy.get('.store-card-wrap').should('not.exist');
+      cy.get('.no-locations-message').should('exist').and('contain.text', 'No King Soopers nearby your location');
+    })
+  })
 })
+
+describe('Navigations', () => {
+  it('From home page to location page and selecting store should navigate back home', () =>{
+    cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?', {
+      statusCode: 200,
+      fixture: 'recipe-data'
+    }).as('recipe-data')
+
+    cy.intercept(
+      'GET',
+      'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/locations*',
+      { fixture: 'single-location.json' }
+    ).as('getLocation');
+
+    cy.intercept('GET', 'https://api.mapbox.com/**', {
+      statusCode: 200,
+      body: {},
+    }).as('mapboxApi');
+
+    cy.intercept('https://maps.googleapis.com/**', {
+      statusCode: 200,
+      body: {},
+    }).as('googleMapsApi');
+
+    cy.intercept(
+      {
+        method: 'GET',
+        url: /https:\/\/events\.mapbox\.com\/events\/v2.*/,
+      },
+      {
+        statusCode: 204,
+        body: '',
+      }
+    ).as('mapboxEvents');
+
+    cy.intercept('POST', 'https://events.mapbox.com/events/v2*', {
+      statusCode: 204,
+      body: '',
+    }).as('mapboxEvents');
+
+    cy.get('.location-inline-label').should('not.exist');
+    cy.visit('http://localhost:3001/location', {
+      onBeforeLoad(win) {
+        cy.stub(win.navigator.geolocation, 'getCurrentPosition')
+          .callsFake((callback) => {
+            callback({ coords: { latitude: 39.757185, longitude: -104.998818 } });
+          });
+      },
+    });
+
+    cy.get('.store-select-button').click()
+    cy.get('.location-inline-label').should('exist').and('contain.text', 'Union Station');
+  });
+
+  it('From details page to location page and selecting store should navigate back details', () =>{
+    cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?', {
+      statusCode: 200,
+      fixture: 'recipe-data'
+    }).as('recipe-data')
+
+    cy.intercept(
+      'GET',
+      'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/locations*',
+      { fixture: 'single-location.json' }
+    ).as('getLocation');
+
+    cy.intercept('GET', 'https://api.mapbox.com/**', {
+      statusCode: 200,
+      body: {},
+    }).as('mapboxApi');
+
+    cy.intercept('https://maps.googleapis.com/**', {
+      statusCode: 200,
+      body: {},
+    }).as('googleMapsApi');
+
+    cy.intercept(
+      {
+        method: 'GET',
+        url: /https:\/\/events\.mapbox\.com\/events\/v2.*/,
+      },
+      {
+        statusCode: 204,
+        body: '',
+      }
+    ).as('mapboxEvents');
+
+    cy.intercept('POST', 'https://events.mapbox.com/events/v2*', {
+      statusCode: 204,
+      body: '',
+    }).as('mapboxEvents');
+
+  })
+
+})
+

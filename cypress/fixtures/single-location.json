@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+        "locationId": "62000115",
+        "storeNumber": "00115",
+        "address": {
+          "addressLine1": "1950 Chestnut Pl",
+          "city": "Denver",
+          "state": "CO",
+          "zipCode": "80202",
+          "county": "DENVER COUNTY"
+        },
+        "geolocation": {
+          "latitude": 39.757185,
+          "longitude": -104.998818,
+          "latLng": "39.757185,-104.998818"
+        },
+        "chain": "KINGSOOPERS",
+        "name": "King Soopers - Union Station"
+      }
+  ]
+}
