@@ -1,0 +1,79 @@
+{
+  "data": [
+    {
+      "id": 5,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Pancakes",
+        "total_price": 5.5,
+        "image": "/pancakes.png",
+        "serving_size": 4,
+        "ingredients": [
+          { "ingredient": "Flour", "price": 1.0, "quantity": 2.0, "measurement": "cups" },
+          { "ingredient": "Eggs", "price": 1.5, "quantity": 2.0, "measurement": "pieces" }
+        ],
+        "cookwares": ["Mixing Bowl"],
+        "instructions": [
+          {
+            "cooking_style": 2,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Mix all ingredients." },
+              { "instruction_step": 2, "instruction": "Heat pan and pour batter." }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    },
+    {
+      "id": 7,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Spaghetti Carbonara",
+        "total_price": 16.0,
+        "image": "/spaghetti_carbonara.png",
+        "serving_size": 4,
+        "ingredients": [
+          { "ingredient": "Spaghetti", "price": 2.0, "quantity": 8.0, "measurement": "ounces" }
+        ],
+        "cookwares": ["Pot", "Frying Pan"],
+        "instructions": [
+          {
+            "cooking_style": 2,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Cook spaghetti until al dente." },
+              { "instruction_step": 2, "instruction": "Mix with bacon." }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    },
+    {
+      "id": 9,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Beef Stew",
+        "total_price": 25.0,
+        "image": "/beef_stew.png",
+        "serving_size": 6,
+        "ingredients": [
+          { "ingredient": "Beef Chuck", "price": 10.0, "quantity": 2.0, "measurement": "lb" },
+          { "ingredient": "Potatoes", "price": 3.0, "quantity": 2.0, "measurement": "lb" },
+          { "ingredient": "Carrots", "price": 2.0, "quantity": 1.0, "measurement": "lb" }
+        ],
+        "cookwares": ["Pot", "Knife"],
+        "instructions": [
+          {
+            "cooking_style": 2,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Brown beef in Dutch oven." },
+              { "instruction_step": 2, "instruction": "Add vegetables and simmer for 2 hours." }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    }
+  ]
+}

@@ -137,15 +137,24 @@ describe('Home Page', () => {
 
   // HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELP!
   // Will require intercept/fixture files
-  // it('NAVIGATES to the location component upon clicking the location-icon', () => {
-  //   cy.visit('http://localhost:3001/')
-  //   cy.wait('@location-data')
-  //   cy.get('.header-section').should('exist')
+  it('NAVIGATES to the location component upon clicking the location-icon', () => {
+    cy.intercept('GET', 'https://api.mapbox.com/**', {
+      statusCode: 200,
+      body: {},
+    }).as('mapboxApi');
 
-  //   cy.get('.header-section')
-  //   .find('.location-icon').click();
-  //   cy.url().should('eq', 'http://localhost:3001/location');
-  // })
+    cy.intercept('https://maps.googleapis.com/**', {
+      statusCode: 200,
+      body: {},
+    }).as('googleMapsApi');
+
+    cy.visit('http://localhost:3001/')
+    cy.get('.header-section').should('exist')
+
+    cy.get('.header-section')
+    .find('.location-icon').click();
+    cy.url().should('eq', 'http://localhost:3001/location');
+  })
 
   it('tests interactions on the home page', () => {
     cy.get('.search-icon').click()
