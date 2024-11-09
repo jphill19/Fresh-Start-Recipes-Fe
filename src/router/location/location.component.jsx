@@ -118,14 +118,18 @@ function Location() {
       <Fragment>
         <Map locations={locations} userLocation={userLocation} onLocationClick={handleLocationClick}/>
         <div className="store-cards-container">
-          {locations.map((location) => (
-            <StoreCard
-              key={location.locationId}
-              location={location}
-              isSelected={location === selectedLocation}
-              id={location.locationId}
-            />
-          ))}
+             {locations.length > 0 ? (
+              locations.map((location) => (
+                <StoreCard
+                  key={location.locationId}
+                  location={location}
+                  isSelected={location === selectedLocation}
+                  id={location.locationId}
+                />
+              ))
+            ) : (
+              <p className="no-locations-message">No King Soopers nearby your location</p>
+            )}
         </div>
       </Fragment>
     )}

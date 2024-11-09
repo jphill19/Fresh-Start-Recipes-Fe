@@ -6,7 +6,7 @@
       "attributes": {
         "recipe_name": "Baked Potato",
         "total_price": 11.0,
-        "image": "/baked_potato.jpg",
+        "image": "https://smokinandgrillinwitab.com/wp-content/uploads/2023/12/iStock-1457726309.jpg",
         "serving_size": 1,
         "ingredients": [
           { "ingredient": "Russett Potato", "price": 1.0, "quantity": 1.0, "measurement": "lb" },
@@ -34,7 +34,7 @@
       "attributes": {
         "recipe_name": "Tuna Sandwich",
         "total_price": 4.5,
-        "image": "/tuna_sandwich.png",
+        "image": "https://thehealthfulideas.com/wp-content/uploads/2022/05/Tuna-Cucumber-Sandwich-SQUARE.jpg",
         "serving_size": 1,
         "ingredients": [
           { "ingredient": "Tuna Can", "price": 1.5, "quantity": 1.0, "measurement": "can" },

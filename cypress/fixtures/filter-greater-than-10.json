@@ -6,7 +6,7 @@
       "attributes": {
         "recipe_name": "Baked Potato",
         "total_price": 11.0,
-        "image": "/baked_potato.jpg",
+        "image": "https://smokinandgrillinwitab.com/wp-content/uploads/2023/12/iStock-1457726309.jpg",
         "serving_size": 1,
         "ingredients": [
           { "ingredient": "Russett Potato", "price": 1.0, "quantity": 1.0, "measurement": "lb" },
@@ -44,7 +44,7 @@
       "attributes": {
         "recipe_name": "Hamburger Potato Soup",
         "total_price": 19.0,
-        "image": "/hamburger_potato_soup.jpg",
+        "image": "https://www.allrecipes.com/thmb/4smgjS2sONVA6r46frYB7pOzin8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8173541-0919576e23364344a9ab1c75c4487441.jpg",
         "serving_size": 6,
         "ingredients": [
           { "ingredient": "Russett Potato", "price": 1.0, "quantity": 3.0, "measurement": "lb" },
@@ -80,7 +80,7 @@
       "attributes": {
         "recipe_name": "Baked Chicken",
         "total_price": 15.0,
-        "image": "/baked_chicken.png",
+        "image": "https://www.wholesomeyum.com/wp-content/uploads/2020/09/wholesomeyum-Baked-Chicken-Breast-8.jpg",
         "serving_size": 2,
         "ingredients": [
           { "ingredient": "Chicken Breast", "price": 6.0, "quantity": 2.0, "measurement": "pieces" },
@@ -109,7 +109,7 @@
       "attributes": {
         "recipe_name": "Spaghetti Carbonara",
         "total_price": 16.0,
-        "image": "/spaghetti_carbonara.png",
+        "image":  "https://static01.nyt.com/images/2021/02/14/dining/carbonara-horizontal/carbonara-horizontal-threeByTwoMediumAt2X-v2.jpg",
         "serving_size": 4,
         "ingredients": [
           { "ingredient": "Spaghetti", "price": 2.0, "quantity": 8.0, "measurement": "ounces" },
@@ -138,7 +138,7 @@
       "attributes": {
         "recipe_name": "Beef Stew",
         "total_price": 25.0,
-        "image": "/beef_stew.png",
+        "image": "https://sugarspunrun.com/wp-content/uploads/2022/12/Beef-Stew-recipe-1-of-1.jpg",
         "serving_size": 6,
         "ingredients": [
           { "ingredient": "Beef Chuck", "price": 10.0, "quantity": 2.0, "measurement": "lb" },

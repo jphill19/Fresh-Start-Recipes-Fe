@@ -6,7 +6,7 @@
       "attributes": {
         "recipe_name": "Baked Potato",
         "total_price": 11.0,
-        "image": "/baked_potato.jpg",
+        "image": "https://smokinandgrillinwitab.com/wp-content/uploads/2023/12/iStock-1457726309.jpg",
         "serving_size": 1,
         "ingredients": [
           { "ingredient": "Russett Potato", "price": 1.0, "quantity": 1.0, "measurement": "lb" },

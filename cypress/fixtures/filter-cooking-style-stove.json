@@ -6,7 +6,7 @@
       "attributes": {
         "recipe_name": "Pancakes",
         "total_price": 5.5,
-        "image": "/pancakes.png",
+        "image": "https://www.tastesoflizzyt.com/wp-content/uploads/2023/12/sourdough-pancakes-23.jpg",
         "serving_size": 4,
         "ingredients": [
           { "ingredient": "Flour", "price": 1.0, "quantity": 2.0, "measurement": "cups" },
@@ -31,7 +31,7 @@
       "attributes": {
         "recipe_name": "Spaghetti Carbonara",
         "total_price": 16.0,
-        "image": "/spaghetti_carbonara.png",
+        "image": "https://static01.nyt.com/images/2021/02/14/dining/carbonara-horizontal/carbonara-horizontal-threeByTwoMediumAt2X-v2.jpg",
         "serving_size": 4,
         "ingredients": [
           { "ingredient": "Spaghetti", "price": 2.0, "quantity": 8.0, "measurement": "ounces" }
@@ -55,7 +55,7 @@
       "attributes": {
         "recipe_name": "Beef Stew",
         "total_price": 25.0,
-        "image": "/beef_stew.png",
+        "image": "https://sugarspunrun.com/wp-content/uploads/2022/12/Beef-Stew-recipe-1-of-1.jpg",
         "serving_size": 6,
         "ingredients": [
           { "ingredient": "Beef Chuck", "price": 10.0, "quantity": 2.0, "measurement": "lb" },

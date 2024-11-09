@@ -4,11 +4,10 @@ describe('Home Page', () => {
       statusCode: 200,
       fixture: 'recipe-data'
     }).as('recipe-data')
-    
     cy.visit('http://localhost:3001/')
     cy.wait('@recipe-data')
   })
-  
+
   it('DISPLAYS all elements on the home page', () => {
     cy.get('.header-section').should('exist')
       .get('.location-icon').should('exist')
@@ -18,6 +17,7 @@ describe('Home Page', () => {
       .get('.search-icon').should('exist')
       .get('.search-icon').should('be.visible')
       .get('.search-container').should('exist')
+      .get('.search-container').should('not.be', 'visible')
       .get('.filter-bar-container').should('exist')
       .get('.filter-bar-container').should('be.visible')
       .get('.filter-bar-container > :nth-child(1)').should('contain', 'Ingredient')
@@ -38,6 +38,7 @@ describe('Home Page', () => {
       .get('.recipes-container > :nth-child(1) > .recipe-card-footer').should('exist')
       .get('.recipes-container > :nth-child(1) > .recipe-card-footer > .serving-size').should('contain', 'Servings: 1')
       .get('.recipes-container > :nth-child(1) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $7.00')
+
       .get('.recipes-container > :nth-child(2) > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
       .get('.recipes-container > :nth-child(2) > .recipe-link > .recipe-image').should('exist')
       .get('.recipes-container > :nth-child(2) > .ingredients-box').children().should('have.length', 4)
@@ -52,18 +53,13 @@ describe('Home Page', () => {
       .get('.recipes-container > :nth-child(2) > .recipe-card-footer').should('exist')
       .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .serving-size').should('contain', 'Servings: 6')
       .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $12.00')
-
-    // I moved some data around in the recipe-data.json, so technically the above test should check the first and last recipe in the recipes-container.
-    // I was trying to test the name of the images, but apparently every image has a name of baked_potato.jpg and I can't figure it out.  So I'm leaving it alone now.
-
   })
 
   it('tests interactions in the header and search sections', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_recipe=hamburger+potato+soup', {
       statusCode: 200,
       fixture: 'search-result'
-    });
-
+    })
     cy.get('.search-icon').click()
       .get('.search-container > form > .search-input').should('exist')
       .get('.search-container > form > .search-input').should('be.visible')
@@ -90,20 +86,67 @@ describe('Home Page', () => {
       .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').contains('View Results')
   })
 
+  it('tests interactions with the ingredient filter option', () => {
+    cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/ingredients?for_ingredient=ground%20beef', {
+      statusCode: 200,
+      fixture: 'ingredient-search'
+    })
+    cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_ingredient=Ground+Beef', {
+      statusCode: 200,
+      fixture: 'search-result'
+    })
+    cy.get('.filter-bar-container > :nth-child(1)').click()
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .search-input').type('ground beef')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > div > .filter-checkbox').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > div > .filter-checkbox').contains('Ground Beef')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > div > .filter-checkbox > #checkbox-1').click()
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').click()
+      .get('.filter-bar-container > :nth-child(1)').should('class', 'highlighted')
+      .get('.results-count').contains('1 results')
+      .get('.recipe-card-wrap > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
+      .get('.recipe-card-wrap > .ingredients-box > :nth-child(2)').should('contain', 'Ground Beef')
+      .get('.recipe-card-wrap > .ingredients-box > :nth-child(2) > .ingredient-price').should('contain', '$6.00')
+      .get('.recipe-card-wrap > .recipe-card-footer > .serving-size').should('contain', 'Servings: 6')
+      .get('.recipe-card-wrap > .recipe-card-footer > .total-cost').should('contain', '$12.00')
+      .get('.filter-results-container > .reset-button').click()
+      .get('.recipes-container > :nth-child(1) > .recipe-link > .recipe-title').should('contain', 'Baked Potato')
+      .get('.recipes-container > :nth-child(2) > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
+  })
+
   it('tests opening and the contents of the cooking style filter option', () => {
     cy.get('.filter-bar-container > :nth-child(2)').click()
-      .get('.filter-bar-container > .modal-backdrop').should('be.visible')
-      .get('.filter-bar-container > .modal-backdrop > .modal-content').should('be.visible')
-      .get('.filter-bar-container > .modal-backdrop > .modal-content').children().should('have.length', 6)
-      .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').should('be.visible')
-      .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').contains('Filter by a preferred cooking style')
-      .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(2)').should('contain', 'None required')
-      .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(3)').should('contain', 'Microwave')
-      .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(4)').should('contain', 'Stove')
-      .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(5)').should('contain', 'Oven')
-      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions').should('be.visible')
-      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .reset').contains('Reset')
-      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').contains('View Results')
+    .get('.filter-bar-container > .modal-backdrop').should('be.visible')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content').should('be.visible')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content').children().should('have.length', 6)
+    .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').should('be.visible')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').contains('Filter by a preferred cooking style')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(2)').should('contain', 'None required')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(3)').should('contain', 'Microwave')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(4)').should('contain', 'Stove')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(5)').should('contain', 'Oven')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions').should('be.visible')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .reset').contains('Reset')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').contains('View Results')
+  })
+
+  it('tests interactions with the cooking style filter option', () => {
+    cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_style=2', {
+      statusCode: 200,
+      fixture: 'search-result'
+    })
+    cy.get('.filter-bar-container > :nth-child(2)').click()
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(4)').click()
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').click()
+      .get('.filter-bar-container > :nth-child(2)').should('class', 'highlighted')
+      .get('.results-count').should('contain', '1 results')
+      .get('.recipe-card-wrap > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
+      .get('.recipe-card-wrap > .ingredients-box > :nth-child(2)').should('contain', 'Ground Beef')
+      .get('.recipe-card-wrap > .ingredients-box > :nth-child(2) > .ingredient-price').should('contain', '$6.00')
+      .get('.recipe-card-wrap > .recipe-card-footer > .serving-size').should('contain', 'Servings: 6')
+      .get('.recipe-card-wrap > .recipe-card-footer > .total-cost').should('contain', '$12.00')
+      .get('.filter-results-container > .reset-button').click()
+      .get('.recipes-container > :nth-child(1) > .recipe-link > .recipe-title').should('contain', 'Baked Potato')
+      .get('.recipes-container > :nth-child(2) > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
   })
 
   it('NAVIGATES to the location component upon clicking the location-icon', () => {
@@ -138,7 +181,7 @@ describe('Home Page', () => {
       .get('.modal-content').should('be.visible')
 
       .get('.modal-content > h2').should('contain', 'Filter by Prices')
-      
+
       .get(':nth-child(2)').should('be.visible')
       .get(':nth-child(2) > input').should('be.visible')
       .get(':nth-child(2)').should('contain', 'Less than $5')
@@ -165,7 +208,7 @@ describe('Home Page', () => {
       .get('.modal-content').should('be.visible')
 
       .get('.modal-content > h2').should('contain', 'Filter by Servings')
-      
+
       .get('.toggle-switch').should('be.visible')
       .get('.toggle-option.active').should('contain', 'Single')
       .get('.toggle-option').should('contain', 'Multiple')
@@ -174,7 +217,7 @@ describe('Home Page', () => {
       .get('.toggle-option.active').should('contain', 'Multiple')
       .get('.toggle-option.active').should('contain', 'Multiple').click()
       .get('.reset').should('be.visible')
-      .get('.view-results').should('be.visible')    
+      .get('.view-results').should('be.visible')
   })
 
   it('DISPLAYS the contents of the servings filter option', () => {
@@ -190,5 +233,39 @@ describe('Home Page', () => {
       .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions').should('be.visible')
       .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .reset').contains('Reset')
       .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').contains('View Results')
+  })
+
+  it('tests the calculation functionality for the recipe cards', () => {
+    cy.get('.recipes-container > :nth-child(1)').should('be.visible')
+      .get('.recipes-container > :nth-child(1) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $7.00')
+      .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(1) > .ingredient-button').click()
+      .get('.recipes-container > :nth-child(1) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $6.00')
+      .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(2) > .ingredient-button').click()
+      .get('.recipes-container > :nth-child(1) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $4.00')
+      .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(3) > .ingredient-button').click()
+      .get('.recipes-container > :nth-child(1) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $0.00')
+
+      .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $7.00')
+      .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(2) > .ingredient-button').click()
+      .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $1.00')
+      .get('.recipes-container > :nth-child(2) > .ingredients-box > :nth-child(3) > .ingredient-button').click()
+      .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $0.00')
+  })
+
+  it('tests when the user searches for a recipe that doesn\'t exist', () => {
+    cy.get('.header-section').should('exist')
+      .get('.header-section > .nav-bar > .right-section > .search-button').click()
+      .get('.header-section > .search-container > form > .search-input').type('This is not a recipe{enter}')
+      .get('.filter-results-container > .results-count').should('contain', '0 results')
+      .get('.filter-results-container > .reset-button').should('contain', 'Reset')
+      .get('.recipes-container > p').should('contain', 'No recipes available.')
+  })
+
+  it('tests when no data is delivered to the home page', () => {
+    cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?', {
+      statuCode: 200,
+      fixture: 'no-data'
+    })
+    cy.get('.header-section').should('be.visible')
   })
 })

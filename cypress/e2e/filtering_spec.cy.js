@@ -8,6 +8,8 @@ describe('Filtering Functionality', () => {
     cy.visit('http://localhost:3001/');
     cy.wait('@recipe-data');
   });
+
+  // Please remove "" from the "it" block to run the test when cypress is active.
   
   it('FILTERS recipes Less than $5', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_price=0', {

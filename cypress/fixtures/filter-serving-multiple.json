@@ -6,7 +6,7 @@
       "attributes": {
         "recipe_name": "Hamburger Potato Soup",
         "total_price": 19.0,
-        "image": "/hamburger_potato_soup.jpg",
+        "image": "https://www.allrecipes.com/thmb/4smgjS2sONVA6r46frYB7pOzin8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8173541-0919576e23364344a9ab1c75c4487441.jpg",
         "serving_size": 6,
         "ingredients": [
           { "ingredient": "Russett Potato", "price": 1.0, "quantity": 3.0, "measurement": "lb" },
@@ -34,7 +34,7 @@
       "attributes": {
         "recipe_name": "Vegetable Stir Fry",
         "total_price": 5.5,
-        "image": "/stir_fry.png",
+        "image": "https://www.lecremedelacrumb.com/wp-content/uploads/2022/01/vegetable-stir-fry-10sm-7.jpg",
         "serving_size": 2,
         "ingredients": [
           { "ingredient": "Broccoli", "price": 1.0, "quantity": 1.0, "measurement": "cup" },
@@ -59,7 +59,7 @@
       "attributes": {
         "recipe_name": "Pancakes",
         "total_price": 5.5,
-        "image": "/pancakes.png",
+        "image": "https://www.tastesoflizzyt.com/wp-content/uploads/2023/12/sourdough-pancakes-23.jpg",
         "serving_size": 4,
         "ingredients": [
           { "ingredient": "Flour", "price": 1.0, "quantity": 2.0, "measurement": "cups" },
@@ -84,7 +84,7 @@
       "attributes": {
         "recipe_name": "Baked Chicken",
         "total_price": 15.0,
-        "image": "/baked_chicken.png",
+        "image":"https://www.wholesomeyum.com/wp-content/uploads/2020/09/wholesomeyum-Baked-Chicken-Breast-8.jpg",
         "serving_size": 2,
         "ingredients": [
           { "ingredient": "Chicken Breast", "price": 6.0, "quantity": 2.0, "measurement": "pieces" }
@@ -108,7 +108,7 @@
       "attributes": {
         "recipe_name": "Spaghetti Carbonara",
         "total_price": 16.0,
-        "image": "/spaghetti_carbonara.png",
+        "image": "https://static01.nyt.com/images/2021/02/14/dining/carbonara-horizontal/carbonara-horizontal-threeByTwoMediumAt2X-v2.jpg",
         "serving_size": 4,
         "ingredients": [
           { "ingredient": "Spaghetti", "price": 2.0, "quantity": 8.0, "measurement": "ounces" }
@@ -132,7 +132,7 @@
       "attributes": {
         "recipe_name": "Caesar Salad",
         "total_price": 5.0,
-        "image": "/caesar_salad.png",
+        "image": "https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_4:3/k%2FPhoto%2FRecipes%2F2024-07-caesar-salad%2Fcaesar-salad-064",
         "serving_size": 2,
         "ingredients": [
           { "ingredient": "Lettuce", "price": 2.0, "quantity": 1.0, "measurement": "head" }
@@ -155,7 +155,7 @@
       "attributes": {
         "recipe_name": "Beef Stew",
         "total_price": 25.0,
-        "image": "/beef_stew.png",
+        "image": "https://sugarspunrun.com/wp-content/uploads/2022/12/Beef-Stew-recipe-1-of-1.jpg",
         "serving_size": 6,
         "ingredients": [
           { "ingredient": "Beef Chuck", "price": 10.0, "quantity": 2.0, "measurement": "lb" },
@@ -181,7 +181,7 @@
       "attributes": {
         "recipe_name": "Cup of Dirt",
         "total_price": 3.0,
-        "image": "/cup_of_dirt.png",
+        "image": "https://i0.wp.com/creativeconnectionsforkids.com/wp-content/uploads/2011/02/grass-buddy-048-350x330.jpg?resize=350%2C330",
         "serving_size": 3,
         "ingredients": [
           { "ingredient": "Dirt", "price": 1.0, "quantity": 3.0, "measurement": "lb" }
