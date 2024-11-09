@@ -7,7 +7,7 @@ describe('Recipe Page', () => {
     cy.visit('http://localhost:3001/recipe/1')
   })
 
-  it.skip('Checks the page content on load for a recipe with a single set of cooking instructions', () => {
+  it('Checks the page content on load for a recipe with a single set of cooking instructions', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes/2', {
       statusCode: 200,
       fixture: 'recipe-page-data'
