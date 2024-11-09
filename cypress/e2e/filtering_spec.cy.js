@@ -9,9 +9,9 @@ describe('Filtering Functionality', () => {
     cy.wait('@recipe-data');
   });
 
-  // Please remove ".skip" from the "it" block to run the test when cypress is active.
+  // Please remove "" from the "it" block to run the test when cypress is active.
   
-  it.skip('FILTERS recipes Less than $5', () => {
+  it('FILTERS recipes Less than $5', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_price=0', {
       statusCode: 200,
       fixture: 'filter-less-than-5'
@@ -28,7 +28,7 @@ describe('Filtering Functionality', () => {
       .url().should('eq', 'http://localhost:3001/?by_price=0')
   });
 
-  it.skip('FILTERS recipes Less than $10', () => {
+  it('FILTERS recipes Less than $10', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_price=2', {
       statusCode: 200,
       fixture: 'filter-less-than-10'
@@ -45,7 +45,7 @@ describe('Filtering Functionality', () => {
       .url().should('eq', 'http://localhost:3001/?by_price=2');
   });
 
-  it.skip('FILTERS recipes Greater than $10', () => {      
+  it('FILTERS recipes Greater than $10', () => {      
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_price=3', {
       statusCode: 200,
       fixture: 'filter-greater-than-10'
@@ -62,7 +62,7 @@ describe('Filtering Functionality', () => {
       .url().should('eq', 'http://localhost:3001/?by_price=3');
   });
 
-  it.skip('RESETS the selection & closes modal for Less than $5', () => {
+  it('RESETS the selection & closes modal for Less than $5', () => {
     cy.get(':nth-child(4) > .dropdown-arrow').click()
       .get(':nth-child(2) > input').click()
       .get('.reset').click()
@@ -71,7 +71,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('RESETS the selection & closes modal for Less than $10', () => {
+  it('RESETS the selection & closes modal for Less than $10', () => {
     cy.get(':nth-child(4) > .dropdown-arrow').click()
       .get(':nth-child(3) > input').click()
       .get('.reset').click()
@@ -80,7 +80,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('RESETS the selection & closes modal for Greater than $10', () => {
+  it('RESETS the selection & closes modal for Greater than $10', () => {
     cy.get(':nth-child(4) > .dropdown-arrow').click()
       .get(':nth-child(4) > input').click()
       .get('.reset').click()
@@ -89,7 +89,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('CLEARS the Price Filter - Less Than $5', () => {
+  it('CLEARS the Price Filter - Less Than $5', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_price=0', {
       statusCode: 200,
       fixture: 'filter-less-than-5'
@@ -103,7 +103,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('CLEARS the Price Filter - Less Than $10', () => {
+  it('CLEARS the Price Filter - Less Than $10', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_price=2', {
       statusCode: 200,
       fixture: 'filter-less-than-5'
@@ -117,7 +117,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('CLEARS the Price Filter - Greater Than $10', () => {
+  it('CLEARS the Price Filter - Greater Than $10', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_price=3', {
       statusCode: 200,
       fixture: 'filter-less-than-5'
@@ -131,7 +131,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('FILTERS recipes - MULTIPLE serving size', () => {
+  it('FILTERS recipes - MULTIPLE serving size', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_serving=Multiple', {
       statusCode: 200,
       fixture: 'filter-serving-multiple'
@@ -144,7 +144,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 8);
   });
 
-  it.skip('FILTERS recipes - SINGLE serving size', () => {
+  it('FILTERS recipes - SINGLE serving size', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_serving=Single', {
       statusCode: 200,
       fixture: 'filter-serving-single'
@@ -156,7 +156,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 2);
   });
 
-  it.skip('RESETS the selection & closes modal - SINGLE', () => {
+  it('RESETS the selection & closes modal - SINGLE', () => {
     cy.get(':nth-child(3) > .dropdown-arrow').click()
       .get('.reset').click()
       .get('.modal-content').should('not.exist')
@@ -164,7 +164,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('RESETS the selection & closes modal - MULTIPLE', () => {
+  it('RESETS the selection & closes modal - MULTIPLE', () => {
     cy.get(':nth-child(3) > .dropdown-arrow').click()
       .get('.toggle-option.active').should('contain', 'Single').click()
       .get('.reset').click()
@@ -173,7 +173,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('CLEARS the Serving Size Filter - SINGLE', () => {
+  it('CLEARS the Serving Size Filter - SINGLE', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_serving=Single', {
       statusCode: 200,
       fixture: 'filter-serving-single'
@@ -186,7 +186,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('CLEARS the Serving Size Filter - MULTIPLE', () => {
+  it('CLEARS the Serving Size Filter - MULTIPLE', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_serving=Multiple', {
       statusCode: 200,
       fixture: 'filter-serving-multiple'
@@ -200,7 +200,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('FILTERS recipes by cooking style - NONE REQUIRED', () => {
+  it('FILTERS recipes by cooking style - NONE REQUIRED', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_style=0', {
       statusCode: 200,
       fixture: 'filter-cooking-style-none'
@@ -218,7 +218,7 @@ describe('Filtering Functionality', () => {
       .url().should('eq', 'http://localhost:3001/?by_style=0');
   })
 
-  it.skip('FILTERS recipes by cooking style - MICROWAVE', () => {
+  it('FILTERS recipes by cooking style - MICROWAVE', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_style=1', {
       statusCode: 200,
       fixture: 'filter-cooking-style-microwave'
@@ -236,7 +236,7 @@ describe('Filtering Functionality', () => {
       .url().should('eq', 'http://localhost:3001/?by_style=1');
   })
 
-  it.skip('FILTERS recipes by cooking style - STOVETOP', () => {
+  it('FILTERS recipes by cooking style - STOVETOP', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_style=2', {
       statusCode: 200,
       fixture: 'filter-cooking-style-stove'
@@ -254,7 +254,7 @@ describe('Filtering Functionality', () => {
       .url().should('eq', 'http://localhost:3001/?by_style=2');
   })
 
-  it.skip('FILTERS recipes by cooking style - OVEN', () => {
+  it('FILTERS recipes by cooking style - OVEN', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_style=3', {
       statusCode: 200,
       fixture: 'filter-cooking-style-oven'
@@ -272,7 +272,7 @@ describe('Filtering Functionality', () => {
       .url().should('eq', 'http://localhost:3001/?by_style=3');
   })
 
-  it.skip('CLEARS cooking style selection - NONE REQUIRED', () => {
+  it('CLEARS cooking style selection - NONE REQUIRED', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_style=0', {
       statusCode: 200,
       fixture: 'filter-cooking-style-none'
@@ -286,7 +286,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('CLEARS cooking style selection - MICROWAVE', () => {
+  it('CLEARS cooking style selection - MICROWAVE', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_style=1', {
       statusCode: 200,
       fixture: 'filter-cooking-style-microwave'
@@ -300,7 +300,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('CLEARS cooking style selection - STOVETOP', () => {
+  it('CLEARS cooking style selection - STOVETOP', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_style=2', {
       statusCode: 200,
       fixture: 'filter-cooking-style-stove'
@@ -314,7 +314,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('CLEARS cooking style selection - OVEN', () => {
+  it('CLEARS cooking style selection - OVEN', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_style=3', {
       statusCode: 200,
       fixture: 'filter-cooking-style-oven'
@@ -328,7 +328,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('RESETS the cooking style selection & closes modal - NONE REQUIRED', () => {
+  it('RESETS the cooking style selection & closes modal - NONE REQUIRED', () => {
     cy.get(':nth-child(2) > .dropdown-arrow').click()
       .get(':nth-child(2) > input').click()
       .get('.reset').click()
@@ -337,7 +337,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('RESETS the cooking style selection & closes modal - MICROWAVE', () => {
+  it('RESETS the cooking style selection & closes modal - MICROWAVE', () => {
     cy.get(':nth-child(2) > .dropdown-arrow').click()
       .get(':nth-child(3) > input').click()
       .get('.reset').click()
@@ -346,7 +346,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('RESETS the cooking style selection & closes modal - STOVETOP', () => {
+  it('RESETS the cooking style selection & closes modal - STOVETOP', () => {
     cy.get(':nth-child(2) > .dropdown-arrow').click()
       .get(':nth-child(4) > input').click()
       .get('.reset').click()
@@ -355,7 +355,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('RESETS the cooking style selection & closes modal - OVEN', () => {
+  it('RESETS the cooking style selection & closes modal - OVEN', () => {
     cy.get(':nth-child(2) > .dropdown-arrow').click()
       .get(':nth-child(5) > input').click()
       .get('.reset').click()
@@ -364,7 +364,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it.skip('tests interactions with the ingredient filter option', () => {
+  it('tests interactions with the ingredient filter option', () => {
   cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/ingredients?for_ingredient=ground%20beef', {
     statusCode: 200,
     fixture: 'ingredient-search'
@@ -393,7 +393,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container > :nth-child(2) > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
   })
 
-  it.skip('tests all filters at once', () => {
+  it('tests all filters at once', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/ingredients?for_ingredient=ground%20beef', {
       statusCode: 200,
       fixture: 'ingredient-search'
@@ -442,7 +442,7 @@ describe('Filtering Functionality', () => {
       .url().should('eq', 'http://localhost:3001/?by_ingredient=Ground+Beef&by_style=0&by_serving=Multiple&by_price=0')
     })
 
-  it.skip('RESETS all filters with button displaying after search', () => {
+  it('RESETS all filters with button displaying after search', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/ingredients?for_ingredient=ground%20beef', {
       statusCode: 200,
       fixture: 'ingredient-search'
@@ -492,7 +492,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10)
     })
 
-  it.skip('DISPLAYS results found text after filtering', () => {
+  it('DISPLAYS results found text after filtering', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_price=0', {
       statusCode: 200,
       fixture: 'filter-less-than-5'
@@ -510,7 +510,7 @@ describe('Filtering Functionality', () => {
   })
 
 
-  it.skip('CLEARS the Price Filter - Less Than $5', () => {
+  it('CLEARS the Price Filter - Less Than $5', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_price=0', {
       statusCode: 200,
       fixture: 'filter-less-than-5'
