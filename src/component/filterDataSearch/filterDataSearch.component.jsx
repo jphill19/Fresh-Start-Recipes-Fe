@@ -23,7 +23,6 @@ function FilterDataSearch({ name, searchValueSetter }) {
       if (debouncedTerm) {
         try {
           const data = await ingredientFilter(debouncedTerm);
-          console.log(data.data, '<-- CHECK HERE')
           setResults(data.data);
         } catch (error) {
           console.error('Error fetching data:', error);
@@ -62,7 +61,6 @@ function FilterDataSearch({ name, searchValueSetter }) {
         {results.length > 0 ? (
           results.map((item) => (
             <div key={item.id} className="filter-checkbox">
-              {console.log(item.attributes.recipe_name, '<-- CHECK HERE 2')}
               <input
                 type="checkbox"
                 id={`checkbox-${item.id}`}

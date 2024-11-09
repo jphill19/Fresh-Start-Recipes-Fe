@@ -11,7 +11,6 @@ export function RecipeCard ({ recipe , excludedIngredients, onIngredientClick, r
   }, 0);
 
     const renderIngredientRow = (ingredient, index) => {
-      // {console.log(ingredient, '<-- CHECK DATA IN RECIPE CARD HERE')}
       const isExcluded = excludedIngredients[ingredient.ingredient];
       return (
         <div className="ingredient-row" key={index}>

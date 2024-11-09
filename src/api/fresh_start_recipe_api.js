@@ -9,7 +9,6 @@ export async function recipeFetches(filter) {
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.statusText}`);
     }
-    // await console.log(response.json(), '<-- CHECK RESPONSE JSON IN RECIPE FETCHES')
     return await response.json();
   } catch (error) {
     console.error('Fetch error:', error);
@@ -68,8 +67,6 @@ export async function locationFetch(lat, long) {
       const errorData = await response.json();
       throw new Error(`Fetch error: ${errorData.message} (Status: ${errorData.status})`);
     }
-    
-    console.log(url, '<-- CHECK URL DATA HERE')
     return await response.json();
   } catch (error) {
     console.error("Fetch error:", error);
@@ -83,7 +80,6 @@ export async function recipeDetailsFetches(recipeId, locationId = null) {
 
   if (locationId) {
     url += `?by_location=${locationId}`;
-    // console.log(url, '<-- CHECK URL DATA HERE')
   }
 
 

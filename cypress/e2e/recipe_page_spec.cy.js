@@ -133,4 +133,13 @@ describe('Recipe Page', () => {
     .get('.list-container-open > .list-inner > :nth-child(5) > p').should('contain', 'Step 5: If a fork is easily pushed in, its done, otherwise cook for an additional 2 minutes')
     .get('.app > :nth-child(8) > button').click()
   })
+
+  it.skip('tests error handling when there is no data', () => {
+    cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes/1', {
+      statuCode: 200,
+      fixture: 'no-data'
+    })
+    cy.get('.header-section').should('be.visible')
+    .get('.app > p').should('contain', 'Something went wrong...')
+  })
 })

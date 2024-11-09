@@ -11,7 +11,6 @@ export const StoreLocationProvider = ({ children }) => {
 
   return (
     <StoreLocationContext.Provider value={{ locationData, storeLocation }}>
-      {console.log(locationData, '<-- CHECK LOCATION DATA HERE')}
       {children}
     </StoreLocationContext.Provider>
   );

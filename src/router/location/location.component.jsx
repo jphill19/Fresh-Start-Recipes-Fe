@@ -45,7 +45,6 @@ function Location() {
       const fetchLocations = async () => {
         try {
           const data = await locationFetch(userLocation.latitude, userLocation.longitude);
-          console.log(data, '<-- CHECK FETCH DATA HERE')
           setLocations(data.data); 
         } catch (error) {
           console.error("Failed to fetch locations:", error);
