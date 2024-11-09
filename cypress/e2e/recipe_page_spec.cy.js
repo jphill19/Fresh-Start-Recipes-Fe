@@ -88,6 +88,16 @@ describe('Recipe Page', () => {
   })
 
   it.skip('tests the user interactions on the recipe page', () => {
+    cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes/1?by_location=62000115', {
+      statusCode: 200,
+      fixture: 'location-data'
+    })
+    cy.intercept('GET', 'https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true', {
+      statusCode: 200,
+    })
+    cy.intercept('GET', 'https://api.mapbox.com/styles/v1/mapbox/streets-v11?sdk=js-3.7.0&access_token=pk.eyJ1IjoiY3RiMjAyNCIsImEiOiJjbTM3dGM4ZngwOXhuMmtwdTRoMWRxdzV6In0.m4YJjEFNkMj6H82eYZoyVA', {
+      statusCode: 200,
+    })
     cy.get('.header-section').should('be.visible')
     .get('.ingredients-container > .total-price').should('contain', '$7.00')
     .get('.ingredients-container > :nth-child(3) > .ingredient-button').click()
@@ -96,12 +106,17 @@ describe('Recipe Page', () => {
     .get('.ingredients-container > .total-price').should('contain', '$4.00')
     .get('.ingredients-container > :nth-child(5) > .ingredient-button').click()
     .get('.ingredients-container > .total-price').should('contain', '$0.00')
+    .get('.ingredients-container > .set-location-button').click()
+    .get('.location-container > .store-cards-container > .store-card-wrap > .store-select-button').click()
+    .get('.header-section > .nav-bar > .left-section > .location-wrapper > .location-inline-label').should('contain', 'Union Station')
+    .get('.ingredients-container > .total-price > .total-price-label').should('contain', 'Union Station Total Price')
+    .get('.ingredients-container > .total-price > .total-price-amount').should('contain', '$7.37')
     .get('.app > :nth-child(5) > button').click()
     .get('.list-container-open > .list-inner > :nth-child(1) > p').should('contain', 'Microwave-Safe Baking Dish')
     .get('.list-container-open > .list-inner > :nth-child(2) > p').should('contain', 'Oven-Safe Baking Dish')
     .get('.app > :nth-child(5) > button').click()
     .get('.app > :nth-child(6) > button').click()
-    .get('.list-container-open > .list-inner > :nth-child(1) > p').should('contain', 'Poking holes in the potato allows steam to escape, if you don\'t the potato could explode, especially in the microwave!')
+    .get('.list-container-open > .list-inner > :nth-child(1) > p').should('contain', '- Poking holes in the potato allows steam to escape, if you don\'t the potato could explode, especially in the microwave!')
     .get('.list-container-open > .list-inner > :nth-child(2) > p').should('contain', '- For a crispier outside on the potato; rub some of the oil on the potato itself.')
     .get('.app > :nth-child(6) > button').click()
     .get('.app > :nth-child(7) > button').click()
@@ -119,15 +134,3 @@ describe('Recipe Page', () => {
     .get('.app > :nth-child(8) > button').click()
   })
 })
-
-// http://localhost:3001/ cy.get(':nth-child(3) > .ingredient-button')
-
-// Step 1: Preheat oven to 400 degrees
-
-// Step 2: Wash the dirt off the potato
-
-// Step 3: Poke holes in the potato to allow steam to escape
-
-// Step 4: Place potato on oven safe tray and cook for 45 minutes
-
-// Step 5: If a fork is easily pushed in, its done, otherwise cook for an additional 2 minutes
