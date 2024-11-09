@@ -43,7 +43,6 @@ describe('Filtering Functionality', () => {
       .url().should('eq', 'http://localhost:3001/?by_price=2');
   });
 
-  //  PASSING
   it('FILTERS recipes Greater than $10', () => {      
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_price=3', {
       statusCode: 200,
@@ -61,7 +60,7 @@ describe('Filtering Functionality', () => {
       .url().should('eq', 'http://localhost:3001/?by_price=3');
   });
 
-  it('CLEARS the filter & closes modal for Less than $5', () => {
+  it('CLEARS the selection & closes modal for Less than $5', () => {
     cy.get(':nth-child(4) > .dropdown-arrow').click()
       .get(':nth-child(2) > input').click()
       .get('.reset').click()
@@ -70,7 +69,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it('CLEARS the filter & closes modal for Less than $10', () => {
+  it('CLEARS the selection & closes modal for Less than $10', () => {
     cy.get(':nth-child(4) > .dropdown-arrow').click()
       .get(':nth-child(3) > input').click()
       .get('.reset').click()
@@ -79,7 +78,7 @@ describe('Filtering Functionality', () => {
       .get('.recipes-container').children().should('have.length', 10);
   });
 
-  it('CLEARS the filter & closes modal for Greater than $10', () => {
+  it('CLEARS the selection & closes modal for Greater than $10', () => {
     cy.get(':nth-child(4) > .dropdown-arrow').click()
       .get(':nth-child(4) > input').click()
       .get('.reset').click()

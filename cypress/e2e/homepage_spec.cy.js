@@ -53,10 +53,86 @@ describe('Home Page', () => {
     .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .serving-size').should('contain', 'Servings: 6')
     .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $12.00')
 
+    // I moved some data around in the recipe-data.json, so technically the above test should check the first and last recipe in the recipes-container.
+    // I was trying to test the name of the images, but apparently every image has a name of baked_potato.jpg and I can't figure it out.  So I'm leaving it alone now.
 
-    // ADD TESTS FOR IMAGE SRC
+  })
 
+  it('tests interactions in the header and search sections', () => {
+    cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_recipe=hamburger+potato+soup', {
+      statusCode: 200,
+      fixture: 'search-result'
+    });
 
+    cy.get('.search-icon').click()
+      .get('.search-container > form > .search-input').should('exist')
+      .get('.search-container > form > .search-input').should('be.visible')
+      .get('.search-container > form > .search-input').type('hamburger potato soup{enter}')
+      .get('.results-count').contains('1 results')
+      .get('.recipe-card-wrap > .recipe-link > .recipe-title').contains('Hamburger Potato Soup')
+      .get('.recipe-card-wrap > .ingredients-box > :nth-child(2)').contains('Ground Beef')
+      .get('.recipe-card-wrap > .ingredients-box > :nth-child(2) > .ingredient-price').contains('$6.00')
+      .get('.recipe-card-wrap > .recipe-card-footer > .serving-size').contains('Servings: 6')
+      .get('.recipe-card-wrap > .recipe-card-footer > .total-cost').contains('$12.00')
+  })
+
+  it('tests opening and the contents of the ingredient filter option', () => {
+    cy.get('.filter-bar-container > :nth-child(1)').click()
+      .get('.filter-bar-container > .modal-backdrop').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').contains('Filter by an ingredient')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > p').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > p').contains('Input a name of an ingredient then select from checkbox')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .search-input').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .reset').contains('Reset')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').contains('View Results')
+  })
+  
+  it('tests interactions with the ingredient filter option', () => {
+    cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/ingredients?for_ingredient=ground%20beef', {
+      statusCode: 200,
+      fixture: 'ingredient-search'
+    });
+
+    cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_ingredient=Ground+Beef', {
+      statusCode: 200,
+      fixture: 'search-result'
+    });
+
+    cy.get('.filter-bar-container > :nth-child(1)').click()
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .search-input').type('ground beef')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > div > .filter-checkbox').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > div > .filter-checkbox').contains('Ground Beef')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > div > .filter-checkbox > #checkbox-1').click()
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').click()
+      .get('.filter-bar-container > :nth-child(1)').should('class', 'highlighted')
+      .get('.results-count').contains('1 results')
+      .get('.recipe-card-wrap > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
+      .get('.recipe-card-wrap > .ingredients-box > :nth-child(2)').should('contain', 'Ground Beef')
+      .get('.recipe-card-wrap > .ingredients-box > :nth-child(2) > .ingredient-price').should('contain', '$6.00')
+      .get('.recipe-card-wrap > .recipe-card-footer > .serving-size').should('contain', 'Servings: 6')
+      .get('.recipe-card-wrap > .recipe-card-footer > .total-cost').should('contain', '$12.00')
+      .get('.filter-results-container > .reset-button').click()
+      .get('.recipes-container > :nth-child(1) > .recipe-link > .recipe-title').should('contain', 'Baked Potato')
+      .get('.recipes-container > :nth-child(2) > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
+  })
+
+  it('tests opening and the contents of the cooking style filter option', () => {
+    cy.get('.filter-bar-container > :nth-child(2)').click()
+      .get('.filter-bar-container > .modal-backdrop').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content').children().should('have.length', 6)
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').contains('Filter by a preferred cooking style')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(2)').should('contain', 'None required')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(3)').should('contain', 'Microwave')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(4)').should('contain', 'Stove')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > :nth-child(5)').should('contain', 'Oven')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions').should('be.visible')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .reset').contains('Reset')
+      .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').contains('View Results')
   })
 
   // HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELP!
@@ -71,77 +147,71 @@ describe('Home Page', () => {
   //   cy.url().should('eq', 'http://localhost:3001/location');
   // })
 
-  // it.skip('tests interactions on the home page', () => {
-  //   cy.get('.search-icon').click()
-  //   .get('.search-container > form > .search-input').should('exist')
-  //   .get('.search-container > form > .search-input').should('be.visible')
-  //   // .get('.filter-bar-container > :nth-child(1)').click()
-  // })
+  it('tests interactions on the home page', () => {
+    cy.get('.search-icon').click()
+    .get('.search-container > form > .search-input').should('exist')
+    .get('.search-container > form > .search-input').should('be.visible')
+  })
 
-//////////////////////////////////////////
+  it('DISPLAYS price filter modal upon clicking dropdown', () => {
+    cy.get('.modal-content').should('not.exist')
+    .get('.modal-backdrop').should('not.exist')
+    .get(':nth-child(4) > .dropdown-arrow').click()
+    .get('.modal-backdrop').should('exist')
+    .get('.modal-content').should('be.visible')
 
-  // // PASSING
-  // it('DISPLAYS price filter modal upon clicking dropdown', () => {
-  //   cy.get('.modal-content').should('not.exist')
-  //   .get('.modal-backdrop').should('not.exist')
-  //   .get(':nth-child(4) > .dropdown-arrow').click()
-  //   .get('.modal-backdrop').should('exist')
-  //   .get('.modal-content').should('be.visible')
-
-  //   .get('.modal-content > h2').should('contain', 'Filter by Prices')
+    .get('.modal-content > h2').should('contain', 'Filter by Prices')
     
-  //   .get(':nth-child(2)').should('be.visible')
-  //   .get(':nth-child(2) > input').should('be.visible')
-  //   .get(':nth-child(2)').should('contain', 'Less than $5')
+    .get(':nth-child(2)').should('be.visible')
+    .get(':nth-child(2) > input').should('be.visible')
+    .get(':nth-child(2)').should('contain', 'Less than $5')
 
-  //   .get(':nth-child(3)').should('be.visible')
-  //   .get(':nth-child(3) > input').should('be.visible')
-  //   .get(':nth-child(3) > input').should('not.be.checked')
-  //   .get(':nth-child(3)').should('contain', 'Less than $10')
+    .get(':nth-child(3)').should('be.visible')
+    .get(':nth-child(3) > input').should('be.visible')
+    .get(':nth-child(3) > input').should('not.be.checked')
+    .get(':nth-child(3)').should('contain', 'Less than $10')
 
-  //   .get(':nth-child(4)').should('be.visible')
-  //   .get(':nth-child(4) > input').should('be.visible')
-  //   .get(':nth-child(4) > input').should('not.be.checked')
-  //   .get(':nth-child(4)').should('contain', 'Greater than $10')
-  //   .get('.reset').should('be.visible')
-  //   .get('.view-results').should('be.visible')
-  // })
+    .get(':nth-child(4)').should('be.visible')
+    .get(':nth-child(4) > input').should('be.visible')
+    .get(':nth-child(4) > input').should('not.be.checked')
+    .get(':nth-child(4)').should('contain', 'Greater than $10')
+    .get('.reset').should('be.visible')
+    .get('.view-results').should('be.visible')
+  })
 
-  // // PASSING
-  // it('DISPLAYS serving size filter modal upon clicking dropdown', () => {
-  //   cy.get('.modal-content').should('not.exist')
-  //   .get('.modal-backdrop').should('not.exist')
-  //   .get(':nth-child(3) > .dropdown-arrow').click()
+  it('DISPLAYS serving size filter modal upon clicking dropdown', () => {
+    cy.get('.modal-content').should('not.exist')
+    .get('.modal-backdrop').should('not.exist')
+    .get(':nth-child(3) > .dropdown-arrow').click()
 
-  //   .get('.modal-backdrop').should('exist')
-  //   .get('.modal-content').should('be.visible')
+    .get('.modal-backdrop').should('exist')
+    .get('.modal-content').should('be.visible')
 
-  //   .get('.modal-content > h2').should('contain', 'Filter by Servings')
+    .get('.modal-content > h2').should('contain', 'Filter by Servings')
     
-  //   .get('.toggle-switch').should('be.visible')
-  //   .get('.toggle-option.active').should('contain', 'Single')
-  //   .get('.toggle-option').should('contain', 'Multiple')
-  //   .get('.toggle-option.active').should('contain', 'Single').click()
-  //   .get('.toggle-option').should('contain', 'Single')
-  //   .get('.toggle-option.active').should('contain', 'Multiple')
-  //   .get('.toggle-option.active').should('contain', 'Multiple').click()
-  //   .get('.reset').should('be.visible')
-  //   .get('.view-results').should('be.visible')    
-  // })
+    .get('.toggle-switch').should('be.visible')
+    .get('.toggle-option.active').should('contain', 'Single')
+    .get('.toggle-option').should('contain', 'Multiple')
+    .get('.toggle-option.active').should('contain', 'Single').click()
+    .get('.toggle-option').should('contain', 'Single')
+    .get('.toggle-option.active').should('contain', 'Multiple')
+    .get('.toggle-option.active').should('contain', 'Multiple').click()
+    .get('.reset').should('be.visible')
+    .get('.view-results').should('be.visible')    
+  })
 
-  // // PASSING
-  // it('DISPLAYS the contents of the servings filter option', () => {
-  //   cy.get('.filter-bar-container > :nth-child(3)').click()
-  //   .get('.filter-bar-container > .modal-backdrop').should('be.visible')
-  //   .get('.filter-bar-container > .modal-backdrop > .modal-content').should('be.visible')
-  //   .get('.filter-bar-container > .modal-backdrop > .modal-content').children().should('have.length', 3)
-  //   .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').should('be.visible')
-  //   .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').contains('Filter by Servings')
-  //   .get('.filter-bar-container > .modal-backdrop > .modal-content > .toggle-switch').children().should('have.length', 3)
-  //   .get('.filter-bar-container > .modal-backdrop > .modal-content > .toggle-switch > :nth-child(1)').should('class', 'toggle-option active').should('contain', 'Single')
-  //   .get('.filter-bar-container > .modal-backdrop > .modal-content > .toggle-switch > :nth-child(2)').should('class', 'toggle-option').should('contain', 'Multiple')
-  //   .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions').should('be.visible')
-  //   .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .reset').contains('Reset')
-  //   .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').contains('View Results')
-  // })
+  it('DISPLAYS the contents of the servings filter option', () => {
+    cy.get('.filter-bar-container > :nth-child(3)').click()
+    .get('.filter-bar-container > .modal-backdrop').should('be.visible')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content').should('be.visible')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content').children().should('have.length', 3)
+    .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').should('be.visible')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content > h2').contains('Filter by Servings')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content > .toggle-switch').children().should('have.length', 3)
+    .get('.filter-bar-container > .modal-backdrop > .modal-content > .toggle-switch > :nth-child(1)').should('class', 'toggle-option active').should('contain', 'Single')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content > .toggle-switch > :nth-child(2)').should('class', 'toggle-option').should('contain', 'Multiple')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions').should('be.visible')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .reset').contains('Reset')
+    .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').contains('View Results')
+  })
 })
