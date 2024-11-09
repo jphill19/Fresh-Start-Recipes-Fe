@@ -1,0 +1,56 @@
+{
+  "data": [
+    {
+      "id": 3,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Tuna Sandwich",
+        "total_price": 4.5,
+        "image": "https://thehealthfulideas.com/wp-content/uploads/2022/05/Tuna-Cucumber-Sandwich-SQUARE.jpg",
+        "serving_size": 1,
+        "ingredients": [
+          { "ingredient": "Tuna Can", "price": 1.5, "quantity": 1.0, "measurement": "can" },
+          { "ingredient": "Bread", "price": 1.0, "quantity": 2.0, "measurement": "slices" },
+          { "ingredient": "Mayonnaise", "price": 0.5, "quantity": 1.0, "measurement": "tablespoon" }
+        ],
+        "cookwares": ["Knife"],
+        "instructions": [
+          {
+            "cooking_style": 0,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Mix tuna with mayonnaise." },
+              { "instruction_step": 2, "instruction": "Spread mixture on bread and assemble sandwich." }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    },
+    {
+      "id": 10,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Cup of Dirt",
+        "total_price": 3.0,
+        "image": "https://i0.wp.com/creativeconnectionsforkids.com/wp-content/uploads/2011/02/grass-buddy-048-350x330.jpg?resize=350%2C330",
+        "serving_size": 3,
+        "ingredients": [
+          { "ingredient": "Dirt", "price": 1.0, "quantity": 3.0, "measurement": "lb" }
+        ],
+        "cookwares": ["Opposable Thumbs"],
+        "instructions": [
+          {
+            "cooking_style": 0,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Eat the cup of dirt." },
+              { "instruction_step": 2, "instruction": "And LIKE it." }
+            ]
+          }
+        ],
+        "cooking_tips": [
+          { "tip_number": 1, "tip": "For a less 'earthy' flavor, don't eat the dirt." }
+        ]
+      }
+    }
+  ]
+}

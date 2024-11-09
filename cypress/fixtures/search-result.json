@@ -6,7 +6,7 @@
       "attributes": {
         "recipe_name": "Hamburger Potato Soup",
         "total_price": 10.0,
-        "image": "/hamburger_potato_soup_test_pic.jpg",
+        "image": "https://www.allrecipes.com/thmb/4smgjS2sONVA6r46frYB7pOzin8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8173541-0919576e23364344a9ab1c75c4487441.jpg",
         "serving_size": 6,
         "ingredients": [
           {
