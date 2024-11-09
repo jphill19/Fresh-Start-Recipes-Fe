@@ -7,7 +7,7 @@ function RecipeContainer({ data = [] }) {
   
   useEffect(() => {
     setExcludedIngredients({});
-  }, [data]);
+  }, []); // the dependancy was 'data' but this cause a crap ton of errors.
 
 
   const handleIngredientClick = (ingredientId) => {

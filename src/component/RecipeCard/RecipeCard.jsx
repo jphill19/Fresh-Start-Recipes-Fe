@@ -5,18 +5,18 @@ export function RecipeCard ({ recipe , excludedIngredients, onIngredientClick, r
   const { recipe_name, serving_size, ingredients, image, total_price} = recipe;
   
   const updatedTotalPrice = ingredients.reduce((sum, ingredient) => {
-    const isExcluded = excludedIngredients[ingredient.ingredient_id];
+    const isExcluded = excludedIngredients[ingredient.ingredient];
     const price = isExcluded ? 0 : ingredient.price;
     return sum + price;
   }, 0);
 
     const renderIngredientRow = (ingredient, index) => {
-      const isExcluded = excludedIngredients[ingredient.ingredient_id];
+      const isExcluded = excludedIngredients[ingredient.ingredient];
       return (
         <div className="ingredient-row" key={index}>
           <button
             className={`ingredient-button ${isExcluded ? 'disabled' : ''}`}
-            onClick={() => onIngredientClick(ingredient.ingredient_id)}
+            onClick={() => onIngredientClick(ingredient.ingredient)}
           >
             {ingredient.ingredient}
           </button>

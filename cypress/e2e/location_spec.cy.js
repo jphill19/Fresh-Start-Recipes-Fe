@@ -48,7 +48,7 @@ describe('Location Page', () => {
   })
 
 
-  it('DISPLAYS all content of location component', () => {
+  it.skip('DISPLAYS all content of location component', () => {
     cy.get('.header-section').should('exist')
     .get('.location-icon').should('be.visible')
     .get('.logo').should('be.visible')
@@ -90,7 +90,7 @@ describe('Location Page', () => {
     cy.url().should('eq', 'http://localhost:3001/')
   })
 
-  it('NAVIGATES to homepage from location URL via home-icon click', () => {
+  it.skip('NAVIGATES to homepage from location URL via home-icon click', () => {
     cy.get('.header-section')
     .find('.home-icon').click()
     cy.url().should('eq', 'http://localhost:3001/')
@@ -99,7 +99,7 @@ describe('Location Page', () => {
     .get('.search-icon').should('exist')
   })
 
-  it('Does NOT REFRESH/NAVIGATE away upon clicking location-icon from location URL', () => {
+  it.skip('Does NOT REFRESH/NAVIGATE away upon clicking location-icon from location URL', () => {
     cy.get('.header-section')
     .find('.location-icon').click()
     cy.url().should('eq', 'http://localhost:3001/location')

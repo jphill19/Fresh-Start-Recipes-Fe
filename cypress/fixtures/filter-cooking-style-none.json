@@ -10,8 +10,7 @@
         "serving_size": 1,
         "ingredients": [
           { "ingredient": "Tuna Can", "price": 1.5, "quantity": 1.0, "measurement": "can" },
-          { "ingredient": "Bread", "price": 1.0, "quantity": 2.0, "measurement": "slices" },
-          { "ingredient": "Mayonnaise", "price": 0.5, "quantity": 1.0, "measurement": "tablespoon" }
+          { "ingredient": "Bread", "price": 1.0, "quantity": 2.0, "measurement": "slices" }
         ],
         "cookwares": ["Knife"],
         "instructions": [
@@ -19,7 +18,30 @@
             "cooking_style": 0,
             "instructions": [
               { "instruction_step": 1, "instruction": "Mix tuna with mayonnaise." },
-              { "instruction_step": 2, "instruction": "Spread mixture on bread and assemble sandwich." }
+              { "instruction_step": 2, "instruction": "Spread mixture on bread." }
+            ]
+          }
+        ],
+        "cooking_tips": []
+      }
+    },
+    {
+      "id": 8,
+      "type": "recipe",
+      "attributes": {
+        "recipe_name": "Caesar Salad",
+        "total_price": 5.0,
+        "image": "https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_4:3/k%2FPhoto%2FRecipes%2F2024-07-caesar-salad%2Fcaesar-salad-064",
+        "serving_size": 2,
+        "ingredients": [
+          { "ingredient": "Lettuce", "price": 2.0, "quantity": 1.0, "measurement": "head" }
+        ],
+        "cookwares": ["Salad Bowl"],
+        "instructions": [
+          {
+            "cooking_style": 0,
+            "instructions": [
+              { "instruction_step": 1, "instruction": "Mix lettuce and croutons." }
             ]
           }
         ],
