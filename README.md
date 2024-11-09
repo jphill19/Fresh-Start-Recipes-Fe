@@ -17,6 +17,7 @@ Welcome to **Fresh Start Recipes** – a mobile app designed to support those na
 6. [Project Structure 🔍](#project-structure)
 7. [Future Plans 🚀](#future-plans)
 8. [Contributing 🤝](#contributing)
+9. [Authors 👥](#contributors)
 
 
 ## About Fresh Start Recipes
@@ -143,7 +144,14 @@ Fresh Start Recipes is all about community, so contributions are always welcome!
 If you’re a chef or culinary enthusiast with recipe ideas, we invite you to reach out to us! By requesting an API key, you’ll gain access to our recipe submission form on the front end, allowing you to share your creations with the Fresh Start Recipes community.
 
 
+## Authors 👥
 
+Meet the team behind Fresh Start Recipes:
+
+- [John Hill](https://github.com/jphill19)  
+- [Shane Galvin](https://github.com/Sgalvin36)  
+- [Lito Croy](https://github.com/litobot)  
+- [Charles Banks](https://github.com/DRIF7ER)  
 
 
 ---

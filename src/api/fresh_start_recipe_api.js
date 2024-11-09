@@ -35,6 +35,7 @@ export async function ingredientFilter(filter, params='for_ingredient=') {
 
 
 export async function recipePost(fullDetails, apiKey) {
+  console.log('post_submit', fullDetails)
   const endpoint = "https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipe_builders"
   const metaData = {
     method: 'POST',
@@ -50,9 +51,11 @@ export async function recipePost(fullDetails, apiKey) {
     const response = await fetch(endpoint, metaData);
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.statusText}`);
+      console.log('response', response)
     }
     return await response.json();
   } catch (error) {
+    console.log('error', error)
     console.error('Fetch error:', error);
     throw error;
   }
