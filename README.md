@@ -3,9 +3,9 @@
 Welcome to **Fresh Start Recipes** – a mobile app designed to support those navigating hard times or new beginnings. This app offers simple, affordable recipes that use ingredients available at local King Soopers stores, with real-time pricing based on your nearby location. Whether you're new to a government home, unhoused, or just looking to stretch your budget, Fresh Start Recipes is here to make cooking affordable and accessible. 
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-  <img src="home.png" alt="Home Page" width="30%" />
-  <img src="details.png" alt="Details Page" width="30%" />
-  <img src="location.png" alt="Location Page" width="30%" />
+  <img src="./assets/home.png" alt="Home Page" width="30%" />
+  <img src="./assets/details.png" alt="Details Page" width="30%" />
+  <img src="./assets/location.png" alt="Location Page" width="30%" />
 </div>
 
 ## 📑 Table of Contents
