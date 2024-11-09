@@ -8,7 +8,7 @@ describe('Home Page', () => {
     cy.wait('@recipe-data')
   })
 
-  it.skip('DISPLAYS all elements on the home page', () => {
+  it('DISPLAYS all elements on the home page', () => {
     cy.get('.header-section').should('exist')
       .get('.location-icon').should('exist')
       .get('.location-icon').should('be.visible')
@@ -17,6 +17,7 @@ describe('Home Page', () => {
       .get('.search-icon').should('exist')
       .get('.search-icon').should('be.visible')
       .get('.search-container').should('exist')
+      .get('.search-container').should('not.be', 'visible')
       .get('.filter-bar-container').should('exist')
       .get('.filter-bar-container').should('be.visible')
       .get('.filter-bar-container > :nth-child(1)').should('contain', 'Ingredient')
