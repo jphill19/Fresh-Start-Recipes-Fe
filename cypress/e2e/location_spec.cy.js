@@ -53,14 +53,14 @@ describe('Location Page', () => {
     .get('.location-icon').should('be.visible')
     .get('.logo').should('be.visible')
     .get('.home-button').should('be.visible')
-    // Location Container
+
     .get('.location-container').should('exist')
     .get('.location-button').should('contain', 'Use Your Location')
     .get('.location-button').should('be.visible')
-    // .get('.autocomplete-wrapper').should('exist')
+
 
     .get('.mapboxgl-canvas').should('be.visible')
-    // Store Cards Container
+
     .get('.store-cards-container').should('exist')
     .get('.store-card-wrap#62000115')
     .get('.store-title').should('be.visible')
@@ -68,7 +68,7 @@ describe('Location Page', () => {
     .get('.store-chain').should('be.visible')
     .get('.store-chain').should('contain', 'KINGSOOPERS')
     .get('.store-address').should('be.visible')
-    // Will address info require fixture files?
+
     .find('p').eq(0).should('contain', '1950 Chestnut Pl')
     .next().should('contain', 'Denver, CO 80202')
     .get('.store-select-button').should('contain', 'Select Store')
@@ -233,6 +233,7 @@ describe('Navigations', () => {
 
     cy.get('.store-select-button').click()
     cy.get('.location-inline-label').should('exist').and('contain.text', 'Union Station');
+    cy.url().should('include', '/')
   });
 
   it('From details page to location page and selecting store should navigate back details', () =>{
@@ -273,6 +274,19 @@ describe('Navigations', () => {
       body: '',
     }).as('mapboxEvents');
 
+    cy.intercept(
+      'GET',
+      'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes/2*',
+      {
+        statusCode: 200,
+        fixture: 'recipe-page-data',
+      }
+    ).as('getRecipeData');
+    cy.visit('http://localhost:3001/recipe/2')
+    cy.get('.set-location-button').click()
+    cy.get('.store-select-button').click()
+    cy.get('.location-inline-label').should('exist').and('contain.text', 'Union Station');
+    cy.url().should('eq', 'http://localhost:3001/recipe/2');
   })
 
 })

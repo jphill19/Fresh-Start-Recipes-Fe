@@ -8,7 +8,7 @@ describe('Home Page', () => {
     cy.wait('@recipe-data')
   })
 
-  it.skip('DISPLAYS all elements on the home page', () => {
+  it('DISPLAYS all elements on the home page', () => {
     cy.get('.header-section').should('exist')
       .get('.location-icon').should('exist')
       .get('.location-icon').should('be.visible')
@@ -55,7 +55,7 @@ describe('Home Page', () => {
       .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $12.00')
   })
 
-  it.skip('tests interactions in the header and search sections', () => {
+  it('tests interactions in the header and search sections', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_recipe=hamburger+potato+soup', {
       statusCode: 200,
       fixture: 'search-result'
@@ -72,7 +72,7 @@ describe('Home Page', () => {
       .get('.recipe-card-wrap > .recipe-card-footer > .total-cost').contains('$12.00')
   })
 
-  it.skip('tests opening and the contents of the ingredient filter option', () => {
+  it('tests opening and the contents of the ingredient filter option', () => {
     cy.get('.filter-bar-container > :nth-child(1)').click()
       .get('.filter-bar-container > .modal-backdrop').should('be.visible')
       .get('.filter-bar-container > .modal-backdrop > .modal-content').should('be.visible')
@@ -86,7 +86,7 @@ describe('Home Page', () => {
       .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').contains('View Results')
   })
 
-  it.skip('tests interactions with the ingredient filter option', () => {
+  it('tests interactions with the ingredient filter option', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/ingredients?for_ingredient=ground%20beef', {
       statusCode: 200,
       fixture: 'ingredient-search'
@@ -113,7 +113,7 @@ describe('Home Page', () => {
       .get('.recipes-container > :nth-child(2) > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
   })
 
-  it.skip('tests opening and the contents of the cooking style filter option', () => {
+  it('tests opening and the contents of the cooking style filter option', () => {
     cy.get('.filter-bar-container > :nth-child(2)').click()
     .get('.filter-bar-container > .modal-backdrop').should('be.visible')
     .get('.filter-bar-container > .modal-backdrop > .modal-content').should('be.visible')
@@ -129,7 +129,7 @@ describe('Home Page', () => {
     .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').contains('View Results')
   })
 
-  it.skip('tests interactions with the cooking style filter option', () => {
+  it('tests interactions with the cooking style filter option', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?by_style=2', {
       statusCode: 200,
       fixture: 'search-result'
@@ -149,7 +149,7 @@ describe('Home Page', () => {
       .get('.recipes-container > :nth-child(2) > .recipe-link > .recipe-title').should('contain', 'Hamburger Potato Soup')
   })
 
-  it.skip('NAVIGATES to the location component upon clicking the location-icon', () => {
+  it('NAVIGATES to the location component upon clicking the location-icon', () => {
     cy.intercept('GET', 'https://api.mapbox.com/**', {
       statusCode: 200,
       body: {},
@@ -167,13 +167,13 @@ describe('Home Page', () => {
     cy.url().should('eq', 'http://localhost:3001/location');
   })
 
-  it.skip('tests interactions on the home page', () => {
+  it('tests interactions on the home page', () => {
     cy.get('.search-icon').click()
       .get('.search-container > form > .search-input').should('exist')
       .get('.search-container > form > .search-input').should('be.visible')
   })
 
-  it.skip('DISPLAYS price filter modal upon clicking dropdown', () => {
+  it('DISPLAYS price filter modal upon clicking dropdown', () => {
     cy.get('.modal-content').should('not.exist')
       .get('.modal-backdrop').should('not.exist')
       .get(':nth-child(4) > .dropdown-arrow').click()
@@ -199,7 +199,7 @@ describe('Home Page', () => {
       .get('.view-results').should('be.visible')
   })
 
-  it.skip('DISPLAYS serving size filter modal upon clicking dropdown', () => {
+  it('DISPLAYS serving size filter modal upon clicking dropdown', () => {
     cy.get('.modal-content').should('not.exist')
       .get('.modal-backdrop').should('not.exist')
       .get(':nth-child(3) > .dropdown-arrow').click()
@@ -220,7 +220,7 @@ describe('Home Page', () => {
       .get('.view-results').should('be.visible')
   })
 
-  it.skip('DISPLAYS the contents of the servings filter option', () => {
+  it('DISPLAYS the contents of the servings filter option', () => {
     cy.get('.filter-bar-container > :nth-child(3)').click()
       .get('.filter-bar-container > .modal-backdrop').should('be.visible')
       .get('.filter-bar-container > .modal-backdrop > .modal-content').should('be.visible')
@@ -235,7 +235,7 @@ describe('Home Page', () => {
       .get('.filter-bar-container > .modal-backdrop > .modal-content > .modal-actions > .view-results').contains('View Results')
   })
 
-  it.skip('tests the calculation functionality for the recipe cards', () => {
+  it('tests the calculation functionality for the recipe cards', () => {
     cy.get('.recipes-container > :nth-child(1)').should('be.visible')
       .get('.recipes-container > :nth-child(1) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $7.00')
       .get('.recipes-container > :nth-child(1) > .ingredients-box > :nth-child(1) > .ingredient-button').click()
@@ -252,7 +252,7 @@ describe('Home Page', () => {
       .get('.recipes-container > :nth-child(2) > .recipe-card-footer > .total-cost').should('contain', 'Total Cost: $0.00')
   })
 
-  it.skip('tests when the user searches for a recipe that doesn\'t exist', () => {
+  it('tests when the user searches for a recipe that doesn\'t exist', () => {
     cy.get('.header-section').should('exist')
       .get('.header-section > .nav-bar > .right-section > .search-button').click()
       .get('.header-section > .search-container > form > .search-input').type('This is not a recipe{enter}')
@@ -261,7 +261,7 @@ describe('Home Page', () => {
       .get('.recipes-container > p').should('contain', 'No recipes available.')
   })
 
-  it.skip('tests when no data is delivered to the home page', () => {
+  it('tests when no data is delivered to the home page', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?', {
       statuCode: 200,
       fixture: 'no-data'

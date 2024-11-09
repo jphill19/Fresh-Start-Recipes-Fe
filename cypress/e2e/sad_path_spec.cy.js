@@ -1,5 +1,5 @@
 describe('Filtering Functionality', () => {
-  it.skip('returns an empty array when the BE has no data', () => {
+  it('returns an empty array when the BE has no data', () => {
     cy.intercept('GET', 'https://whispering-thicket-76959-66145e05673c.herokuapp.com/api/v1/recipes?', {
       statusCode: 200,
       fixture: 'no-data'
