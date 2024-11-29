@@ -2,9 +2,9 @@ import CookingStyleDropdown from '../../component/cookingStyleDropdown/cookingSt
 import RecipeList from '../../component/RecipeList/RecipeList.jsx';
 import IngredientList from '../../component/IngredientList.jsx/IngredientList.jsx';
 import { useParams } from 'react-router-dom';
-import { recipeDetailsFetches } from '../../api/fresh_start_recipe_api.js';
+import { recipeDetailsFetches } from '../../../api/fresh_start_recipe_api.js';
 import { useState, useEffect, Fragment } from 'react';
-import { useStoreLocation } from '../../context/StoreLocationContext';
+import { useStoreLocation } from '../../../context/StoreLocationContext.js';
 import './RecipePage.css'
 import ClipLoader from "react-spinners/ClipLoader";
 import InstructionsList from '../../component/IntstructionsList/InstructionList.jsx';

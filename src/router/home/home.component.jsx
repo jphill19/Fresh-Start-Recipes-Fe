@@ -2,7 +2,7 @@ import FilterBar from "../../component/fitlerBar/filterBar.component";
 import  { Fragment, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import FilterResults from "../../component/filterResults/filterResults.component";
-import {recipeFetches} from '../home/../../api/fresh_start_recipe_api'
+import {recipeFetches} from '../../../api/fresh_start_recipe_api'
 import RecipeContainer from "../../component/RecipeContainer/RecipeContainer";
 import ClipLoader from "react-spinners/ClipLoader";
 

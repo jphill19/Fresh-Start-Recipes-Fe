@@ -1,6 +1,6 @@
 import { useState, useEffect, Fragment} from "react";
 import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
-import {locationFetch} from '../home/../../api/fresh_start_recipe_api'
+import {locationFetch} from '../../../api/fresh_start_recipe_api'
 import Map from "../../component/map/map.component";
 import StoreCard from "../../component/storeCard/storeCard.component";
 import ClipLoader from "react-spinners/ClipLoader";

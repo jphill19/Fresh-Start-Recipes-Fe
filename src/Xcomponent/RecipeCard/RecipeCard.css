@@ -1,0 +1,99 @@
+
+.recipe-card-wrap {
+  background-color: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px auto;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.recipe-title {
+  font-size: 1.5em;
+  color: #333333;
+  margin-bottom: 12px;
+}
+
+.recipe-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 16px;
+}
+.ingredients-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.ingredient-row {
+  display: flex;
+  align-items: center;
+}
+
+.ingredient-item {
+  flex: 1 1 45%;
+}
+
+.ingredient-button {
+  flex-grow: 1;
+  padding: 10px;
+  background-color: #f7f7f7;
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
+  text-align: left;
+  font-size: 0.9em;
+  color: #333333;
+  cursor: pointer;
+  margin-right: 8px;
+  white-space: normal; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.ingredient-price {
+  font-size: 0.9em;
+  color: #555555;
+  min-width: 60px;
+  text-align: right;
+}
+
+.ingredient-button span {
+  float: right;
+  color: #999999;
+  font-size: 0.9em;
+}
+
+.recipe-card-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: #555555;
+  border-top: 1px solid #e2e2e2;
+  padding-top: 12px;
+}
+
+.serving-size,
+.total-cost {
+  margin: 0;
+}
+
+.ingredient-button.disabled {
+  background-color: #d3d3d3;
+  color: #888888;
+  text-decoration: line-through;
+}
+
+.ingredient-price.zeroed {
+  color: #888888;
+  text-decoration: line-through;
+}
