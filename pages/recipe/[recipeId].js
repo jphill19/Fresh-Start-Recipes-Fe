@@ -1,14 +1,15 @@
 import { useState, useEffect, Fragment } from 'react';
 import { useRouter } from 'next/router';
-// import CookingStyleDropdown from '../../components/cookingStyleDropdown/CookingStyleDropdown';
 import CookingStyleDropdown from '../../component/cookingStyleDropdown/cookingStyleDropdown.component'
-import RecipeList from '../../component/RecipeList/RecipeList';
-import IngredientList from '../../components/IngredientList/IngredientList';
-import InstructionsList from '../../components/InstructionsList/InstructionsList';
+import RecipeList from '../../component/RecipeList/RecipeList.component';
+import IngredientList from '../../component/IngredientList/IngredientList.component';
+// import InstructionsList from '../../components/InstructionsList/InstructionsList.component';
+import InstructionsList from '../../component/IntstructionsList/InstructionList.component';
 import { recipeDetailsFetches } from '../../api/fresh_start_recipe_api';
 import { useStoreLocation } from '../../context/StoreLocationContext';
 import ClipLoader from 'react-spinners/ClipLoader';
-import styles from './RecipePage.module.css';
+import styles from '../../styles/recipepage.module.css';
+
 
 function RecipePage() {
   const [data, setData] = useState({});

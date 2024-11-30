@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './cookingStyleDropdown.css';
+import styles from '../RecipeList/RecipeList.module.css'
 
 const cookingStyleNames = {
   0: 'No Cooking Style',
@@ -16,24 +16,26 @@ function CookingStyleDropdown({ cookingStyle, instructions }) {
   };
 
   return (
-    <ul className={isOpen ? "list-container-open" : "list-container"}>
+    <ul className={isOpen ? styles.listContainerOpen : styles.listContainer}>
       <button
         type="button"
-        className="list-title"
+        className={styles.listTitle}
         onClick={toggleDropdown}
       >
         {`${cookingStyleNames[cookingStyle]} Instructions`}
         <img
           src={isOpen ? '/caret-up-fill.svg' : '/caret-down-fill.svg'}
           alt={isOpen ? "Collapse" : "Expand"}
-          className="caret-icon"
+          className={styles.caretIcon}
         />
       </button>
       {isOpen && (
-        <div className="list-inner">
+        <div className={styles.listInner}>
           {instructions.map((step) => (
-            <li key={step.instruction_step} className="individual-item-container">
-              <p><strong>Step {step.instruction_step}:</strong> {step.instruction}</p>
+            <li key={step.instruction_step} className={styles.individualItemContainer}>
+              <p>
+                <strong>Step {step.instruction_step}:</strong> {step.instruction}
+              </p>
             </li>
           ))}
         </div>
