@@ -1,13 +1,12 @@
 import './filterResults.css'
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom'
 
 function FilterResults({ resultsCount }) {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleReset = () => {
-    navigate('/');
-  };
+    navigate('/')
+  }
 
   return (
     <div className="filter-results-container">
@@ -16,7 +15,7 @@ function FilterResults({ resultsCount }) {
         Reset
       </button>
     </div>
-  );
+  )
 }
 
-export default FilterResults;
+export default FilterResults

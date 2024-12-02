@@ -1,26 +1,23 @@
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './searchBox.css'
 
+function SearchBox({ showSearch, toggleSearch }) {
+  const [searchQuery, setSearchQuery] = useState('')
+  const navigate = useNavigate()
 
+  const handleInputChange = event => {
+    setSearchQuery(event.target.value)
+  }
 
-function SearchBox({ showSearch, toggleSearch}) {
-  const [searchQuery, setSearchQuery] = useState('');
-  const navigate = useNavigate();
-
-  const handleInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
-  const handleSearchSubmit = (event) => {
-    event.preventDefault(); 
+  const handleSearchSubmit = event => {
+    event.preventDefault()
     if (searchQuery.trim()) {
-      navigate(`/?by_recipe=${encodeURIComponent(searchQuery)}`);
+      navigate(`/?by_recipe=${encodeURIComponent(searchQuery)}`)
     }
-    toggleSearch();
+    toggleSearch()
     setSearchQuery('')
-  };
-
+  }
 
   return (
     <div className={`search-container ${showSearch ? 'show' : ''}`}>
@@ -29,14 +26,14 @@ function SearchBox({ showSearch, toggleSearch}) {
           type="search"
           placeholder="Search by Recipe Name..."
           value={searchQuery}
-          maxLength="50"              
+          maxLength="50"
           onChange={handleInputChange}
           className="search-input"
           title="Only letters and spaces are allowed"
         />
       </form>
     </div>
-  );
+  )
 }
 
-export default SearchBox;
+export default SearchBox

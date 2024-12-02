@@ -9,19 +9,48 @@
         "image": "https://www.allrecipes.com/thmb/4smgjS2sONVA6r46frYB7pOzin8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8173541-0919576e23364344a9ab1c75c4487441.jpg",
         "serving_size": 6,
         "ingredients": [
-          { "ingredient": "Russett Potato", "price": 1.0, "quantity": 3.0, "measurement": "lb" },
-          { "ingredient": "Ground Beef", "price": 6.0, "quantity": 2.0, "measurement": "lb" },
-          { "ingredient": "Onion", "price": 1.0, "quantity": 1.0, "measurement": "Medium Sized" },
-          { "ingredient": "Olive Oil", "price": 4.0, "quantity": 2.0, "measurement": "tablespoons" }
+          {
+            "ingredient": "Russett Potato",
+            "price": 1.0,
+            "quantity": 3.0,
+            "measurement": "lb"
+          },
+          {
+            "ingredient": "Ground Beef",
+            "price": 6.0,
+            "quantity": 2.0,
+            "measurement": "lb"
+          },
+          {
+            "ingredient": "Onion",
+            "price": 1.0,
+            "quantity": 1.0,
+            "measurement": "Medium Sized"
+          },
+          {
+            "ingredient": "Olive Oil",
+            "price": 4.0,
+            "quantity": 2.0,
+            "measurement": "tablespoons"
+          }
         ],
         "cookwares": ["Medium Soup Pot", "Cooking Spoon"],
         "instructions": [
           {
             "cooking_style": 3,
             "instructions": [
-              { "instruction_step": 1, "instruction": "Wash the dirt off the potato" },
-              { "instruction_step": 2, "instruction": "Cut potatoes into cubes." },
-              { "instruction_step": 3, "instruction": "Boil the potatoes and brown meat." }
+              {
+                "instruction_step": 1,
+                "instruction": "Wash the dirt off the potato"
+              },
+              {
+                "instruction_step": 2,
+                "instruction": "Cut potatoes into cubes."
+              },
+              {
+                "instruction_step": 3,
+                "instruction": "Boil the potatoes and brown meat."
+              }
             ]
           }
         ],
@@ -37,16 +66,32 @@
         "image": "https://www.lecremedelacrumb.com/wp-content/uploads/2022/01/vegetable-stir-fry-10sm-7.jpg",
         "serving_size": 2,
         "ingredients": [
-          { "ingredient": "Broccoli", "price": 1.0, "quantity": 1.0, "measurement": "cup" },
-          { "ingredient": "Carrot", "price": 0.5, "quantity": 1.0, "measurement": "cup" }
+          {
+            "ingredient": "Broccoli",
+            "price": 1.0,
+            "quantity": 1.0,
+            "measurement": "cup"
+          },
+          {
+            "ingredient": "Carrot",
+            "price": 0.5,
+            "quantity": 1.0,
+            "measurement": "cup"
+          }
         ],
         "cookwares": ["Wok", "Spatula"],
         "instructions": [
           {
             "cooking_style": 4,
             "instructions": [
-              { "instruction_step": 1, "instruction": "Heat wok with olive oil." },
-              { "instruction_step": 2, "instruction": "Add vegetables and stir fry for 5-7 minutes." }
+              {
+                "instruction_step": 1,
+                "instruction": "Heat wok with olive oil."
+              },
+              {
+                "instruction_step": 2,
+                "instruction": "Add vegetables and stir fry for 5-7 minutes."
+              }
             ]
           }
         ],
@@ -62,8 +107,18 @@
         "image": "https://www.tastesoflizzyt.com/wp-content/uploads/2023/12/sourdough-pancakes-23.jpg",
         "serving_size": 4,
         "ingredients": [
-          { "ingredient": "Flour", "price": 1.0, "quantity": 2.0, "measurement": "cups" },
-          { "ingredient": "Eggs", "price": 1.5, "quantity": 2.0, "measurement": "pieces" }
+          {
+            "ingredient": "Flour",
+            "price": 1.0,
+            "quantity": 2.0,
+            "measurement": "cups"
+          },
+          {
+            "ingredient": "Eggs",
+            "price": 1.5,
+            "quantity": 2.0,
+            "measurement": "pieces"
+          }
         ],
         "cookwares": ["Mixing Bowl"],
         "instructions": [
@@ -71,7 +126,10 @@
             "cooking_style": 2,
             "instructions": [
               { "instruction_step": 1, "instruction": "Mix all ingredients." },
-              { "instruction_step": 2, "instruction": "Heat pan and pour batter." }
+              {
+                "instruction_step": 2,
+                "instruction": "Heat pan and pour batter."
+              }
             ]
           }
         ],
@@ -84,18 +142,29 @@
       "attributes": {
         "recipe_name": "Baked Chicken",
         "total_price": 15.0,
-        "image":"https://www.wholesomeyum.com/wp-content/uploads/2020/09/wholesomeyum-Baked-Chicken-Breast-8.jpg",
+        "image": "https://www.wholesomeyum.com/wp-content/uploads/2020/09/wholesomeyum-Baked-Chicken-Breast-8.jpg",
         "serving_size": 2,
         "ingredients": [
-          { "ingredient": "Chicken Breast", "price": 6.0, "quantity": 2.0, "measurement": "pieces" }
+          {
+            "ingredient": "Chicken Breast",
+            "price": 6.0,
+            "quantity": 2.0,
+            "measurement": "pieces"
+          }
         ],
         "cookwares": ["Glass Baking Dish"],
         "instructions": [
           {
             "cooking_style": 3,
             "instructions": [
-              { "instruction_step": 1, "instruction": "Preheat oven to 375°F." },
-              { "instruction_step": 2, "instruction": "Bake chicken for 25 minutes." }
+              {
+                "instruction_step": 1,
+                "instruction": "Preheat oven to 375°F."
+              },
+              {
+                "instruction_step": 2,
+                "instruction": "Bake chicken for 25 minutes."
+              }
             ]
           }
         ],
@@ -111,14 +180,22 @@
         "image": "https://static01.nyt.com/images/2021/02/14/dining/carbonara-horizontal/carbonara-horizontal-threeByTwoMediumAt2X-v2.jpg",
         "serving_size": 4,
         "ingredients": [
-          { "ingredient": "Spaghetti", "price": 2.0, "quantity": 8.0, "measurement": "ounces" }
+          {
+            "ingredient": "Spaghetti",
+            "price": 2.0,
+            "quantity": 8.0,
+            "measurement": "ounces"
+          }
         ],
         "cookwares": ["Pot", "Frying Pan"],
         "instructions": [
           {
             "cooking_style": 2,
             "instructions": [
-              { "instruction_step": 1, "instruction": "Cook spaghetti until al dente." },
+              {
+                "instruction_step": 1,
+                "instruction": "Cook spaghetti until al dente."
+              },
               { "instruction_step": 2, "instruction": "Mix with bacon." }
             ]
           }
@@ -135,14 +212,22 @@
         "image": "https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_4:3/k%2FPhoto%2FRecipes%2F2024-07-caesar-salad%2Fcaesar-salad-064",
         "serving_size": 2,
         "ingredients": [
-          { "ingredient": "Lettuce", "price": 2.0, "quantity": 1.0, "measurement": "head" }
+          {
+            "ingredient": "Lettuce",
+            "price": 2.0,
+            "quantity": 1.0,
+            "measurement": "head"
+          }
         ],
         "cookwares": ["Salad Bowl"],
         "instructions": [
           {
             "cooking_style": 0,
             "instructions": [
-              { "instruction_step": 1, "instruction": "Mix lettuce and croutons." }
+              {
+                "instruction_step": 1,
+                "instruction": "Mix lettuce and croutons."
+              }
             ]
           }
         ],
@@ -158,17 +243,38 @@
         "image": "https://sugarspunrun.com/wp-content/uploads/2022/12/Beef-Stew-recipe-1-of-1.jpg",
         "serving_size": 6,
         "ingredients": [
-          { "ingredient": "Beef Chuck", "price": 10.0, "quantity": 2.0, "measurement": "lb" },
-          { "ingredient": "Potatoes", "price": 3.0, "quantity": 2.0, "measurement": "lb" },
-          { "ingredient": "Carrots", "price": 2.0, "quantity": 1.0, "measurement": "lb" }
+          {
+            "ingredient": "Beef Chuck",
+            "price": 10.0,
+            "quantity": 2.0,
+            "measurement": "lb"
+          },
+          {
+            "ingredient": "Potatoes",
+            "price": 3.0,
+            "quantity": 2.0,
+            "measurement": "lb"
+          },
+          {
+            "ingredient": "Carrots",
+            "price": 2.0,
+            "quantity": 1.0,
+            "measurement": "lb"
+          }
         ],
         "cookwares": ["Pot", "Knife"],
         "instructions": [
           {
             "cooking_style": 2,
             "instructions": [
-              { "instruction_step": 1, "instruction": "Brown beef in Dutch oven." },
-              { "instruction_step": 2, "instruction": "Add vegetables and simmer for 2 hours." }
+              {
+                "instruction_step": 1,
+                "instruction": "Brown beef in Dutch oven."
+              },
+              {
+                "instruction_step": 2,
+                "instruction": "Add vegetables and simmer for 2 hours."
+              }
             ]
           }
         ],
@@ -184,7 +290,12 @@
         "image": "https://i0.wp.com/creativeconnectionsforkids.com/wp-content/uploads/2011/02/grass-buddy-048-350x330.jpg?resize=350%2C330",
         "serving_size": 3,
         "ingredients": [
-          { "ingredient": "Dirt", "price": 1.0, "quantity": 3.0, "measurement": "lb" }
+          {
+            "ingredient": "Dirt",
+            "price": 1.0,
+            "quantity": 3.0,
+            "measurement": "lb"
+          }
         ],
         "cookwares": ["Opposable Thumbs"],
         "instructions": [
@@ -197,7 +308,10 @@
           }
         ],
         "cooking_tips": [
-          { "tip_number": 1, "tip": "For a less 'earthy' flavor, don't eat the dirt." }
+          {
+            "tip_number": 1,
+            "tip": "For a less 'earthy' flavor, don't eat the dirt."
+          }
         ]
       }
     }

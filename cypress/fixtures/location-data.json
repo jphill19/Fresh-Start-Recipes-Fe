@@ -27,10 +27,7 @@
           "measurement": "Tablespoons"
         }
       ],
-      "cookwares": [
-        "Microwave-Safe Baking Dish",
-        "Oven-Safe Baking Dish"
-      ],
+      "cookwares": ["Microwave-Safe Baking Dish", "Oven-Safe Baking Dish"],
       "instructions": [
         {
           "cooking_style": 1,

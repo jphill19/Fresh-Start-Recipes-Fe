@@ -1,23 +1,23 @@
-import { useState } from "react";
+import { useState } from 'react'
 import './RecipeList.css'
 
 function RecipeList({ items, title }) {
-  const [open, setOpen] = useState(false);
-  if (!items || items.length === 0) return null;
+  const [open, setOpen] = useState(false)
+  if (!items || items.length === 0) return null
 
-  const isTipsTitle = title === "Recipe Tips";
+  const isTipsTitle = title === 'Recipe Tips'
 
   return (
-    <ul className={open ? "list-container-open" : "list-container"}>
+    <ul className={open ? 'list-container-open' : 'list-container'}>
       <button
         type="button"
-        className={`list-title ${isTipsTitle ? "tips-title" : ""}`}
+        className={`list-title ${isTipsTitle ? 'tips-title' : ''}`}
         onClick={() => setOpen(!open)}
       >
-        {title} {isTipsTitle && "💡"}
+        {title} {isTipsTitle && '💡'}
         <img
           src={open ? '/caret-up-fill.svg' : '/caret-down-fill.svg'}
-          alt={open ? "Collapse" : "Expand"}
+          alt={open ? 'Collapse' : 'Expand'}
           className="caret-icon"
         />
       </button>
@@ -31,7 +31,7 @@ function RecipeList({ items, title }) {
         </div>
       )}
     </ul>
-  );
+  )
 }
 
-export default RecipeList;
+export default RecipeList

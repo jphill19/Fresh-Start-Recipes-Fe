@@ -1,14 +1,13 @@
 import './filterCheckBoxSearch.css'
-import { Fragment, useState } from 'react';
+import { Fragment, useState } from 'react'
 
+function FilterCheckBoxSearch({ options, name, searchValueSetter }) {
+  const [selectedId, setSelectedId] = useState(null)
 
-function FilterCheckBoxSearch({options, name, searchValueSetter}) {
-  const [selectedId, setSelectedId] = useState(null);
-
-  const handleCheckboxChange = (id) => {
-    setSelectedId(id);
-    searchValueSetter(id); 
-  };
+  const handleCheckboxChange = id => {
+    setSelectedId(id)
+    searchValueSetter(id)
+  }
 
   return (
     <Fragment>
@@ -24,7 +23,7 @@ function FilterCheckBoxSearch({options, name, searchValueSetter}) {
         </label>
       ))}
     </Fragment>
-  );
+  )
 }
 
-export default FilterCheckBoxSearch;
+export default FilterCheckBoxSearch

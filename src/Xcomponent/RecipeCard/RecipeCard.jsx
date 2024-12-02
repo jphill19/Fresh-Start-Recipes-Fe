@@ -1,18 +1,22 @@
-import Link from 'next/link';
-import styles from './RecipeCard.module.css';
+import Link from 'next/link'
+import styles from './RecipeCard.module.css'
 
-export function RecipeCard({ recipe, excludedIngredients, onIngredientClick, recipeId }) {
-  const { recipe_name, serving_size, ingredients, image, total_price } = recipe;
-
+export function RecipeCard({
+  recipe,
+  excludedIngredients,
+  onIngredientClick,
+  recipeId
+}) {
+  const { recipe_name, serving_size, ingredients, image, total_price } = recipe
 
   const updatedTotalPrice = ingredients.reduce((sum, ingredient) => {
-    const isExcluded = excludedIngredients[ingredient.ingredient];
-    const price = isExcluded ? 0 : ingredient.price;
-    return sum + price;
-  }, 0);
+    const isExcluded = excludedIngredients[ingredient.ingredient]
+    const price = isExcluded ? 0 : ingredient.price
+    return sum + price
+  }, 0)
 
   const renderIngredientRow = (ingredient, index) => {
-    const isExcluded = excludedIngredients[ingredient.ingredient];
+    const isExcluded = excludedIngredients[ingredient.ingredient]
     return (
       <div className={styles.ingredientRow} key={index}>
         <button
@@ -21,12 +25,14 @@ export function RecipeCard({ recipe, excludedIngredients, onIngredientClick, rec
         >
           {ingredient.ingredient}
         </button>
-        <span className={`${styles.ingredientPrice} ${isExcluded ? styles.zeroed : ''}`}>
+        <span
+          className={`${styles.ingredientPrice} ${isExcluded ? styles.zeroed : ''}`}
+        >
           ${isExcluded ? '0.00' : ingredient.price.toFixed(2)}
         </span>
       </div>
-    );
-  };
+    )
+  }
 
   return (
     <div
@@ -49,10 +55,12 @@ export function RecipeCard({ recipe, excludedIngredients, onIngredientClick, rec
       </div>
       <div className={styles.recipeCardFooter}>
         <p className={styles.servingSize}>{`Servings: ${serving_size}`}</p>
-        <p className={styles.totalCost}>{`Total Cost: $${updatedTotalPrice.toFixed(2)}`}</p>
+        <p
+          className={styles.totalCost}
+        >{`Total Cost: $${updatedTotalPrice.toFixed(2)}`}</p>
       </div>
     </div>
-  );
+  )
 }
 
-export default RecipeCard;
+export default RecipeCard
