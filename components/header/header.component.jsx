@@ -9,7 +9,7 @@ function Header() {
   const { locationData } = useStoreLocation()
   const router = useRouter()
 
-  const isHomePage = router.pathname === '/'
+  const isHomePage = router.asPath === '/'
 
   const toggleSearch = () => {
     setShowSearch(!showSearch)
@@ -27,57 +27,63 @@ function Header() {
 
   return (
     <Fragment>
-      <header className="bg-white shadow-md relative p-0 rounded-none md:rounded-xl">
-        <nav className="flex items-center justify-between p-4 gap-2 md:gap-0">
+      <header className="bg-white  border-b-2 border-orange-400 p-1 py-2 md:rounded-none">
+        <nav className="flex items-center justify-between px-0 md:px-8">
+          {/* Left Side: Logo */}
           <div className="flex items-center flex-1 justify-start">
+            <Link href="/">
+              <img
+                src="/site-logo.png"
+                alt="Site Logo"
+                className="max-w-[220px] md:max-w-[300px]"
+              />
+            </Link>
+          </div>
+
+          {/* Right Side: Location and Search/Home Button */}
+          <div
+            className={`flex items-center justify-end ${
+              locationData.name ? 'gap-2' : 'gap-6'
+            }`}
+          >
             <Link
               href="/location"
-              className="flex items-center gap-0.5 md:gap-1 cursor-pointer transition-all duration-300 ease hover:scale-110"
+              className="flex items-center gap-1 cursor-pointer transition-transform duration-200 ease-in-out hover:scale-105"
             >
               <img
                 src="/geo-alt-fill.svg"
                 alt="location-icon"
-                className="w-6 h-6 md:w-10 md:h-10"
+                className="w-7 h-7 md:w-12 md:h-12"
               />
               {locationData.name && (
-                <span className="text-xs text-gray-400 max-w-[80px] break-words md:text-sm md:text-gray-600 md:max-w-[100px]">
+                <span className="text-xs text-gray-500 truncate max-w-[60px] md:max-w-[120px]">
                   {locationData.name}
                 </span>
               )}
             </Link>
-          </div>
-          <div className="flex items-center flex-none justify-center">
-            <Link href="/">
-              <img
-                src="/fresh-start-recipes.png"
-                alt="Site Logo"
-                className="max-w-[60px] md:max-w-[150px]"
-              />
-            </Link>
-          </div>
-          <div className="flex items-center flex-1 justify-end">
+
             {isHomePage ? (
               <button
-                className="bg-transparent border-none p-0 m-0 cursor-pointer transition-all duration-300 ease outline-none"
+                className="p-0 m-0 bg-transparent border-none outline-none cursor-pointer flex-shrink-0"
                 onClick={toggleSearch}
               >
                 <img
                   src="/search.svg"
                   alt="search-icon"
-                  className={`drop-shadow w-6 h-6 md:w-10 md:h-10 transition-transform duration-700 ease ${
-                    showSearch ? "animate-rotateOnce" : ""
+                  className={`w-7 h-7 md:w-12 md:h-12 ${
+                    showSearch ? 'animate-rotateOnce' : ''
                   }`}
                 />
               </button>
             ) : (
               <button
-                className="bg-transparent border-none p-0 m-0 cursor-pointer transition-all duration-300 ease outline-none"
+                className="p-0 m-0 bg-transparent border-none outline-none cursor-pointer flex-shrink-0"
                 onClick={handleHomeClick}
               >
                 <img
                   src="/house.svg"
                   alt="home-icon"
-                  className="w-6 h-6 md:w-10 md:h-10"
+                  className="w-7 h-7 md:w-12 md:h-12"
                 />
               </button>
             )}

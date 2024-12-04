@@ -1,25 +1,28 @@
+:root {
+  --main-color: #1cb771; 
+  --secondary-color: #ff8964; 
+}
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
 @layer base {
   body {
-    @apply m-0 font-sans antialiased bg-white;
+    @apply m-0 font-sans antialiased bg-white ;
   }
 
-  code {
-    @apply font-mono;
+  .bg-header-gradient {
+    background: linear-gradient(180deg, #000000, #1a1a1a);
   }
 }
 
 
 .scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
+  display: none;
 }

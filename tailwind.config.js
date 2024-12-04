@@ -1,3 +1,4 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -19,7 +20,15 @@ module.exports = {
       animation: {
         rotateOnce: 'rotateOnce 0.6s ease',
         fadeIn: 'fadeIn 0.3s ease-in-out'
-      }
+      },
+      fontFamily: {
+        sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
+        rounded: ['"M PLUS Rounded 1c"', ...defaultTheme.fontFamily.sans],
+      },
+      colors: {
+        main: 'var(--main-color)',
+        secondary: 'var(--secondary-color)',
+      },
     }
   },
   plugins: []

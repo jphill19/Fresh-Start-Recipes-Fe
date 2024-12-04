@@ -13,16 +13,9 @@ export default function Home({ initialData, initialFilters }) {
   const [activeFilters, setActiveFilters] = useState(initialFilters);
   const [loading, setLoading] = useState(false);
 
-  if (router.isFallback) {
-    return (
-      <div className="flex justify-center items-center h-52">
-        <ClipLoader color="#36d7b7" size={50} />
-      </div>
-    );
-  }
-
+  // Move useEffect before the conditional return
   useEffect(() => {
-    if (!router.isReady) return;
+    if (!router.isReady || router.isFallback) return;
 
     const filters = router.query.filters || [];
     const filtersObj = {};
@@ -37,6 +30,14 @@ export default function Home({ initialData, initialFilters }) {
       fetchFilteredData(filtersObj);
     }
   }, [router.isReady, router.query.filters]);
+
+  if (router.isFallback) {
+    return (
+      <div className="flex justify-center items-center h-52">
+        <ClipLoader color="#36d7b7" size={50} />
+      </div>
+    );
+  }
 
   const fetchFilteredData = async (filtersObj) => {
     setLoading(true);
@@ -122,14 +123,14 @@ export async function getStaticProps({ params }) {
       initialData: data.data,
       initialFilters: filtersObj,
     },
-    revalidate: 120, // Revalidate every 120 seconds
+    revalidate: 120, 
   };
 }
 
 export async function getStaticPaths() {
-  // Optionally pre-render certain filter combinations
+
   return {
-    paths: [{ params: { filters: [] } }], // Pre-render the root path
+    paths: [{ params: { filters: [] } }],
     fallback: 'blocking',
   };
 }

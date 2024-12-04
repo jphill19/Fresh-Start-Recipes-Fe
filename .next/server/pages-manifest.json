@@ -2,8 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/devsubmit": "pages/devsubmit.js",
   "/[[...filters]]": "pages/[[...filters]].js",
-  "/404": "pages/404.js",
-  "/recipe/[recipeId]": "pages/recipe/[recipeId].js"
+  "/recipe/[recipeId]": "pages/recipe/[recipeId].js",
+  "/location/[[...filters]]": "pages/location/[[...filters]].js"
 }
