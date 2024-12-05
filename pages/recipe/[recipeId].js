@@ -1,41 +1,32 @@
-import { useState, useEffect, Fragment } from 'react'
-import { useRouter } from 'next/router'
-import CookingStyleDropdown from '../../components/cookingStyleDropdown/cookingStyleDropdown.component'
-import RecipeList from '../../components/RecipeList/RecipeList.component'
-import IngredientList from '../../components/IngredientList/IngredientList.component'
-import InstructionsList from '../../components/IntstructionsList/InstructionList.component'
-import { recipeDetailsFetches } from '../../api/fresh_start_recipe_api'
-import { useStoreLocation } from '../../context/StoreLocationContext'
-import ClipLoader from 'react-spinners/ClipLoader'
+import { useState, useEffect, Fragment } from 'react';
+import { useRouter } from 'next/router';
+import CookingStyleDropdown from '../../components/cookingStyleDropdown/cookingStyleDropdown.component';
+import RecipeList from '../../components/RecipeList/RecipeList.component';
+import IngredientList from '../../components/IngredientList/IngredientList.component';
+import InstructionsList from '../../components/IntstructionsList/InstructionList.component';
+import { recipeDetailsFetches } from '../../api/fresh_start_recipe_api';
+import { useStoreLocation } from '../../context/StoreLocationContext';
+import ClipLoader from 'react-spinners/ClipLoader';
+import useSWR from 'swr';
 
-function RecipePage() {
-  const [data, setData] = useState({})
-  const [loading, setLoading] = useState(true)
-  const { locationData } = useStoreLocation()
-  const router = useRouter()
-  const { recipeId } = router.query
+const fetcher = async (recipeId, locationId) =>
+  recipeDetailsFetches(recipeId, locationId).then((res) => res.data);
 
-  useEffect(() => {
-    if (!recipeId) return
+function RecipePage({ initialData, recipeId }) {
+  const { locationData } = useStoreLocation();
+  const router = useRouter();
+  const { recipeId: queryRecipeId } = router.query;
 
-    const fetchData = async () => {
-      try {
-        setLoading(true)
-        const response = await recipeDetailsFetches(
-          recipeId,
-          locationData ? locationData.id : undefined
-        )
-        setData(response.data)
-      } catch (error) {
-        console.error('Error fetching data:', error)
-        setData({})
-      } finally {
-        setLoading(false)
-      }
-    }
+  // Use SWR for fetching and caching data
+  const { data, error, isValidating } = useSWR(
+    queryRecipeId
+      ? ['recipeDetails', queryRecipeId, locationData?.id]
+      : null,
+    ([, recipeId, locationId]) => fetcher(recipeId, locationId),
+    { fallbackData: initialData, revalidateOnFocus: false }
+  );
 
-    fetchData()
-  }, [recipeId, locationData])
+  const loading = !data && isValidating;
 
   return (
     <Fragment>
@@ -43,7 +34,9 @@ function RecipePage() {
         <div className="flex justify-center items-center h-[200px]">
           <ClipLoader color="#36d7b7" size={50} />
         </div>
-      ) : Object.keys(data).length ? (
+      ) : error || !data ? (
+        <p>Something went wrong...</p>
+      ) : (
         <>
           <img
             className="w-[800px] max-w-full h-auto block mx-auto"
@@ -62,7 +55,7 @@ function RecipePage() {
               <IngredientList
                 ingredients={data.attributes.ingredients}
                 servingSize={data.attributes.serving_size}
-                recipeId={recipeId}
+                recipeId={queryRecipeId}
               />
               <RecipeList
                 items={data.attributes.cookwares}
@@ -91,22 +84,20 @@ function RecipePage() {
             </>
           )}
         </>
-      ) : (
-        <p>Something went wrong...</p>
       )}
     </Fragment>
-  )
+  );
 }
+
 export async function getStaticProps({ params }) {
   const { recipeId } = params;
   try {
-    // Fetch data without locationData or with a default location if possible
     const response = await recipeDetailsFetches(recipeId);
     const initialData = response.data;
 
     return {
       props: { initialData, recipeId },
-      revalidate: 60, // Revalidate every 60 seconds
+      revalidate: 120,
     };
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -118,13 +109,10 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  // Optionally, pre-render popular recipes at build time
-  // For this example, we'll use fallback: 'blocking' to generate pages on-demand
   return {
     paths: [],
     fallback: 'blocking',
   };
 }
 
-
-export default RecipePage
+export default RecipePage;

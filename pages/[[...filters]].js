@@ -1,4 +1,3 @@
-// pages/[[...filters]].js
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import FilterBar from '../components/fitlerBar/filterBar.component';
@@ -13,23 +12,25 @@ export default function Home({ initialData, initialFilters }) {
   const [activeFilters, setActiveFilters] = useState(initialFilters);
   const [loading, setLoading] = useState(false);
 
-  // Move useEffect before the conditional return
+  // Dynamically update filters client-side
   useEffect(() => {
     if (!router.isReady || router.isFallback) return;
 
-    const filters = router.query.filters || [];
-    const filtersObj = {};
+    const filtersObj = { ...router.query };
+    delete filtersObj.filters;
 
-    for (let i = 0; i < filters.length; i += 2) {
-      filtersObj[filters[i]] = filters[i + 1];
+    if (router.query.filters) {
+      const filters = router.query.filters || [];
+      for (let i = 0; i < filters.length; i += 2) {
+        filtersObj[filters[i]] = filters[i + 1];
+      }
     }
 
-    // Check if filters have changed
     if (JSON.stringify(filtersObj) !== JSON.stringify(activeFilters)) {
       setActiveFilters(filtersObj);
       fetchFilteredData(filtersObj);
     }
-  }, [router.isReady, router.query.filters]);
+  }, [router.isReady, router.query]);
 
   if (router.isFallback) {
     return (
@@ -40,6 +41,7 @@ export default function Home({ initialData, initialFilters }) {
   }
 
   const fetchFilteredData = async (filtersObj) => {
+    console.log("fetching data")
     setLoading(true);
     try {
       const queryString = new URLSearchParams(filtersObj).toString();
@@ -53,7 +55,7 @@ export default function Home({ initialData, initialFilters }) {
   };
 
   const handleFilterChange = (filterKey, value) => {
-    const recognizedFilters = ['by_ingredient', 'by_style', 'by_serving', 'by_price'];
+    const recognizedFilters = ['by_ingredient', 'by_style', 'by_serving', 'by_price', 'by_recipe'];
 
     if (!recognizedFilters.includes(filterKey)) {
       console.error(`Unrecognized filter key: ${filterKey}`);
@@ -68,11 +70,9 @@ export default function Home({ initialData, initialFilters }) {
       delete currentFilters[filterKey];
     }
 
-    const filtersArray = Object.entries(currentFilters).flat();
-
     router.push({
       pathname: '/',
-      query: { filters: filtersArray },
+      query: currentFilters,
     });
   };
 
@@ -96,6 +96,7 @@ export default function Home({ initialData, initialFilters }) {
   );
 }
 
+// ISR for Static Pages
 export async function getStaticProps({ params }) {
   const filters = params.filters || [];
   const filtersObj = {};
@@ -104,33 +105,43 @@ export async function getStaticProps({ params }) {
     filtersObj[filters[i]] = filters[i + 1];
   }
 
-  const recognizedFilters = ['by_ingredient', 'by_style', 'by_serving', 'by_price'];
+  const recognizedFilters = ['by_ingredient', 'by_style', 'by_serving', 'by_price', 'by_recipe'];
 
   const filterKeys = Object.keys(filtersObj);
-  const unrecognizedFilters = filterKeys.filter(key => !recognizedFilters.includes(key));
+  const unrecognizedFilters = filterKeys.filter((key) => !recognizedFilters.includes(key));
 
   if (unrecognizedFilters.length > 0) {
     return {
-      notFound: true,
+      notFound: true, // Return a 404 for invalid filters
     };
   }
 
   const queryString = new URLSearchParams(filtersObj).toString();
-  const data = await recipeFetches(queryString);
-
-  return {
-    props: {
-      initialData: data.data,
-      initialFilters: filtersObj,
-    },
-    revalidate: 120, 
-  };
+  try {
+    const data = await recipeFetches(queryString);
+    return {
+      props: {
+        initialData: data.data,
+        initialFilters: filtersObj,
+      },
+      revalidate: 120, // Revalidate every 2 minutes
+    };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return {
+      props: {
+        initialData: [],
+        initialFilters: filtersObj,
+      },
+      revalidate: 120,
+    };
+  }
 }
 
-export async function getStaticPaths() {
 
+export async function getStaticPaths() {
   return {
-    paths: [{ params: { filters: [] } }],
-    fallback: 'blocking',
+    paths: [], 
+    fallback: 'blocking', 
   };
 }

@@ -1,1 +1,17 @@
-{}
+{
+  "pages/location/[[...filters]].js -> ../../components/locationBar/locationBar.component": {
+    "id": 9072,
+    "files": [
+      "static/chunks/7d0bf13e.72a059e0dd0fac1b.js",
+      "static/chunks/72.5e738e0e1aaa5547.js"
+    ]
+  },
+  "pages/location/[[...filters]].js -> ../../components/map/map.component": {
+    "id": 6260,
+    "files": [
+      "static/css/8608ec4c513415d9.css",
+      "static/chunks/2c796e83.8f68e51ccb744ca1.js",
+      "static/chunks/260.bab7d8d348e5d43a.js"
+    ]
+  }
+}
