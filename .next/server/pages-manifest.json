@@ -1,1 +1,7 @@
-{"/_app":"pages/_app.js","/404":"pages/404.html","/devsubmit":"pages/devsubmit.html","/_error":"pages/_error.js","/recipe/[recipeId]":"pages/recipe/[recipeId].js","/_document":"pages/_document.js","/[[...filters]]":"pages/[[...filters]].js","/location/[[...filters]]":"pages/location/[[...filters]].js"}
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/[[...filters]]": "pages/[[...filters]].js",
+  "/recipe/[recipeId]": "pages/recipe/[recipeId].js"
+}

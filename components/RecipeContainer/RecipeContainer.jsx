@@ -21,21 +21,24 @@ function RecipeContainer({ data = [] }) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center w-[95%] p-[8px] gap-[16px]">
-      {data.length > 0 ? (
-        data.map((recipe) => (
-          <RecipeCard
-            recipe={recipe.attributes}
-            excludedIngredients={excludedIngredients}
-            onIngredientClick={handleIngredientClick}
-            key={recipe.id}
-            recipeId={recipe.id}
-          />
-        ))
-      ) : (
-        <p>No recipes available.</p>
-      )}
-    </div>
+<div className="w-full p-4 space-y-4">
+  {data.length > 0 ? (
+    data.map((recipe) => (
+      <RecipeCard
+        recipe={recipe.attributes}
+        excludedIngredients={excludedIngredients}
+        onIngredientClick={handleIngredientClick}
+        key={recipe.id}
+        recipeId={recipe.id}
+      />
+    ))
+  ) : (
+    <p>No recipes available.</p>
+  )}
+</div>
+
+
+
   )
 }
 

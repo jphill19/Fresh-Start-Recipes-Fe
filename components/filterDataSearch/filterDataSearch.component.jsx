@@ -27,44 +27,64 @@ function FilterDataSearch({ name, searchValueSetter }) {
     setSearchTerm(event.target.value)
   }
 
-  const handleCheckboxChange = item => {
+  const handleRadioChange = item => {
     setSelectedId(item.id)
     searchValueSetter(item.attributes.name)
   }
 
   return (
     <>
-      <h2>{name}</h2>
-      <p>Input a name of an ingredient, then select from the checkbox</p>
+      <h2 className="font-bold text-lg">{name}</h2>
+      <p className="text-gray-700">
+        Input a name of an ingredient, then select from the radio buttons
+      </p>
       <input
         type="text"
         placeholder="Search by Ingredient"
         value={searchTerm}
         onChange={handleSearchChange}
-        className="w-full p-[10px] mb-[12px] text-sm border-2 border-[#ccc] rounded transition-colors duration-300 outline-none focus:border-[#ff6b6b]"
+        className="w-full p-[10px] mb-[12px] mt-2 text-sm border-2 border-[#ccc] rounded transition-colors duration-300 outline-none focus:border-orange-500"
       />
       <div>
         {error && (
-          <p className="text-red-500">
-            Error fetching data: {error.message}
-          </p>
+          <p className="text-red-500">Error fetching data: {error.message}</p>
         )}
         {data && data.data.length > 0
           ? data.data.map(item => (
               <div
                 key={item.id}
-                className="flex items-center gap-2 p-2 rounded transition-colors duration-200 cursor-pointer hover:bg-[#f7f7f7]"
+                className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 transition-all duration-200 cursor-pointer"
               >
                 <input
-                  type="checkbox"
-                  id={`checkbox-${item.id}`}
+                  type="radio"
+                  id={`radio-${item.id}`}
+                  name="ingredient"
+                  value={item.id}
                   checked={selectedId === item.id}
-                  onChange={() => handleCheckboxChange(item)}
-                  className="appearance-none w-[18px] h-[18px] border-2 border-[#ff6b6b] rounded bg-transparent transition-colors duration-200 checked:bg-[#ff6b6b] peer"
+                  onChange={() => handleRadioChange(item)}
+                  className="
+                    appearance-none
+                    w-6 h-6
+                    border-2 border-orange-500
+                    rounded-full
+                    bg-transparent
+                    checked:border-green-500
+                    checked:bg-green-400
+                      text-green-500
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-orange-500
+                    focus:ring-offset-2
+                    transition-colors
+                    duration-200
+                    peer
+                  
+                  "
+                  style={{ aspectRatio: '1 / 1' }} // Ensures a perfect circle
                 />
                 <label
-                  htmlFor={`checkbox-${item.id}`}
-                  className="text-sm text-[#333] peer-checked:font-bold peer-checked:text-[#ff6b6b]"
+                  htmlFor={`radio-${item.id}`}
+                  className="text-base text-gray-800 peer-checked:font-semibold peer-checked:text-orange-500 transition-all"
                 >
                   {item.attributes.name}
                 </label>

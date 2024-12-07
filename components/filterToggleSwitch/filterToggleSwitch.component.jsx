@@ -16,7 +16,7 @@ function FilterToggleSwitch({ name, searchValueSetter }) {
 
   return (
     <Fragment>
-      <h2>{name}</h2>
+     <h2 className="font-bold text-lg">{name}</h2>
       <div
         className="relative flex w-[200px] h-[50px] rounded-[25px] bg-[#ccc] cursor-pointer items-center justify-between mt-[10px] mx-auto transition-colors duration-300"
         onClick={handleToggle}
@@ -36,7 +36,7 @@ function FilterToggleSwitch({ name, searchValueSetter }) {
           Multiple
         </span>
         <div
-          className={`absolute top-0 left-0 w-1/2 h-full rounded-[25px] bg-[#ff6b6b] transition-transform duration-300 z-10 ${
+          className={`absolute top-0 left-0 w-1/2 h-full rounded-[25px] bg-orange-500 transition-transform duration-300 z-10 ${
             isSingle ? 'translate-x-0' : 'translate-x-full'
           }`}
         />

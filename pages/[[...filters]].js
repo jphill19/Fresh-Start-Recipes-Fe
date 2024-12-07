@@ -112,7 +112,7 @@ export async function getStaticProps({ params }) {
 
   if (unrecognizedFilters.length > 0) {
     return {
-      notFound: true, // Return a 404 for invalid filters
+      notFound: true,
     };
   }
 

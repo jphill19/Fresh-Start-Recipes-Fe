@@ -3,27 +3,50 @@ import { Fragment, useState } from 'react'
 function FilterCheckBoxSearch({ options, name, searchValueSetter }) {
   const [selectedId, setSelectedId] = useState(null)
 
-  const handleCheckboxChange = (id) => {
+  const handleCheckboxChange = id => {
     setSelectedId(id)
     searchValueSetter(id)
   }
 
   return (
     <Fragment>
-      <h2 className="text-lg font-semibold mb-4">{name}</h2>
+      <h2 className="font-bold text-lg">{name}</h2>
       <div>
         {Object.entries(options).map(([id, label]) => (
-          <div key={id} className="flex items-center gap-2 my-3">
+          <div
+            key={id}
+            className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 transition-all duration-200 cursor-pointer"
+          >
             <input
-              type="checkbox"
-              id={`checkbox-${id}`}
+              type="radio" // Changed from checkbox to radio
+              id={`radio-${id}`}
+              name="ingredient" // Grouping radio buttons by name
+              value={id} // Radio buttons use value instead of checked directly
               checked={selectedId === id}
-              onChange={() => handleCheckboxChange(id)}
-              className="peer appearance-none w-[18px] h-[18px] border-2 border-[#ff6b6b] rounded bg-transparent transition-colors duration-200 checked:bg-[#ff6b6b]"
+              onChange={() => handleCheckboxChange(id)} // Updated handler function
+              className="
+    appearance-none
+    w-6 h-6
+    border-2 border-orange-500
+    rounded-full
+    bg-transparent
+    checked:border-green-500
+    checked:bg-green-400
+    text-green-500
+    focus:outline-none
+    focus:ring-2
+    focus:ring-orange-500
+    focus:ring-offset-2
+    transition-colors
+    duration-200
+    peer
+  "
+              style={{ aspectRatio: '1 / 1' }} // Ensures a perfect circle
             />
+
             <label
               htmlFor={`checkbox-${id}`}
-              className="text-sm text-[#333] font-normal peer-checked:font-bold peer-checked:text-[#ff6b6b]"
+              className="text-base text-gray-800 peer-checked:font-semibold peer-checked:text-orange-500 transition-all"
             >
               {label}
             </label>

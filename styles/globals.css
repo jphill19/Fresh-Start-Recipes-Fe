@@ -9,7 +9,7 @@
 
 @layer base {
   body {
-    @apply m-0 font-sans antialiased bg-white ;
+    @apply m-0 font-rounded antialiased bg-white ;
   }
 
   .bg-header-gradient {
@@ -25,4 +25,28 @@
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+input[type='checkbox'] {
+  -webkit-appearance: none; 
+  -moz-appearance: none;    
+  appearance: none;         
+}
+input[type="checkbox"].custom-check::after {
+  content: '✔';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  opacity: 0;
+  font-size: 0.75rem;
+}
+
+input[type="checkbox"].custom-check:checked::after {
+  opacity: 1;
 }

@@ -73,13 +73,13 @@ function FilterModal({ onClose, activeModal, onFilterChange }) {
         {renderFilterContent()}
         <div className="flex justify-end gap-[10px] mt-5">
           <button
-            className="py-[10px] px-[15px] border-none rounded cursor-pointer text-base bg-[#f0f0f0] text-[#333]"
+            className="py-[10px] px-[15px] border-none rounded cursor-pointer text-base bg-[#f0f0f0] text-gray-700 font-bold"
             onClick={onClose}
           >
             Reset
           </button>
           <button
-            className="py-[10px] px-[15px] border-none rounded cursor-pointer text-base bg-[#ff6b6b] text-white"
+            className="py-[10px] px-[15px] border-none rounded cursor-pointer text-base bg-orange-500 text-white font-bold"
             onClick={handleResultSearch}
           >
             View Results
