@@ -28,10 +28,10 @@ export function RecipeCard ({ recipe , excludedIngredients, onIngredientClick, r
     };
   
   return (
-    <div className="recipe-card-wrap" alt={`Recipe card for ${recipe_name}`} tabIndex="0">
+    <div className="recipe-card-wrap" aria-label={`Recipe card for ${recipe_name}`} tabIndex="0">
       <Link to={`/recipe/${recipeId}`} className="recipe-link">
         <h2 className="recipe-title">{recipe_name}</h2>
-        <img className="recipe-image" src={`${recipe.image}`} alt={image.alt} />
+        <img className="recipe-image" src={`${recipe.image}`} alt={`Image of ${recipe.recipe_name}` }/>
       </Link>
       <div className="ingredients-box">
         {ingredients.map(renderIngredientRow)}
