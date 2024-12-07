@@ -1,12 +1,12 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState } from 'react';
 
 function FilterCheckBoxSearch({ options, name, searchValueSetter }) {
-  const [selectedId, setSelectedId] = useState(null)
+  const [selectedId, setSelectedId] = useState(null);
 
-  const handleCheckboxChange = id => {
-    setSelectedId(id)
-    searchValueSetter(id)
-  }
+  const handleCheckboxChange = (id) => {
+    setSelectedId(id);
+    searchValueSetter(id);
+  };
 
   return (
     <Fragment>
@@ -18,34 +18,33 @@ function FilterCheckBoxSearch({ options, name, searchValueSetter }) {
             className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 transition-all duration-200 cursor-pointer"
           >
             <input
-              type="radio" // Changed from checkbox to radio
-              id={`radio-${id}`}
-              name="ingredient" // Grouping radio buttons by name
-              value={id} // Radio buttons use value instead of checked directly
+              type="radio"
+              id={`radio-${id}`} // Matches the label's htmlFor
+              name="ingredient"
+              value={id}
               checked={selectedId === id}
-              onChange={() => handleCheckboxChange(id)} // Updated handler function
+              onChange={() => handleCheckboxChange(id)}
               className="
-    appearance-none
-    w-6 h-6
-    border-2 border-orange-500
-    rounded-full
-    bg-transparent
-    checked:border-green-500
-    checked:bg-green-400
-    text-green-500
-    focus:outline-none
-    focus:ring-2
-    focus:ring-orange-500
-    focus:ring-offset-2
-    transition-colors
-    duration-200
-    peer
-  "
-              style={{ aspectRatio: '1 / 1' }} // Ensures a perfect circle
+                appearance-none
+                w-6 h-6
+                border-2 border-orange-500
+                rounded-full
+                bg-transparent
+                checked:border-green-500
+                checked:bg-green-400
+                text-green-500
+                focus:outline-none
+                focus:ring-2
+                focus:ring-orange-500
+                focus:ring-offset-2
+                transition-colors
+                duration-200
+                peer
+              "
+              style={{ aspectRatio: '1 / 1' }}
             />
-
             <label
-              htmlFor={`checkbox-${id}`}
+              htmlFor={`radio-${id}`} // Matches the input's id
               className="text-base text-gray-800 peer-checked:font-semibold peer-checked:text-orange-500 transition-all"
             >
               {label}
@@ -54,7 +53,7 @@ function FilterCheckBoxSearch({ options, name, searchValueSetter }) {
         ))}
       </div>
     </Fragment>
-  )
+  );
 }
 
-export default FilterCheckBoxSearch
+export default FilterCheckBoxSearch;

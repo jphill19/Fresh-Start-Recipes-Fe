@@ -32,19 +32,22 @@ export function RecipeCard({
     }
   }, [excludedIngredients, ingredients, totalPrice])
 
-  const renderIngredientRow = ingredient => {
-    const isExcluded = excludedIngredients[ingredient.ingredient]
+  const renderIngredientRow = (ingredient, index) => {
+    const isExcluded = excludedIngredients[ingredient.ingredient];
     return (
-      <div className="flex items-center p-2 border-b border-gray-100">
+      <div
+        key={ingredient.ingredient || `ingredient-${index}`} // Add a unique key
+        className="flex items-center p-2 border-b border-gray-100"
+      >
         <label className="flex items-center w-full">
           <input
             type="checkbox"
             checked={isExcluded}
             onChange={() => onIngredientClick(ingredient.ingredient)}
-            className="form-checkbox h-4 w-4 text-green-700 mr-2 focus:ring-2 focus:ring-orange-400 focus:ring-offset-1 rounded-sm"
+            className="form-checkbox h-4 w-4 text-green-500 mr-2 focus:ring-2 focus:ring-orange-400 focus:ring-offset-1 border border-orange-400 rounded-sm"
           />
           <span
-            className={`text-sm ${
+            className={`text-sm pr-1 ${
               isExcluded ? 'text-gray-500 line-through' : 'text-gray-800'
             }`}
           >
@@ -59,9 +62,8 @@ export function RecipeCard({
           </span>
         </label>
       </div>
-    )
-  }
-
+    );
+  };
   const uniqueIngredients = Array.from(
     new Map(ingredients.map(item => [item.ingredient, item])).values()
   )
@@ -77,7 +79,7 @@ export function RecipeCard({
             <Image
               src={image}
               alt={image.alt || `Image of ${recipe_name}`}
-              layout="fill"
+              fill
               className="object-cover"
             />
           </div>

@@ -57,34 +57,33 @@ function FilterDataSearch({ name, searchValueSetter }) {
               >
                 <input
                   type="radio"
-                  id={`radio-${item.id}`}
+                  id={`radio-${item.id}`} 
                   name="ingredient"
                   value={item.id}
                   checked={selectedId === item.id}
                   onChange={() => handleRadioChange(item)}
                   className="
-                    appearance-none
-                    w-6 h-6
-                    border-2 border-orange-500
-                    rounded-full
-                    bg-transparent
-                    checked:border-green-500
-                    checked:bg-green-400
-                      text-green-500
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-orange-500
-                    focus:ring-offset-2
-                    transition-colors
-                    duration-200
-                    peer
-                  
-                  "
-                  style={{ aspectRatio: '1 / 1' }} // Ensures a perfect circle
+                appearance-none
+                w-6 h-6
+                border-2 border-orange-500
+                rounded-full
+                bg-transparent
+                checked:border-green-500
+                checked:bg-green-400
+                text-green-500
+                focus:outline-none
+                focus:ring-2
+                focus:ring-orange-500
+                focus:ring-offset-2
+                transition-colors
+                duration-200
+                peer
+              "
+                  style={{ aspectRatio: '1 / 1' }}
                 />
                 <label
-                  htmlFor={`radio-${item.id}`}
-                  className="text-base text-gray-800 peer-checked:font-semibold peer-checked:text-orange-500 transition-all"
+                  htmlFor={`radio-${item.id}`} 
+                  className="text-base text-gray-800 peer-checked:font-semibold peer-checked:text-orange-500 transition-all cursor-pointer"
                 >
                   {item.attributes.name}
                 </label>

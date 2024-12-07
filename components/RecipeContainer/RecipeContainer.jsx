@@ -22,19 +22,19 @@ function RecipeContainer({ data = [] }) {
 
   return (
 <div className="w-full p-4 space-y-4">
-  {data.length > 0 ? (
-    data.map((recipe) => (
-      <RecipeCard
-        recipe={recipe.attributes}
-        excludedIngredients={excludedIngredients}
-        onIngredientClick={handleIngredientClick}
-        key={recipe.id}
-        recipeId={recipe.id}
-      />
-    ))
-  ) : (
-    <p>No recipes available.</p>
-  )}
+{data.length > 0 ? (
+  data.map((recipe, index) => (
+    <RecipeCard
+      recipe={recipe.attributes}
+      excludedIngredients={excludedIngredients}
+      onIngredientClick={handleIngredientClick}
+      key={recipe.id || `recipe-${index}`} // Fallback key
+      recipeId={recipe.id}
+    />
+  ))
+) : (
+  <p>No recipes available.</p>
+)}
 </div>
 
 
