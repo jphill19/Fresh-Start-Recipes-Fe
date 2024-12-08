@@ -1,5 +1,5 @@
 // pages/location.js
-import { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect } from 'react';
 import { locationFetch } from '../../api/fresh_start_recipe_api';
 import StoreCard from '../../components/storeCard/storeCard.component';
 import ClipLoader from 'react-spinners/ClipLoader';
@@ -71,52 +71,63 @@ function Location({ initialLocations }) {
   };
 
   return (
-    <div className="flex flex-col items-center p-4">
-      <button
-        onClick={handleUseLocation}
-        className="w-full max-w-[600px] mb-[10px] p-[14px] bg-[#ff6b6b] text-white border-none rounded-lg text-base font-normal cursor-pointer"
-      >
-        Use Your Location
-      </button>
-      <AutocompleteInput setUserLocation={setUserLocation} />
-      {isLoading ? (
-        <div className="loader-container">
-          <ClipLoader color="#36d7b7" size={50} loading={isLoading} />
-        </div>
-      ) : (
-        <Fragment>
-          <Map
-            locations={locations}
-            userLocation={userLocation}
-            onLocationClick={handleLocationClick}
-          />
-          <div
-            className="max-h-[400px] overflow-y-auto w-full max-w-[600px] border border-[#e2e2e2] bg-[#f9f9f9] rounded-lg p-4 mt-[10px]"
-            style={{ boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}
+    <main className="bg-gray-50 min-h-screen p-4">
+      <div className="max-w-md mx-auto">
+        <div className="mb-4">
+          <button
+            onClick={handleUseLocation}
+            className="w-full p-3 bg-orange-500 text-white font-semibold rounded-md transition-colors duration-200 hover:bg-orange-600 active:bg-orange-700"
           >
-            {locations.length > 0 ? (
-              locations.map((location) => (
-                <StoreCard
-                  key={location.locationId}
-                  location={location}
-                  isSelected={location === selectedLocation}
-                  id={location.locationId}
-                />
-              ))
-            ) : (
-              <p className="no-locations-message">
-                No King Soopers nearby your location
-              </p>
-            )}
+            Use Your Location
+          </button>
+        </div>
+
+        <div className="mb-4">
+          <AutocompleteInput setUserLocation={setUserLocation} />
+        </div>
+
+        {isLoading ? (
+          <div className="flex justify-center items-center h-[200px]">
+            <ClipLoader color="#36d7b7" size={50} loading={isLoading} />
           </div>
-        </Fragment>
-      )}
-    </div>
+        ) : (
+          <>
+            {/* Map Container */}
+            <div className=" bg-white border border-gray-200 rounded-lg shadow-sm w-full mb-4">
+              <Map
+                locations={locations}
+                userLocation={userLocation}
+                onLocationClick={handleLocationClick}
+              />
+            </div>
+
+            {/* Store List Container */}
+            <div
+              className="max-h-[400px] overflow-y-auto w-full border border-gray-200 bg-white rounded-lg p-4 shadow-sm"
+            >
+              {locations.length > 0 ? (
+                locations.map((location) => (
+                  <StoreCard
+                    key={location.locationId}
+                    location={location}
+                    isSelected={location === selectedLocation}
+                    id={location.locationId}
+                  />
+                ))
+              ) : (
+                <p className="text-gray-700 text-sm font-medium">
+                  No King Soopers nearby your location
+                </p>
+              )}
+            </div>
+          </>
+        )}
+      </div>
+    </main>
   );
 }
 
 export async function getStaticProps() {
-  // Fetch initial data at build time if possible
   const initial_store = [
     {
       locationId: '62000115',
@@ -138,23 +149,19 @@ export async function getStaticProps() {
     },
   ];
 
-  // Optionally, fetch more initial locations if available
-  // const data = await fetchInitialLocations();
-
   return {
     props: {
-      initialLocations: initial_store, // Replace with data if fetched
+      initialLocations: initial_store,
     },
-    revalidate: 10000, // Revalidate every 60 seconds
+    revalidate: 10000,
   };
 }
 
 export async function getStaticPaths() {
   return {
     paths: [],
-    fallback: 'blocking', // Generate pages on-demand
+    fallback: 'blocking',
   };
 }
-
 
 export default Location;

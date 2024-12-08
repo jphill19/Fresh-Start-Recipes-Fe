@@ -33,7 +33,7 @@ export function RecipeCard({
   }, [excludedIngredients, ingredients, totalPrice])
 
   const renderIngredientRow = (ingredient, index) => {
-    const isExcluded = excludedIngredients[ingredient.ingredient];
+    const isExcluded = excludedIngredients[ingredient.ingredient]
     return (
       <div
         key={ingredient.ingredient || `ingredient-${index}`} // Add a unique key
@@ -44,7 +44,7 @@ export function RecipeCard({
             type="checkbox"
             checked={isExcluded}
             onChange={() => onIngredientClick(ingredient.ingredient)}
-            className="form-checkbox h-4 w-4 text-green-500 mr-2 focus:ring-2 focus:ring-orange-400 focus:ring-offset-1 border border-orange-400 rounded-sm"
+            className="form-checkbox h-4 w-4 text-green-600 mr-2 focus:ring-2 focus:ring-orange-400 focus:ring-offset-1 border border-orange-400 rounded-sm"
           />
           <span
             className={`text-sm pr-1 ${
@@ -62,8 +62,8 @@ export function RecipeCard({
           </span>
         </label>
       </div>
-    );
-  };
+    )
+  }
   const uniqueIngredients = Array.from(
     new Map(ingredients.map(item => [item.ingredient, item])).values()
   )
@@ -85,12 +85,18 @@ export function RecipeCard({
           </div>
           <h2 className="text-lg font-semibold mt-2 flex items-center justify-between text-green-600">
             {recipe_name}
-            <span className="text-orange-400 text-base">&rarr;</span>
+            <div className="flex items-center space-x-2">
+            <img
+                src="/chef-hat.svg"
+                alt="Icon"
+                className="h-5 w-5"
+              />
+              <span className="text-orange-400 text-lg">&rarr;</span>
+            </div>
           </h2>
         </div>
       </Link>
 
-      {/* Border separator below recipe name */}
       <div className="border-b border-gray-200 my-2"></div>
 
       <div className="flex flex-col gap-2 mb-4 pointer-events-auto">

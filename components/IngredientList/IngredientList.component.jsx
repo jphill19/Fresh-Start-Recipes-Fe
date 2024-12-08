@@ -1,97 +1,122 @@
-import { useState } from 'react'
-import { useRouter } from 'next/router'
-import { useStoreLocation } from '../../context/StoreLocationContext'
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { useStoreLocation } from "../../context/StoreLocationContext";
 
 function IngredientList({ ingredients, servingSize, recipeId }) {
-  const [excludedIngredients, setExcludedIngredients] = useState({})
-  const { locationData } = useStoreLocation()
-  const router = useRouter()
+  const [excludedIngredients, setExcludedIngredients] = useState({});
+  const { locationData } = useStoreLocation();
+  const router = useRouter();
 
-  const handleIngredientClick = (ingredientName) => {
-    setExcludedIngredients((prevState) => {
-      const newState = { ...prevState }
-      if (newState[ingredientName]) {
-        delete newState[ingredientName]
-      } else {
-        newState[ingredientName] = true
-      }
-      return newState
-    })
-  }
-
-  const totalPrice = ingredients.reduce((total, ingredient) => {
-    const isExcluded = excludedIngredients[ingredient.ingredient]
-    return total + (isExcluded ? 0 : ingredient.price)
-  }, 0)
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(() =>
+    ingredients.reduce((sum, ingredient) => {
+      const isExcluded = excludedIngredients[ingredient.ingredient];
+      return sum + (isExcluded ? 0 : ingredient.price);
+    }, 0)
+  );
 
   const totalPriceLabel = locationData
     ? `${locationData.name} Total Price`
-    : 'Total Price'
+    : "Total Price";
+
+  const handleIngredientClick = (ingredientName) => {
+    setExcludedIngredients((prevState) => {
+      const newState = { ...prevState };
+      if (newState[ingredientName]) {
+        delete newState[ingredientName];
+      } else {
+        newState[ingredientName] = true;
+      }
+      return newState;
+    });
+  };
+
+  // Animate price changes:
+  useEffect(() => {
+    const newTotal = ingredients.reduce((sum, ingredient) => {
+      const isExcluded = excludedIngredients[ingredient.ingredient];
+      return sum + (isExcluded ? 0 : ingredient.price);
+    }, 0);
+
+    if (newTotal !== totalPrice) {
+      setIsUpdating(true);
+      setTimeout(() => setIsUpdating(false), 300); // Reset after animation
+      setTotalPrice(newTotal);
+    }
+  }, [excludedIngredients, ingredients, totalPrice]);
 
   return (
-    <div className="max-w-[600px] mx-auto p-[20px] bg-white rounded-[8px] shadow-[0_4px_12px_rgba(0,0,0,0.1)]">
-      <h2 className="text-left text-[#ff6b6b] mb-[20px] text-[1.7em] font-bold tracking-[1px]">
+    <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm w-full">
+      <h2 className="text-lg font-semibold text-green-600 flex items-center mb-4">
+        <img src="/recipe.svg" alt="Ingredients" className="h-10 w-10 mr-2" />
         Ingredient List
       </h2>
+
       {servingSize && (
-        <p className="text-base text-[#666666] mb-[12px]">
+        <p className="text-base text-gray-600 mb-4">
           Serving Size: {servingSize}
         </p>
       )}
 
-      {ingredients.map((ingredient, index) => {
-        const isExcluded = excludedIngredients[ingredient.ingredient] || false
+      <div className="flex flex-col gap-2 mb-4">
+        {ingredients.map((ingredient, index) => {
+          const isExcluded = excludedIngredients[ingredient.ingredient] || false;
+          return (
+            <div key={index} className="flex items-center p-2 border-b border-gray-100">
+              <label className="flex items-center w-full cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={isExcluded}
+                  onChange={() => handleIngredientClick(ingredient.ingredient)}
+                  className="form-checkbox h-4 w-4 text-green-500 mr-2 focus:ring-2 focus:ring-orange-400 focus:ring-offset-1 border border-orange-400 rounded-sm"
+                />
+                <div className="flex flex-col">
+                  <span
+                    className={`text-sm font-medium ${
+                      isExcluded ? "text-gray-500 line-through" : "text-gray-800"
+                    }`}
+                  >
+                    {ingredient.ingredient}
+                  </span>
+                  <span className="text-xs text-gray-500">
+                    {ingredient.quantity} {ingredient.measurement}
+                  </span>
+                </div>
+                <span
+                  className={`ml-auto text-sm font-bold ${
+                    isExcluded ? "text-gray-500 line-through" : "text-gray-800"
+                  }`}
+                >
+                  ${isExcluded ? "0.00" : ingredient.price.toFixed(2)}
+                </span>
+              </label>
+            </div>
+          );
+        })}
+      </div>
 
-        return (
-          <div key={index} className="mb-[12px]">
-            <button
-              className={`flex justify-between items-center py-0 px-3 bg-${
-                isExcluded ? '[#f2f2f2]' : '[#f9f9f9]'
-              } border border-[#ddd] rounded-[6px] text-[0.95em] text-${
-                isExcluded ? '[#999999]' : '[#333]'
-              } ${
-                isExcluded ? 'cursor-not-allowed line-through' : 'cursor-pointer'
-              } w-full transition-colors duration-200`}
-              onClick={() => handleIngredientClick(ingredient.ingredient)}
-            >
-              <div className="flex flex-col items-start">
-                <p className="font-bold text-[#333333] mb-1">
-                  {ingredient.ingredient}
-                </p>
-                <p className="text-[#666666] text-[0.9em]">
-                  {ingredient.quantity} {ingredient.measurement}
-                </p>
-              </div>
-              <p className="text-[#333333] font-bold text-right min-w-[60px]">
-                $
-                {isExcluded
-                  ? '0.00'
-                  : ingredient.price.toFixed(2)}
-              </p>
-            </button>
-          </div>
-        )
-      })}
-
-      <div className="flex justify-between items-center pt-[16px] border-t border-t-[#e0e0e0] text-[1.1em] font-bold text-[#333333] mt-[20px]">
-        <p className="text-[1.1em] text-[#333333]">
-          {totalPriceLabel}
-        </p>
-        <p className="text-[1.1em] font-bold text-right text-[#333333] min-w-[60px]">
+      <div className="flex justify-between items-center pt-3 border-t border-gray-300 text-sm text-gray-700">
+        <p className="m-0 font-medium">{totalPriceLabel}</p>
+        <p
+          className={`m-0 font-medium transition-all duration-300 ${
+            isUpdating ? "opacity-50 translate-y-[-5px]" : "opacity-100 translate-y-0"
+          }`}
+        >
           ${totalPrice.toFixed(2)}
         </p>
       </div>
 
       {locationData?.id === null && (
         <button
-          className="block p-3 mt-[16px] bg-[#ff6b6b] text-white text-base font-bold border-none rounded-[6px] cursor-pointer text-center transition-colors duration-300 ease-in-out hover:bg-[#e85c5c] hover:shadow-md active:bg-[#d14d4d]"
+          className="block w-full p-3 mt-4 bg-orange-500 text-white font-bold rounded-md 
+                     transition-colors duration-200 hover:bg-orange-600 active:bg-orange-700"
           onClick={() => router.push(`/location/${recipeId}`)}
         >
           Get Prices for a Local Store
         </button>
       )}
     </div>
-  )
+  );
 }
 
-export default IngredientList
+export default IngredientList;

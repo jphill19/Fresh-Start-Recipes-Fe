@@ -81,7 +81,7 @@ function Map({ locations, userLocation, onLocationClick }) {
         prevUserLocation.current.latitude !== latitude ||
         prevUserLocation.current.longitude !== longitude
       ) {
-        map.current.flyTo({ center: [longitude, latitude], zoom: 13 });
+        map.current.flyTo({ center: [longitude, latitude], zoom: 12 });
         prevUserLocation.current = userLocation;
       }
     }

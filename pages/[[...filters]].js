@@ -12,7 +12,7 @@ export default function Home({ initialData, initialFilters }) {
   const [activeFilters, setActiveFilters] = useState(initialFilters);
   const [loading, setLoading] = useState(false);
 
-  // Dynamically update filters client-side
+
   useEffect(() => {
     if (!router.isReady || router.isFallback) return;
 
