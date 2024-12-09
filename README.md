@@ -1,6 +1,6 @@
 # 🍲 Fresh Start Recipes: Affordable Meals for a New Beginning 🍲
 
-Welcome to **Fresh Start Recipes** – a mobile app designed to support those navigating hard times or new beginnings. This app offers simple, affordable recipes that use ingredients available at local King Soopers stores, with real-time pricing based on your nearby location. Whether you're new to a government home, unhoused, or just looking to stretch your budget, Fresh Start Recipes is here to make cooking affordable and accessible. 
+Welcome to **Fresh Start Recipes** – a mobile app designed to support those navigating hard times or new beginnings. This app offers simple, affordable recipes that use ingredients available at local King Soopers stores, with real-time pricing based on your nearby location. Whether you're new to a government home, unhoused, or just looking to stretch your budget, Fresh Start Recipes is here to make cooking affordable and accessible.
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
   <img src="./assets/home.png" alt="Home Page" width="30%" />
@@ -9,6 +9,7 @@ Welcome to **Fresh Start Recipes** – a mobile app designed to support those na
 </div>
 
 ## 📑 Table of Contents
+
 1. [About Fresh Start Recipes](#about-fresh-start-recipes)
 2. [Features That Matter 💛](#features-that-matter)
 3. [Tech That Powers Fresh Start 🔌](#tech-that-powers-fresh-start)
@@ -19,7 +20,6 @@ Welcome to **Fresh Start Recipes** – a mobile app designed to support those na
 8. [Contributing 🤝](#contributing)
 9. [Authors 👥](#contributors)
 
-
 ## About Fresh Start Recipes
 
 ### Mission
@@ -29,6 +29,7 @@ Fresh Start Recipes was created with a mission: to make affordable, nutritious m
 ### Who Is This For?
 
 This app is designed for:
+
 - **The Unhoused Community in Denver**: Affordable meals with easy-to-find ingredients.
 - **Newly Housed Individuals**: Recipes for setting up a kitchen on a budget.
 - **Anyone Going Through Hard Times**: Reliable, low-cost meal options to ease the stress of grocery shopping.
@@ -37,34 +38,30 @@ This app is designed for:
 
 Fresh Start Recipes is crafted as a mobile-only experience because mobile phones are the most accessible devices for our audience. Many unhoused individuals have government-provided phones, and nearly everyone today has access to a mobile device. Creating a mobile-first app allowed us to reach a broad user base without worrying about accessibility limitations on other devices. With Fresh Start Recipes, users can access affordable meal ideas and nearby pricing wherever they are – at the store, in the kitchen, or on the road.
 
-
 ## Features That Matter 💛
 
 - **Flexible Filtering Options**: Filter recipes by a variety of options:
+
   - **Recipe Name**: Search by specific recipes.
   - **Ingredients Utilized**: Find recipes using specific ingredients.
   - **Price**: Filter to fit your budget.
   - **Serving Quantity**: Choose recipes based on serving size.
   - **Cooking Style**: Select recipes by cooking method (oven, microwave, stove, or no cooking required).
   - **Combine Filters**: Apply multiple filters simultaneously for more refined results, such as ingredient, price, serving quantity, and cooking style all at once.
-  
-  *Here’s how easy it is to filter recipes!*  
+
+  _Here’s how easy it is to filter recipes!_  
   ![Filter Options in Action](https://media.giphy.com/media/J7NwUFwmwAWwfGwwLn/giphy.gif)
 
 - **Real-Time Pricing**: Integrated with the Kroger API to provide live prices for each ingredient at King Soopers. By default, all prices are presented based on **King Soopers - Union Station**:
 
 - **Personalized Pricing**: Mark ingredients you already have, and the app will automatically zero out the cost for those items, updating the total price for each recipe that includes them.
 
-  *See how marking ingredients updates the price in real-time!*  
+  _See how marking ingredients updates the price in real-time!_  
   ![Personalized Pricing in Action](https://media.giphy.com/media/ZdUK1i2FYnDqNSEPlx/giphy.gif)
 
 - **Simple Ingredients, Simple Meals**: Recipes focus on easy-to-find ingredients and simple steps, making them ideal for beginners.
 
 - **Developer Submission Form**: Chefs and culinary experts with an API key provided by us can submit their own recipe ideas through a developer-friendly form, contributing fresh, budget-friendly meal ideas for the community.
-
-
-
-
 
 ## Tech That Powers Fresh Start 🔌
 
@@ -76,31 +73,31 @@ Here’s what makes Fresh Start Recipes run smoothly:
   - **Mapbox**: Provides an interactive map interface for selecting your nearest King Soopers location.
   - **Google Geocoding**: Locates nearby stores so you can easily find affordable ingredients close to you.
 
-
 ## Getting Started 🛠
 
 1. Clone the repository:
-    ```bash
-    git clone https://github.com/username/fresh-start-recipes.git
-    ```
+   ```bash
+   git clone https://github.com/username/fresh-start-recipes.git
+   ```
 2. Install frontend and backend dependencies:
-    ```bash
-    # Frontend
-    npm install
-    # Backend
-    bundle install
-    ```
+   ```bash
+   # Frontend
+   npm install
+   # Backend
+   bundle install
+   ```
 3. Start the app:
-    ```bash
-    # Start Rails API server
-    rails server
-    # Start frontend
-    npm start
-    ```
+
+   ```bash
+   # Start Rails API server
+   rails server
+   # Start frontend
+   npm start
+   ```
 
 4. Add your API keys in `.env`:
-    - **Google Geocoding API Key** for location-based store access.
-    - **Mapbox Access Token** for nearby store selection on the map.
+   - **Google Geocoding API Key** for location-based store access.
+   - **Mapbox Access Token** for nearby store selection on the map.
 
 ## How to Use Fresh Start Recipes 🍽
 
@@ -111,8 +108,7 @@ Here’s what makes Fresh Start Recipes run smoothly:
 3. **View a Recipe**: Click on a recipe to access the full recipe page, where you’ll find detailed cooking instructions and a list of ingredients.
    - **Store-Specific Pricing**: If you've already set your location, the recipe page will display real-time, store-specific prices for each ingredient.
    - **Set Location Link**: If a location hasn't been set yet, you’ll see a link directing you to the location page. Once you select a store, you’ll be navigated back to the recipe page with updated pricing specific to that store.
-.
-
+     .
 
 ## Project Structure 🔍
 
@@ -124,9 +120,6 @@ Here’s what makes Fresh Start Recipes run smoothly:
 - **`assets`**: Stores local images used within the app.
 - **`public`**: Contains public images and other static files accessible by the app.
 - **`cypress`**: Contains all end-to-end tests and testing configurations.
-
-
-
 
 ## Future Plans 🚀
 
@@ -143,16 +136,14 @@ Fresh Start Recipes is all about community, so contributions are always welcome!
 
 If you’re a chef or culinary enthusiast with recipe ideas, we invite you to reach out to us! By requesting an API key, you’ll gain access to our recipe submission form on the front end, allowing you to share your creations with the Fresh Start Recipes community.
 
-
 ## Authors 👥
 
 Meet the team behind Fresh Start Recipes:
 
-- [John Hill](https://github.com/jphill19)  
-- [Shane Galvin](https://github.com/Sgalvin36)  
-- [Lito Croy](https://github.com/litobot)  
-- [Charles Banks](https://github.com/DRIF7ER)  
-
+- [John Hill](https://github.com/jphill19)
+- [Shane Galvin](https://github.com/Sgalvin36)
+- [Lito Croy](https://github.com/litobot)
+- [Charles Banks](https://github.com/DRIF7ER)
 
 ---
 

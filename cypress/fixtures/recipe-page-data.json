@@ -16,13 +16,13 @@
         },
         {
           "ingredient": "Ground Beef",
-          "price": 6.00,
+          "price": 6.0,
           "quantity": 2.0,
           "measurement": "lb"
         },
         {
           "ingredient": "Onion",
-          "price": 1.00,
+          "price": 1.0,
           "quantity": 1.0,
           "measurement": "Medium Sized"
         },

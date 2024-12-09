@@ -9,19 +9,46 @@
         "image": "https://smokinandgrillinwitab.com/wp-content/uploads/2023/12/iStock-1457726309.jpg",
         "serving_size": 1,
         "ingredients": [
-          { "ingredient": "Russett Potato", "price": 1.0, "quantity": 1.0, "measurement": "lb" },
-          { "ingredient": "16oz Bag of Shredded Cheddar Cheese", "price": 2.0, "quantity": 2.0, "measurement": "ounces" },
-          { "ingredient": "Olive Oil", "price": 4.0, "quantity": 2.0, "measurement": "tablespoons" }
+          {
+            "ingredient": "Russett Potato",
+            "price": 1.0,
+            "quantity": 1.0,
+            "measurement": "lb"
+          },
+          {
+            "ingredient": "16oz Bag of Shredded Cheddar Cheese",
+            "price": 2.0,
+            "quantity": 2.0,
+            "measurement": "ounces"
+          },
+          {
+            "ingredient": "Olive Oil",
+            "price": 4.0,
+            "quantity": 2.0,
+            "measurement": "tablespoons"
+          }
         ],
         "cookwares": ["Microwave-Safe Baking Dish", "Oven-Safe Baking Dish"],
         "instructions": [
           {
             "cooking_style": 1,
             "instructions": [
-              { "instruction_step": 1, "instruction": "Wash the dirt off the potato" },
-              { "instruction_step": 2, "instruction": "Poke holes in the potato to allow steam to escape" },
-              { "instruction_step": 3, "instruction": "Put on plate in microwave and cook for 8 minutes" },
-              { "instruction_step": 4, "instruction": "If a fork is easily pushed in, it's done, otherwise cook for an additional 2 minutes" }
+              {
+                "instruction_step": 1,
+                "instruction": "Wash the dirt off the potato"
+              },
+              {
+                "instruction_step": 2,
+                "instruction": "Poke holes in the potato to allow steam to escape"
+              },
+              {
+                "instruction_step": 3,
+                "instruction": "Put on plate in microwave and cook for 8 minutes"
+              },
+              {
+                "instruction_step": 4,
+                "instruction": "If a fork is easily pushed in, it's done, otherwise cook for an additional 2 minutes"
+              }
             ]
           }
         ],
@@ -37,16 +64,32 @@
         "image": "https://thehealthfulideas.com/wp-content/uploads/2022/05/Tuna-Cucumber-Sandwich-SQUARE.jpg",
         "serving_size": 1,
         "ingredients": [
-          { "ingredient": "Tuna Can", "price": 1.5, "quantity": 1.0, "measurement": "can" },
-          { "ingredient": "Bread", "price": 1.0, "quantity": 2.0, "measurement": "slices" }
+          {
+            "ingredient": "Tuna Can",
+            "price": 1.5,
+            "quantity": 1.0,
+            "measurement": "can"
+          },
+          {
+            "ingredient": "Bread",
+            "price": 1.0,
+            "quantity": 2.0,
+            "measurement": "slices"
+          }
         ],
         "cookwares": ["Knife"],
         "instructions": [
           {
             "cooking_style": 0,
             "instructions": [
-              { "instruction_step": 1, "instruction": "Mix tuna with mayonnaise." },
-              { "instruction_step": 2, "instruction": "Spread mixture on bread." }
+              {
+                "instruction_step": 1,
+                "instruction": "Mix tuna with mayonnaise."
+              },
+              {
+                "instruction_step": 2,
+                "instruction": "Spread mixture on bread."
+              }
             ]
           }
         ],

@@ -9,19 +9,48 @@
         "image": "https://www.allrecipes.com/thmb/4smgjS2sONVA6r46frYB7pOzin8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8173541-0919576e23364344a9ab1c75c4487441.jpg",
         "serving_size": 6,
         "ingredients": [
-          { "ingredient": "Russett Potato", "price": 1.0, "quantity": 3.0, "measurement": "lb" },
-          { "ingredient": "Ground Beef", "price": 6.0, "quantity": 2.0, "measurement": "lb" },
-          { "ingredient": "Onion", "price": 1.0, "quantity": 1.0, "measurement": "Medium Sized" },
-          { "ingredient": "Olive Oil", "price": 4.0, "quantity": 2.0, "measurement": "tablespoons" }
+          {
+            "ingredient": "Russett Potato",
+            "price": 1.0,
+            "quantity": 3.0,
+            "measurement": "lb"
+          },
+          {
+            "ingredient": "Ground Beef",
+            "price": 6.0,
+            "quantity": 2.0,
+            "measurement": "lb"
+          },
+          {
+            "ingredient": "Onion",
+            "price": 1.0,
+            "quantity": 1.0,
+            "measurement": "Medium Sized"
+          },
+          {
+            "ingredient": "Olive Oil",
+            "price": 4.0,
+            "quantity": 2.0,
+            "measurement": "tablespoons"
+          }
         ],
         "cookwares": ["Medium Soup Pot", "Cooking Spoon"],
         "instructions": [
           {
             "cooking_style": 3,
             "instructions": [
-              { "instruction_step": 1, "instruction": "Wash the dirt off the potato" },
-              { "instruction_step": 2, "instruction": "Cut potatoes into cubes." },
-              { "instruction_step": 3, "instruction": "Boil the potatoes and brown meat." }
+              {
+                "instruction_step": 1,
+                "instruction": "Wash the dirt off the potato"
+              },
+              {
+                "instruction_step": 2,
+                "instruction": "Cut potatoes into cubes."
+              },
+              {
+                "instruction_step": 3,
+                "instruction": "Boil the potatoes and brown meat."
+              }
             ]
           }
         ],
@@ -37,15 +66,26 @@
         "image": "https://www.wholesomeyum.com/wp-content/uploads/2020/09/wholesomeyum-Baked-Chicken-Breast-8.jpg",
         "serving_size": 2,
         "ingredients": [
-          { "ingredient": "Chicken Breast", "price": 6.0, "quantity": 2.0, "measurement": "pieces" }
+          {
+            "ingredient": "Chicken Breast",
+            "price": 6.0,
+            "quantity": 2.0,
+            "measurement": "pieces"
+          }
         ],
         "cookwares": ["Glass Baking Dish"],
         "instructions": [
           {
             "cooking_style": 3,
             "instructions": [
-              { "instruction_step": 1, "instruction": "Preheat oven to 375°F." },
-              { "instruction_step": 2, "instruction": "Bake chicken for 25 minutes." }
+              {
+                "instruction_step": 1,
+                "instruction": "Preheat oven to 375°F."
+              },
+              {
+                "instruction_step": 2,
+                "instruction": "Bake chicken for 25 minutes."
+              }
             ]
           }
         ],

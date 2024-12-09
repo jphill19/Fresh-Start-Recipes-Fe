@@ -1,0 +1,52 @@
+:root {
+  --main-color: #1cb771; 
+  --secondary-color: #ff8964; 
+}
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply m-0 font-rounded antialiased bg-white ;
+  }
+
+  .bg-header-gradient {
+    background: linear-gradient(180deg, #000000, #1a1a1a);
+  }
+}
+
+
+.scrollbar-hide {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+input[type='checkbox'] {
+  -webkit-appearance: none; 
+  -moz-appearance: none;    
+  appearance: none;         
+}
+input[type="checkbox"].custom-check::after {
+  content: '✔';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  opacity: 0;
+  font-size: 0.75rem;
+}
+
+input[type="checkbox"].custom-check:checked::after {
+  opacity: 1;
+}

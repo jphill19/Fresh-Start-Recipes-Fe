@@ -1,84 +1,84 @@
 {
   "data": [
-      {
-          "locationId": "62000115",
-          "storeNumber": "00115",
-          "name": "King Soopers - Union Station",
-          "address": {
-              "addressLine1": "1950 Chestnut Pl",
-              "city": "Denver",
-              "state": "CO",
-              "zipCode": "80202",
-              "county": "DENVER COUNTY"
-          },
-          "geolocation": {
-              "latitude": 39.757185,
-              "longitude": -104.998818
-          }
+    {
+      "locationId": "62000115",
+      "storeNumber": "00115",
+      "name": "King Soopers - Union Station",
+      "address": {
+        "addressLine1": "1950 Chestnut Pl",
+        "city": "Denver",
+        "state": "CO",
+        "zipCode": "80202",
+        "county": "DENVER COUNTY"
       },
-      {
-          "locationId": "62000001",
-          "storeNumber": "00001",
-          "name": "King Soopers - Speer Blvd",
-          "address": {
-              "addressLine1": "1331 Speer Blvd",
-              "city": "Denver",
-              "state": "CO",
-              "zipCode": "80204",
-              "county": "DENVER COUNTY"
-          },
-          "geolocation": {
-              "latitude": 39.7374922,
-              "longitude": -104.9979695
-          }
-      },
-      {
-          "locationId": "62000029",
-          "storeNumber": "00029",
-          "name": "King Soopers - CAPITOL HILL",
-          "address": {
-              "addressLine1": "1155 E 9Th Ave",
-              "city": "Denver",
-              "state": "CO",
-              "zipCode": "80218",
-              "county": "DENVER COUNTY"
-          },
-          "geolocation": {
-              "latitude": 39.7311271,
-              "longitude": -104.9735436
-          }
-      },
-      {
-          "locationId": "62000057",
-          "storeNumber": "00057",
-          "name": "King Soopers - Ridge Village on 38th Ave",
-          "address": {
-              "addressLine1": "5301 W 38th Ave",
-              "city": "Wheat Ridge",
-              "state": "CO",
-              "zipCode": "80212",
-              "county": "JEFFERSON COUNTY"
-          },
-          "geolocation": {
-              "latitude": 39.7703823,
-              "longitude": -105.0542489
-          }
-      },
-      {
-          "locationId": "62000090",
-          "storeNumber": "00090",
-          "name": "King Soopers - Sloans Lake Edgewater",
-          "address": {
-              "addressLine1": "1725 Sheridan Blvd",
-              "city": "Edgewater",
-              "state": "CO",
-              "zipCode": "80214",
-              "county": "JEFFERSON COUNTY"
-          },
-          "geolocation": {
-              "latitude": 39.7448867,
-              "longitude": -105.0560734
-          }
+      "geolocation": {
+        "latitude": 39.757185,
+        "longitude": -104.998818
       }
+    },
+    {
+      "locationId": "62000001",
+      "storeNumber": "00001",
+      "name": "King Soopers - Speer Blvd",
+      "address": {
+        "addressLine1": "1331 Speer Blvd",
+        "city": "Denver",
+        "state": "CO",
+        "zipCode": "80204",
+        "county": "DENVER COUNTY"
+      },
+      "geolocation": {
+        "latitude": 39.7374922,
+        "longitude": -104.9979695
+      }
+    },
+    {
+      "locationId": "62000029",
+      "storeNumber": "00029",
+      "name": "King Soopers - CAPITOL HILL",
+      "address": {
+        "addressLine1": "1155 E 9Th Ave",
+        "city": "Denver",
+        "state": "CO",
+        "zipCode": "80218",
+        "county": "DENVER COUNTY"
+      },
+      "geolocation": {
+        "latitude": 39.7311271,
+        "longitude": -104.9735436
+      }
+    },
+    {
+      "locationId": "62000057",
+      "storeNumber": "00057",
+      "name": "King Soopers - Ridge Village on 38th Ave",
+      "address": {
+        "addressLine1": "5301 W 38th Ave",
+        "city": "Wheat Ridge",
+        "state": "CO",
+        "zipCode": "80212",
+        "county": "JEFFERSON COUNTY"
+      },
+      "geolocation": {
+        "latitude": 39.7703823,
+        "longitude": -105.0542489
+      }
+    },
+    {
+      "locationId": "62000090",
+      "storeNumber": "00090",
+      "name": "King Soopers - Sloans Lake Edgewater",
+      "address": {
+        "addressLine1": "1725 Sheridan Blvd",
+        "city": "Edgewater",
+        "state": "CO",
+        "zipCode": "80214",
+        "county": "JEFFERSON COUNTY"
+      },
+      "geolocation": {
+        "latitude": 39.7448867,
+        "longitude": -105.0560734
+      }
+    }
   ]
 }
