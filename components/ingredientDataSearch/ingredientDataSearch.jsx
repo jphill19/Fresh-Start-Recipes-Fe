@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect } from 'react'
 import { ingredientFilter } from '../../api/fresh_start_recipe_api'
-// import './ingredientDataSearch.css';
+
 
 function FilterDataSearch({
   setQuantity,
@@ -15,7 +15,7 @@ function FilterDataSearch({
   const [debouncedTerm, setDebouncedTerm] = useState('')
   const [results, setResults] = useState([])
   const [selectedId, setSelectedId] = useState(null)
-  console.log("filterData")
+
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       setDebouncedTerm(searchTerm)

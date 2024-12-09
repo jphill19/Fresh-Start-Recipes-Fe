@@ -10,9 +10,9 @@ function Map({ locations, userLocation, onLocationClick }) {
   const prevUserLocation = useRef(null);
   const markers = useRef([]);
 
-  // Initialize the map once
+
   useEffect(() => {
-    if (map.current) return; // Initialize map only once
+    if (map.current) return; 
 
     const initialCenter = userLocation
       ? [userLocation.longitude, userLocation.latitude]
@@ -38,13 +38,11 @@ function Map({ locations, userLocation, onLocationClick }) {
         map.current.remove();
       }
     };
-  }, []); // <-- Empty dependency array
-
-  // Add markers whenever locations change
+  }, []); 
   useEffect(() => {
     if (!map.current) return;
 
-    // Remove existing markers
+    
     markers.current.forEach((marker) => marker.remove());
     markers.current = [];
 
@@ -52,7 +50,7 @@ function Map({ locations, userLocation, onLocationClick }) {
       const { latitude, longitude } = location.geolocation;
 
       if (typeof latitude === 'number' && typeof longitude === 'number') {
-        const marker = new mapboxgl.Marker()
+        const marker = new mapboxgl.Marker({ color: 'green' })
           .setLngLat([longitude, latitude])
           .addTo(map.current);
 
@@ -72,7 +70,7 @@ function Map({ locations, userLocation, onLocationClick }) {
     });
   }, [locations, onLocationClick]);
 
-  // Update map center when userLocation changes
+
   useEffect(() => {
     if (map.current && userLocation) {
       const { latitude, longitude } = userLocation;

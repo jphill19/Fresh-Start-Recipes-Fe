@@ -6,7 +6,6 @@ import IngredientList from '../../components/IngredientList/IngredientList.compo
 import InstructionsList from '../../components/IntstructionsList/InstructionList.component'
 import { recipeDetailsFetches } from '../../api/fresh_start_recipe_api'
 import { useStoreLocation } from '../../context/StoreLocationContext'
-import ClipLoader from 'react-spinners/ClipLoader'
 import useSWR from 'swr'
 
 const fetcher = async (recipeId, locationId) =>
@@ -24,11 +23,19 @@ function RecipePage({ initialData, recipeId }) {
   const router = useRouter()
   const { recipeId: queryRecipeId } = router.query
 
-  // Use SWR for fetching and caching data
-  const { data, error, isValidating } = useSWR(
-    queryRecipeId ? ['recipeDetails', queryRecipeId, locationData?.id] : null,
+  // If locationData is not set, do not fetch new data. Just use initialData.
+  // If locationData is set, fetch with SWR to get updated data based on user location.
+  const swrKey = locationData?.id && queryRecipeId
+    ? ['recipeDetails', queryRecipeId, locationData.id]
+    : null
+
+  const { data = initialData, error, isValidating } = useSWR(
+    swrKey,
     ([, recipeId, locationId]) => fetcher(recipeId, locationId),
-    { fallbackData: initialData, revalidateOnFocus: false }
+    {
+      fallbackData: initialData,
+      revalidateOnFocus: false,
+    }
   )
 
   const loading = !data && isValidating
@@ -58,13 +65,13 @@ function RecipePage({ initialData, recipeId }) {
                 style =>
                   cookingStyleData[style.cooking_style]?.name || 'Unknown'
               )
-              .filter(Boolean) // Remove undefined or null values
+              .filter(Boolean)
               .join(', ')}
           </p>
         )}
 
         <div className="mb-6">
-          <IngredientList ingredients={data.attributes.ingredients} />
+          <IngredientList ingredients={data.attributes.ingredients} recipeId={recipeId} />
         </div>
 
         <div className="mb-6">

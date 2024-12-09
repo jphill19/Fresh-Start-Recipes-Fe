@@ -28,7 +28,7 @@ function RecipeContainer({ data = [] }) {
       recipe={recipe.attributes}
       excludedIngredients={excludedIngredients}
       onIngredientClick={handleIngredientClick}
-      key={recipe.id || `recipe-${index}`} // Fallback key
+      key={recipe.id || `recipe-${index}`} 
       recipeId={recipe.id}
     />
   ))

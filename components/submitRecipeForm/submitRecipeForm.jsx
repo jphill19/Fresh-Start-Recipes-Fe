@@ -95,7 +95,7 @@ function SubmitForm() {
   const handleKeyDown = event => {
     if (event.key === 'Enter') {
       if (event.target.tagName.toLowerCase() !== 'button') {
-        event.preventDefault() // Disable Enter on non-buttons
+        event.preventDefault() 
       }
     }
   }

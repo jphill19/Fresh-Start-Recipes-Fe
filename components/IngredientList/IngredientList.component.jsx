@@ -6,7 +6,7 @@ function IngredientList({ ingredients, servingSize, recipeId }) {
   const [excludedIngredients, setExcludedIngredients] = useState({});
   const { locationData } = useStoreLocation();
   const router = useRouter();
-
+  
   const [isUpdating, setIsUpdating] = useState(false);
   const [totalPrice, setTotalPrice] = useState(() =>
     ingredients.reduce((sum, ingredient) => {
@@ -31,7 +31,7 @@ function IngredientList({ ingredients, servingSize, recipeId }) {
     });
   };
 
-  // Animate price changes:
+
   useEffect(() => {
     const newTotal = ingredients.reduce((sum, ingredient) => {
       const isExcluded = excludedIngredients[ingredient.ingredient];
@@ -40,7 +40,7 @@ function IngredientList({ ingredients, servingSize, recipeId }) {
 
     if (newTotal !== totalPrice) {
       setIsUpdating(true);
-      setTimeout(() => setIsUpdating(false), 300); // Reset after animation
+      setTimeout(() => setIsUpdating(false), 300);
       setTotalPrice(newTotal);
     }
   }, [excludedIngredients, ingredients, totalPrice]);

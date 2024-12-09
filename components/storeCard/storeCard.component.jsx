@@ -27,17 +27,17 @@ function StoreCard({ location, isSelected, id }) {
       `}
       id={id}
     >
-      {/* Store Name */}
+    
       <h2 className="text-xl font-semibold text-gray-800 mb-1">
         {name}
       </h2>
 
-      {/* Chain Name */}
+
       <p className="text-sm font-medium text-gray-600 mb-3">
         {chain}
       </p>
 
-      {/* Address */}
+
       <div className="text-sm text-gray-600 space-y-1 mb-4">
         <p>{address.addressLine1}</p>
         <p>
@@ -45,7 +45,7 @@ function StoreCard({ location, isSelected, id }) {
         </p>
       </div>
 
-      {/* Select Store Button */}
+
       <button
         className="w-full p-3 bg-orange-500 text-white text-base font-semibold rounded-md 
                    transition-colors duration-200 hover:bg-orange-600 active:bg-orange-700"

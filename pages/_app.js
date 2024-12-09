@@ -7,7 +7,7 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>About Us</title>
+        <title>Fresh Start Recipes</title>
         <meta name="description" content="About our company." />
       </Head>
       <main>

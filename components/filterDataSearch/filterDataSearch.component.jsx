@@ -55,30 +55,30 @@ function FilterDataSearch({ name, searchValueSetter }) {
                 key={item.id}
                 className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 transition-all duration-200 cursor-pointer"
               >
-                <input
-                  type="radio"
-                  id={`radio-${item.id}`} 
-                  name="ingredient"
-                  value={item.id}
-                  checked={selectedId === item.id}
-                  onChange={() => handleRadioChange(item)}
-                  className="
-                appearance-none
-                w-6 h-6
-                border-2 border-orange-500
-                rounded-full
-                bg-transparent
-                checked:border-green-500
-                checked:bg-green-400
-                text-green-500
-                focus:outline-none
-                focus:ring-2
-                focus:ring-orange-500
-                focus:ring-offset-2
-                transition-colors
-                duration-200
-                peer
-              "
+              <input
+                type="radio"
+                id={`radio-${item.id}`} 
+                name="ingredient"
+                value={item.id}
+                checked={selectedId === item.id}
+                onChange={() => handleRadioChange(item)}
+                className="
+                  appearance-none
+                  w-6 h-6
+                  border-2 border-orange-500
+                  rounded-full
+                  bg-transparent
+                  checked:border-green-500
+                  checked:bg-green-400
+                  text-green-500
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-orange-500
+                  focus:ring-offset-2
+                  transition-colors
+                  duration-200
+                  peer
+                "
                   style={{ aspectRatio: '1 / 1' }}
                 />
                 <label

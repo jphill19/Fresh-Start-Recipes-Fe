@@ -27,9 +27,9 @@ function Header() {
 
   return (
     <Fragment>
-      <header className="bg-white  border-b-2 border-orange-400 p-1 py-2 md:rounded-none">
+      <header className="bg-white border-b-2 border-orange-400 px-4 py-2 md:rounded-none">
         <nav className="flex items-center justify-between px-0 md:px-8">
-          {/* Left Side: Logo */}
+        
           <div className="flex items-center flex-1 justify-start">
             <Link href="/">
               <img
@@ -40,12 +40,7 @@ function Header() {
             </Link>
           </div>
 
-          {/* Right Side: Location and Search/Home Button */}
-          <div
-            className={`flex items-center justify-end ${
-              locationData.name ? 'gap-2' : 'gap-6'
-            }`}
-          >
+          <div className="flex items-center justify-end gap-6">
             <Link
               href="/location"
               className="flex items-center gap-1 cursor-pointer transition-transform duration-200 ease-in-out hover:scale-105"
@@ -55,11 +50,6 @@ function Header() {
                 alt="location-icon"
                 className="w-7 h-7 md:w-12 md:h-12"
               />
-              {locationData.name && (
-                <span className="text-xs text-gray-500 truncate max-w-[60px] md:max-w-[120px]">
-                  {locationData.name}
-                </span>
-              )}
             </Link>
 
             {isHomePage ? (
@@ -89,6 +79,21 @@ function Header() {
             )}
           </div>
         </nav>
+
+
+        {locationData.name && (
+          <div className="flex items-center justify-center mt-1 text-sm text-gray-600 gap-1">
+            <img
+              src="/geo-alt-orange.svg"
+              alt="location-icon"
+              className="w-4 h-4"
+            />
+            <span>
+              <span className="font-semibold">Selected Store:</span>{' '}
+              {locationData.name}
+            </span>
+          </div>
+        )}
 
         <SearchBox showSearch={showSearch} toggleSearch={toggleSearch} />
       </header>

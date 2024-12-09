@@ -4,7 +4,7 @@ function FilterToggleSwitch({ name, searchValueSetter }) {
   const [isSingle, setIsSingle] = useState(true)
 
   useEffect(() => {
-    // Set the initial search value when the component mounts
+ 
     searchValueSetter(isSingle ? 'Single' : 'Multiple')
   }, [isSingle, searchValueSetter])
 

@@ -19,7 +19,7 @@ function FilterCheckBoxSearch({ options, name, searchValueSetter }) {
           >
             <input
               type="radio"
-              id={`radio-${id}`} // Matches the label's htmlFor
+              id={`radio-${id}`} 
               name="ingredient"
               value={id}
               checked={selectedId === id}
@@ -44,7 +44,7 @@ function FilterCheckBoxSearch({ options, name, searchValueSetter }) {
               style={{ aspectRatio: '1 / 1' }}
             />
             <label
-              htmlFor={`radio-${id}`} // Matches the input's id
+              htmlFor={`radio-${id}`} 
               className="text-base text-gray-800 peer-checked:font-semibold peer-checked:text-orange-500 transition-all"
             >
               {label}

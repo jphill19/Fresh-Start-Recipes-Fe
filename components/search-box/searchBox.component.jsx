@@ -1,37 +1,38 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 function SearchBox({ showSearch, toggleSearch }) {
-  const [searchQuery, setSearchQuery] = useState('');
-  const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState('')
+  const router = useRouter()
 
-  const handleInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
+  const handleInputChange = event => {
+    setSearchQuery(event.target.value)
+  }
 
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
+  const handleSearchSubmit = event => {
+    event.preventDefault()
     if (searchQuery.trim()) {
-      router.push(`/?by_recipe=${encodeURIComponent(searchQuery)}`);
+      router.push(`/?by_recipe=${encodeURIComponent(searchQuery)}`)
     }
-    toggleSearch();
-    setSearchQuery('');
-  };
+    toggleSearch()
+    setSearchQuery('')
+  }
 
   return (
     <div
-      className={`${
-        showSearch ? 'block' : 'hidden'
-      } bg-white mt-4 w-full px-4`}
+      className={`${showSearch ? 'block' : 'hidden'} bg-white mt-4 w-full px-4`}
     >
-      <form onSubmit={handleSearchSubmit} className="relative max-w-lg mx-auto pb-2">
+      <form
+        onSubmit={handleSearchSubmit}
+        className="relative max-w-lg mx-auto pb-2"
+      >
         <input
           type="search"
           placeholder="Search by Recipe Name..."
           value={searchQuery}
           onChange={handleInputChange}
           maxLength="50"
-          className="w-full py-2 pl-12 pr-4 text-black text-base font-medium border border-gray-700 rounded-full focus:outline-none focus:ring-1 focus:ring-gray-700 transition duration-200"
+          className="w-full py-2 pl-12 pr-4 text-black text-base font-medium border border-gray-700 rounded-full focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 transition duration-200"
           title="Search recipes by entering keywords"
         />
         <button
@@ -49,7 +50,7 @@ function SearchBox({ showSearch, toggleSearch }) {
         </button>
       </form>
     </div>
-  );
+  )
 }
 
-export default SearchBox;
+export default SearchBox

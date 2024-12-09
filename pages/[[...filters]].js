@@ -15,7 +15,7 @@ export default function Home({ initialData, initialFilters }) {
 
   useEffect(() => {
     if (!router.isReady || router.isFallback) return;
-
+    
     const filtersObj = { ...router.query };
     delete filtersObj.filters;
 
@@ -41,7 +41,6 @@ export default function Home({ initialData, initialFilters }) {
   }
 
   const fetchFilteredData = async (filtersObj) => {
-    console.log("fetching data")
     setLoading(true);
     try {
       const queryString = new URLSearchParams(filtersObj).toString();
@@ -87,7 +86,7 @@ export default function Home({ initialData, initialFilters }) {
       )}
       {loading ? (
         <div className="flex justify-center items-center h-52">
-          <ClipLoader color="#36d7b7" size={50} />
+          <ClipLoader color="#green" size={50} />
         </div>
       ) : (
         <RecipeContainer data={indexData} />

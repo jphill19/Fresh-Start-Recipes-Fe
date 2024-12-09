@@ -27,7 +27,7 @@ export function RecipeCard({
 
     if (newTotal !== totalPrice) {
       setIsUpdating(true)
-      setTimeout(() => setIsUpdating(false), 300) // reset after animation
+      setTimeout(() => setIsUpdating(false), 300) 
       setTotalPrice(newTotal)
     }
   }, [excludedIngredients, ingredients, totalPrice])
@@ -36,7 +36,7 @@ export function RecipeCard({
     const isExcluded = excludedIngredients[ingredient.ingredient]
     return (
       <div
-        key={ingredient.ingredient || `ingredient-${index}`} // Add a unique key
+        key={ingredient.ingredient || `ingredient-${index}`} 
         className="flex items-center p-2 border-b border-gray-100"
       >
         <label className="flex items-center w-full">

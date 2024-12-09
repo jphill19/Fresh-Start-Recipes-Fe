@@ -3,12 +3,12 @@ import React from "react";
 const cookingStyleData = {
   0: { name: "No Cooking Style", icon: "/none.svg" },
   1: { name: "Microwave", icon: "/microwave.svg" },
-  2: { name: "Stove Top", icon: "/stove.svg" },
+  2: { name: "Stove Top", icon: "/pan.svg" },
   3: { name: "Oven / Toaster Oven", icon: "/oven.svg" },
 };
 
 function InstructionsList({ instructions, cookingStyle }) {
-  console.log("i", instructions);
+
 
   if (!instructions || instructions.length === 0) {
     return <p>No instructions available.</p>;
@@ -35,7 +35,7 @@ function InstructionsList({ instructions, cookingStyle }) {
       <ul className="list-none p-0 m-0" aria-label="List of instructions">
         {sortedInstructions.map((step) => (
           <li
-            key={step.instruction_step} // Ensure unique key
+            key={step.instruction_step} 
             className="mb-3 p-3 border-l-4 border-orange-400 bg-gray-50 rounded-sm"
           >
             <p className="font-bold text-green-600 mb-1 text-base">

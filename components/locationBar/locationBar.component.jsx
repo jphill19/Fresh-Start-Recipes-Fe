@@ -47,7 +47,8 @@ const AutocompleteInput = ({ setUserLocation }) => {
       <input
         type="text"
         placeholder="Enter your address"
-        className="box-border w-full p-[14px] border border-[#e2e2e2] rounded-lg text-base"
+        className="box-border w-full p-[14px] border border-[#e2e2e2] rounded-lg text-base 
+             focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition duration-200"
         maxLength="50"
       />
     </Autocomplete>
