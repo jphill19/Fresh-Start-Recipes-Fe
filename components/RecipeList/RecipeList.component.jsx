@@ -1,14 +1,15 @@
 import { useState, useRef } from "react";
 
-function RecipeList({ items, title, }) {
+function RecipeList({ items, title }) {
   const [open, setOpen] = useState(false);
+  const contentRef = useRef(null); // Move this above the conditional return
+
+  // If items are empty or not provided, return null
   if (!items || items.length === 0) return null;
 
   const isTipsTitle = title === "Recipe Tips";
   const icon = isTipsTitle ? "/lightbulb.svg" : "/cookware.svg";
   const iconAlt = isTipsTitle ? "Tips" : "Cookware";
-
-  const contentRef = useRef(null);
 
   return (
     <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm w-full mb-4 transition-all duration-300 ease-in-out">
