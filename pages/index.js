@@ -1,3 +1,4 @@
+// pages/index.js
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import FilterBar from '../components/fitlerBar/filterBar.component';
@@ -12,19 +13,11 @@ export default function Home({ initialData, initialFilters }) {
   const [activeFilters, setActiveFilters] = useState(initialFilters);
   const [loading, setLoading] = useState(false);
 
-
   useEffect(() => {
     if (!router.isReady || router.isFallback) return;
-    
-    const filtersObj = { ...router.query };
-    delete filtersObj.filters;
 
-    if (router.query.filters) {
-      const filters = router.query.filters || [];
-      for (let i = 0; i < filters.length; i += 2) {
-        filtersObj[filters[i]] = filters[i + 1];
-      }
-    }
+    const filtersObj = { ...router.query };
+
 
     if (JSON.stringify(filtersObj) !== JSON.stringify(activeFilters)) {
       setActiveFilters(filtersObj);
@@ -69,10 +62,11 @@ export default function Home({ initialData, initialFilters }) {
       delete currentFilters[filterKey];
     }
 
+    // Push updated filters to the router's query.
     router.push({
       pathname: '/',
       query: currentFilters,
-    });
+    }, undefined, { shallow: true });
   };
 
   return (
@@ -95,52 +89,24 @@ export default function Home({ initialData, initialFilters }) {
   );
 }
 
-// ISR for Static Pages
-export async function getStaticProps({ params }) {
-  const filters = params.filters || [];
-  const filtersObj = {};
-
-  for (let i = 0; i < filters.length; i += 2) {
-    filtersObj[filters[i]] = filters[i + 1];
-  }
-
-  const recognizedFilters = ['by_ingredient', 'by_style', 'by_serving', 'by_price', 'by_recipe'];
-
-  const filterKeys = Object.keys(filtersObj);
-  const unrecognizedFilters = filterKeys.filter((key) => !recognizedFilters.includes(key));
-
-  if (unrecognizedFilters.length > 0) {
-    return {
-      notFound: true,
-    };
-  }
-
-  const queryString = new URLSearchParams(filtersObj).toString();
+export async function getStaticProps() {
   try {
-    const data = await recipeFetches(queryString);
+    const data = await recipeFetches('');
     return {
       props: {
         initialData: data.data,
-        initialFilters: filtersObj,
+        initialFilters: {},
       },
-      revalidate: 120, // Revalidate every 2 minutes
+      revalidate: 900, 
     };
   } catch (error) {
     console.error('Error fetching data:', error);
     return {
       props: {
         initialData: [],
-        initialFilters: filtersObj,
+        initialFilters: {},
       },
       revalidate: 120,
     };
   }
-}
-
-
-export async function getStaticPaths() {
-  return {
-    paths: [], 
-    fallback: 'blocking', 
-  };
 }
