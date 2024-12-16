@@ -2,11 +2,9 @@
 
 Welcome to **Fresh Start Recipes** – a mobile app designed to support those navigating hard times or new beginnings. This app offers simple, affordable recipes that use ingredients available at local King Soopers stores, with real-time pricing based on your nearby location. Whether you're new to a government home, unhoused, or just looking to stretch your budget, Fresh Start Recipes is here to make cooking affordable and accessible.
 
-<div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-  <img src="./assets/home.png" alt="Home Page" width="30%" />
-  <img src="./assets/details.png" alt="Details Page" width="30%" />
-  <img src="./assets/location.png" alt="Location Page" width="30%" />
-</div>
+![FrestStartRecipes](https://github.com/user-attachments/assets/15724018-4e42-409d-b521-a187c40b3433)
+
+
 
 ## 📑 Table of Contents
 
@@ -49,15 +47,9 @@ Fresh Start Recipes is crafted as a mobile-only experience because mobile phones
   - **Cooking Style**: Select recipes by cooking method (oven, microwave, stove, or no cooking required).
   - **Combine Filters**: Apply multiple filters simultaneously for more refined results, such as ingredient, price, serving quantity, and cooking style all at once.
 
-  _Here’s how easy it is to filter recipes!_  
-  ![Filter Options in Action](https://media.giphy.com/media/J7NwUFwmwAWwfGwwLn/giphy.gif)
-
 - **Real-Time Pricing**: Integrated with the Kroger API to provide live prices for each ingredient at King Soopers. By default, all prices are presented based on **King Soopers - Union Station**:
 
 - **Personalized Pricing**: Mark ingredients you already have, and the app will automatically zero out the cost for those items, updating the total price for each recipe that includes them.
-
-  _See how marking ingredients updates the price in real-time!_  
-  ![Personalized Pricing in Action](https://media.giphy.com/media/ZdUK1i2FYnDqNSEPlx/giphy.gif)
 
 - **Simple Ingredients, Simple Meals**: Recipes focus on easy-to-find ingredients and simple steps, making them ideal for beginners.
 
@@ -67,11 +59,13 @@ Fresh Start Recipes is crafted as a mobile-only experience because mobile phones
 
 Here’s what makes Fresh Start Recipes run smoothly:
 
-- **Frontend**: Built with **React** and **JavaScript** for a mobile-optimized, responsive experience.
+- **Frontend**: Built with **Next.js** for Server-Side Rendering (SSR), Client & Server Caching, and Prefetching to ensure a fast and seamless experience.
+- **Styling**: Leveraged **Tailwind CSS** for a modern and responsive user interface.
 - **Backend**: A **Rails API** powers data retrieval and integrates with the Kroger API to provide real-time ingredient pricing.
 - **Geolocation & Mapping**:
   - **Mapbox**: Provides an interactive map interface for selecting your nearest King Soopers location.
   - **Google Geocoding**: Locates nearby stores so you can easily find affordable ingredients close to you.
+
 
 ## Getting Started 🛠
 
@@ -95,7 +89,7 @@ Here’s what makes Fresh Start Recipes run smoothly:
    npm start
    ```
 
-4. Add your API keys in `.env`:
+4. Add your API keys in `.env.local`:
    - **Google Geocoding API Key** for location-based store access.
    - **Mapbox Access Token** for nearby store selection on the map.
 
@@ -112,15 +106,15 @@ Here’s what makes Fresh Start Recipes run smoothly:
 
 ## Project Structure 🔍
 
-- **`src`**: Contains all core application code.
-  - **`components`**: Reusable UI components, such as recipe cards, store selection interfaces, and other interactive elements.
-  - **`router`**: Defines all route handlers for navigating between pages in the app.
-  - **`context`**: Global context files for managing shared state across the application.
-  - **`api`**: Handles all API interactions, such as fetching recipe data and pricing information.
-- **`assets`**: Stores local images used within the app.
-- **`public`**: Contains public images and other static files accessible by the app.
-- **`cypress`**: Contains all end-to-end tests and testing configurations.
-
+- **`components`**: Contains reusable UI components, such as recipe cards, store selection interfaces, and other interactive elements.
+- **`pages`**: Each file in this folder corresponds to a route in the app. This includes:
+  - **API Routes**: Located in `pages/api`, these handle server-side logic, such as fetching recipe data and pricing information.
+  - **Static Pages**: Other files serve as the main views for the app (e.g., home, details, location).
+- **`context`**: Global context files for managing shared state across the application.
+- **`api`**: Contains utility functions for interacting with external APIs (e.g., fetching data from the Kroger API).
+- **`public`**: Stores static files like images, icons, and other assets accessible to the app.
+- **`styles`**: Contains global and component-specific CSS or Tailwind configuration files (if applicable).
+- **`cypress`**: Contains end-to-end tests and testing configurations for ensuring the app works as expected.
 ## Future Plans 🚀
 
 We’re just getting started! Here’s what’s in store:
